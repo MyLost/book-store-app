@@ -1,0 +1,28 @@
+header{
+    height: 300px;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-tabmenu .ui-tabmenu-nav{
+    position:relative;
+
+    margin-left: 100px!important;
+}
+
+p {
+    text-align: center;
+}
+
+div{
+    margin-bottom: 50px;
+}
+
+.lang {
+    float:right;
+}
+
+.footer{
+    position: relative;
+    text-align: center;
+}
