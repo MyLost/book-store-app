@@ -1,0 +1,62 @@
+.container{
+           margin-top: 10px;
+           width: 90%;
+           margin-left: auto;
+           margin-right: auto;
+           display: flex;
+}
+
+.left {
+        width: 50%;
+}
+
+.right{
+        width: 50%;
+}
+
+.head{
+        padding-top: 10px;
+        border: 1px solid black;
+        text-align: center;
+}
+
+.add-container{
+
+        width:60%;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.banner{
+        padding: 10px;
+        border: 1px solid black;
+        height: 550px;
+        text-align: justify;
+        overflow: hidden;
+}
+label, .input-group{
+        display: flex;
+        justify-content: center;
+
+}
+
+.activity{
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 5px;
+}
+
+h2, h3 {
+        margin-top: 0px;
+        text-align: center;
+}
+
+input{
+        margin-bottom: 20px;
+}
+
+button{
+        margin-top: 10px;
+}
+
+
