@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './redux/store/login.state';
 import { LOGIN_USER } from './redux/actions/loginActions';
 import { Router } from '@angular/router';
+import { AuthService } from "./auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title: string = 'BookStore';
+  protected title = 'BookStore';
   private user: LoginUser;
   element: any;
   constructor(
     private loginService: LoginService,
     private store: Store<AppState>,
-    private router: Router ) {
-    this.user = this.loginService.getUser();
+    private router: Router,
+    private auth: AuthService
+    ) {
+    this.user = this.auth.user;
   }
 
   ngOnInit() {
