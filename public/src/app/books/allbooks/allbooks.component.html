@@ -1,0 +1,25 @@
+<h1>ALL BOOKS</h1>
+     <p-table [value]="books"  [rows]="20" [paginator]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th><a (click)="sort('author')">author</a></th>
+                    <th><a (click)="sort('title')">title</a></th>
+                    <th><a (click)="sort('price')">price</a></th>
+                    <th><a (click)="sort('kind')">kind</a></th>
+                    <th><a (click)="sort('cover')">cover</a></th>
+                    <th><a (click)="sort('numberOfBooks')">numberOfBooks</a></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-book>
+                <tr>
+                    <td>{{book.author}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.price}}</td>
+                    <td>{{book.kind}}</td>
+                    <td>{{book.cover}}</td>
+                    <td>{{book.numberOfBooks}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
