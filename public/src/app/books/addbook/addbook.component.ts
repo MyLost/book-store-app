@@ -15,7 +15,7 @@ import { InputTextModule } from "primeng/inputtext";
     FormsModule,
     InputTextModule
   ],
-  providers: [MessageService]
+  providers: [MessageService, BookService]
 
 })
 export class AddbookComponent implements OnInit {
