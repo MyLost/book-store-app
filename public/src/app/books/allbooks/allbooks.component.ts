@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { BookInterface } from '../common/BookInterface';
-import { TableModule } from "primeng/table";
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from "primeng/button";
 
 @Component({
   selector: 'app-allbooks',
   standalone: true,
   templateUrl: './allbooks.component.html',
   imports: [
-    TableModule
+    TableModule,
+    ButtonModule
   ],
-  styleUrls: ['./allbooks.component.css']
+  styleUrls: ['./allbooks.component.css'],
+  providers: [ BookService ]
 })
-export class AllbooksComponent implements OnInit {
+export class AllBooksComponent implements OnInit {
 
   books: any;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    this.bookService.getBook().subscribe((data: BookInterface)  => {
+    this.bookService.getAll().subscribe((data: BookInterface)  => {
       this.books = data;
     });
   }
@@ -27,7 +30,7 @@ export class AllbooksComponent implements OnInit {
   sort(value: any) {
     switch (value) {
       case 'author':
-      this.books.sort(function(a : any, b: any) {
+      this.books.sort(function(a: any, b: any) {
         if (a.author < b.author) { return -1; }
         if (a.author > b.author) { return 1; }
         return 0;
