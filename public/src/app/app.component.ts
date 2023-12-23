@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './auth/login.service';
+import { LoginService } from './auth/login/login.service';
 import { LoginUser } from './redux/models/login.model';
 import { Store } from '@ngrx/store';
 import { AppState } from './redux/store/login.state';
 import { LOGIN_USER } from './redux/actions/loginActions';
 import { Router } from '@angular/router';
-import { AuthService } from "./auth/auth.service";
+import { AuthService } from './auth/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [ MessageService ]
 })
 export class AppComponent implements OnInit {
   protected title = 'BookStore';
@@ -20,9 +22,9 @@ export class AppComponent implements OnInit {
     private loginService: LoginService,
     private store: Store<AppState>,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
     ) {
-    this.user = this.auth.user;
+    // this.user = this.auth.user;
   }
 
   ngOnInit() {
