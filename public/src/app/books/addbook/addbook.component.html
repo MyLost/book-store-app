@@ -1,87 +1,58 @@
-<div class="head">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus perferendis id, earum odio reiciendis nisi voluptates ullam illo quibusdam voluptatem! Tenetur reiciendis ipsam quo, esse molestias quasi sapiente autem obcaecati?
-</div>
-<div class="container">
-    <div class="left">
-        <div class="banner">
-            <div class="activity">
-                <h3>your last adding</h3>
-            </div>
-            <div class="activity">
-                    <h3>your last adding</h3>
-            </div>
-            <div class="activity">
-                <h3>your last adding</h3>
-            </div>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem aliquam nisi aut. Itaque maxime adipisci voluptas repudiandae at magnam reiciendis, vitae facilis consequuntur provident molestiae animi, delectus laudantium tempore nesciunt?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit labore consectetur aliquid est? Hic aliquam deleniti amet magni quod impedit, tenetur minima. Ullam, quos. Praesentium, aut fugiat? Nemo, sed error.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora suscipit explicabo necessitatibus. Necessitatibus eum illum, distinctio voluptatum libero cumque deleniti, deserunt vitae doloribus sit ea, accusantium aliquid repudiandae dolor. Culpa.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At harum voluptatum deleniti expedita quibusdam consectetur aspernatur, suscipit incidunt possimus maxime debitis, laboriosam architecto odio dicta quas voluptas eaque doloribus saepe?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum vel dolor reprehenderit fugit iste ad quidem, facere perferendis vero aut repellat tempora dignissimos excepturi inventore minus, nisi ducimus eaque optio?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis hic ratione pariatur qui veniam, velit ad molestiae nemo quasi, ea ipsum omnis explicabo. Labore voluptates iste officiis maiores veniam repudiandae.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet autem voluptate mollitia omnis reiciendis veniam ab minima, illo facilis aliquid eum.
-        </div>
+<p-toast key="book"></p-toast>
+
+<div class="flex justify-content-center">
+  <p-panel header="ADD BOOK" [style]="{width: '400px'}" class="p-fluid">
+    <div class="p-float-label mb-4">
+      <input id="author" #authorRef (keyup)="checkInput($event, authorRef)" pInputText
+      [(ngModel)]="bookRequestModel.author" name="author" required/>
+      <label for="author">Author</label>
     </div>
-    <div class="add-container">
-        <h2>ADD BOOK</h2>
-        <p-toast  position="top-right"></p-toast>
-        <label>Author: </label>
 
-        <div class="input-group">
-                <input #authorRef (keyup)="checkInput($event, authorRef)" type="text" pInputText
-                [(ngModel)]="book.author" name="author" required/>
-                <p-toast key="author" position="top-right"></p-toast>
-                <br />
-        </div>
-        <label>Title:</label>
-
-        <div class="input-group">
-                <input #titleRef (keyup)="checkInput($event, titleRef)" type="text" pInputText [(ngModel)]="book.title" name="title" required/>
-            <p-toast key="title" position="top-right" ></p-toast>
-            <br />
-        </div>
-        <label>Price:  </label>
-
-        <div class="input-group">
-                <input #priceRef (keyup)="checkInput($event, priceRef)" type="text" pInputText [(ngModel)]="book.price" name="price" required/>
-            <p-toast key="price" position="top-right"></p-toast>
-            <br />
-        </div>
-        <label>Kind:   </label>
-
-        <div class="input-group">
-                <input #kindRef (keyup)="checkInput($event, kindRef)" type="text" pInputText [(ngModel)]="book.kind" name="kind" required/>
-            <p-toast key="kind" position="top-right"></p-toast>
-            <br />
-        </div>
-        <label>Cover: </label>
-
-        <div class="input-group">
-                <input #coverRef (keyup)="checkInput($event, coverRef)" type="text" pInputText [(ngModel)]="book.cover" name="cover" required/>
-                <p-toast key="cover" position="top-right"></p-toast>
-            <br />
-        </div>
-        <label>Number Of Books: </label>
-
-        <div class="input-group">
-                <input #numberOfBooksRef (keyup)="checkInput($event, numberOfBooksRef)" type="text" pInputText [(ngModel)]="book.numberOfBooks" name="numberOfBooks" required/>
-            <p-toast key="numberOfBooks" position="top-right"></p-toast>
-            <br />
-        </div>
-
-        <label>
-            <button (click)="addBook()" pButton type="button" label="add book" class="ui-button-rounded"></button>
-        </label>
+    <div class="p-float-label mb-4">
+      <input id="title" #titleRef (keyup)="checkInput($event, titleRef)"  pInputText [(ngModel)]="bookRequestModel.title" name="title" required/>
+      <label for="title">Title</label>
     </div>
-    <div class="right">
-        <div class="banner">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem aliquam nisi aut. Itaque maxime adipisci voluptas repudiandae at magnam reiciendis, vitae facilis consequuntur provident molestiae animi, delectus laudantium tempore nesciunt?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit labore consectetur aliquid est? Hic aliquam deleniti amet magni quod impedit, tenetur minima. Ullam, quos. Praesentium, aut fugiat? Nemo, sed error.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora suscipit explicabo necessitatibus. Necessitatibus eum illum, distinctio voluptatum libero cumque deleniti, deserunt vitae doloribus sit ea, accusantium aliquid repudiandae dolor. Culpa.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At harum voluptatum delenit expedita quibusdam consectetur aspernatur, suscipit incidunt possimus maxime debitis, laboriosam architecto odio dicta quas voluptas eaque doloribus saepe?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum vel dolor reprehenderit fugit iste ad quidem, facere perferendis vero aut repellat tempora dignissimos excepturi inventore minus, nisi ducimus eaque optio?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis hic ratione pariatur qui veniam, velit ad molestiae nemo quasi, ea ipsum omnis explicabo. Labore voluptates iste officiis maiores veniam repudiandae.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet autem voluptate mollitia omnis reiciendis veniam ab minima, illo facilis aliquid eum.
-        </div>
+
+    <div class="p-float-label mb-4">
+      <input type="number" id="price" #priceRef (keyup)="checkInput($event, priceRef)" pInputText [(ngModel)]="bookRequestModel.price" name="price" required/>
+      <label for="price">Price</label>
     </div>
+
+    <div class="p-float-label mb-4">
+      <p-dropdown
+        [options]="genres"
+        [autoDisplayFirst]="false"
+        optionLabel="name"
+        optionValue="id"
+        id="genre"
+        appendTo="body"
+        ngModel
+        (ngModelChange)="bookRequestModel.genreId = $event"
+      />
+      <label for="genre">Genre</label>
+    </div>
+
+
+    <div class="p-float-label mb-4">
+      <p-dropdown
+        [options]="coverDropdownOptions"
+        [autoDisplayFirst]="false"
+        id="cover"
+        appendTo="body"
+        ngModel
+        (ngModelChange)="bookRequestModel.cover = $event"
+      />
+      <label for="cover">Cover</label>
+    </div>
+
+
+    <div class="p-float-label mb-4">
+      <input type="number" id="book-number" #numberOfBooksRef (keyup)="checkInput($event, numberOfBooksRef)" pInputText [(ngModel)]="bookRequestModel.numberOfBooks" name="numberOfBooks" required/>
+      <label for="book-number">Number Of Books</label>
+    </div>
+
+    <div class="input-group">
+      <p-button (click)="addBook()"  type="button" label="add book" class="button-rounded"></p-button>
+    </div>
+  </p-panel>
 </div>
