@@ -2,26 +2,45 @@ package org.lost.backendjava.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.lost.backendjava.enums.TokenType;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "api_token")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ApiTokenEntity extends BaseEntity {
 
     @Column
     private String token;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime expiredAt;
 
-    @ManyToOne(targetEntity= UsersEntity.class)
+    @ManyToOne(targetEntity= UsersEntity.class, fetch = FetchType.LAZY )
     @JoinColumn(nullable=false)
     private UsersEntity user;
+
+    @Enumerated(EnumType.STRING)
+    TokenType tokenType = TokenType.BEARER;
+
+    @Column
+    public boolean revoked;
+
+    @Column
+    public boolean expired;
 }
