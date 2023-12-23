@@ -11,6 +11,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NavComponent } from './menu/nav/nav.component';
+import { httpInterceptorProviders } from "./Interceptors/interceptors";
+import { ToastModule } from "primeng/toast";
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -30,8 +32,10 @@ import { NavComponent } from './menu/nav/nav.component';
         deps: [HttpClient]
       }
     }),
+    ToastModule,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  providers: [ httpInterceptorProviders ]
 })
 export class AppModule { }
 
