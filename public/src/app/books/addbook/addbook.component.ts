@@ -176,13 +176,9 @@ export class AddBookComponent implements OnInit {
       // tslint:disable-next-line:max-line-length
       this.messageService.add({key: 'book', severity: 'warn', summary: 'Input Message  ', detail: 'Wrong symbol in ' + this.keyMessage + ' input: ' + event.key, sticky: true});
       }
-
-
     }
 
     if (!this.flag) {
-      // console.log('i am cleaner');
-      // console.log(this.keyMessage);
       this.messageService.clear(this.keyMessage);
     }
   }
