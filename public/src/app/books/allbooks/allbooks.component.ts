@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../book.service';
+import { $bookChangeSource, BookService } from '../book.service';
 import { BookInterface } from '../common/BookInterface';
 import { TableModule } from 'primeng/table';
-import { ButtonModule } from "primeng/button";
+import { ButtonModule } from 'primeng/button';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../redux/store/login.state';
+
 
 @Component({
   selector: 'app-allbooks',
@@ -17,9 +21,15 @@ import { ButtonModule } from "primeng/button";
 })
 export class AllBooksComponent implements OnInit {
 
-  books: any;
+  protected books: any;
 
-  constructor(private bookService: BookService) { }
+
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
     this.bookService.getAll().subscribe((data: BookInterface)  => {
@@ -72,5 +82,9 @@ export class AllBooksComponent implements OnInit {
       });
       break;
     }
+  }
+
+  edit (bookId: number) {
+    this.router.navigateByUrl('books/edit/' +  bookId);
   }
 }
