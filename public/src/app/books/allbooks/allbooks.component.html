@@ -11,7 +11,7 @@
          <th class="text-center">Actions</th>
        </tr>
      </ng-template>
-     <ng-template pTemplate="body" let-book>
+     <ng-template pTemplate="body" let-book let-index="rowIndex">
         <tr>
           <td class="text-center">{{book.author}}</td>
           <td class="text-center">{{book.title}}</td>
@@ -21,7 +21,7 @@
           <td class="text-center">{{book.numberOfBooks}}</td>
           <td class="text-center">
             <div class="flex justify-content-between">
-              <p-button icon="pi pi-pencil" severity="info"></p-button>
+              <p-button icon="pi pi-pencil" severity="info" (onClick)="edit(book.id)"></p-button>
               <p-button icon="pi pi-trash" severity="danger"></p-button>
             </div>
           </td>
