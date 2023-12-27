@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './auth/login/login.service';
-import { LoginUser } from './redux/models/login.model';
-import { Store } from '@ngrx/store';
-import { AppState } from './redux/store/login.state';
-import { LOGIN_USER } from './redux/actions/loginActions';
+import { MessageService } from 'primeng/api';
+import { LoadingService } from './loading.service';
+import { delay } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/auth.service';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -15,35 +12,29 @@ import { MessageService } from 'primeng/api';
   providers: [ MessageService ]
 })
 export class AppComponent implements OnInit {
+
+  protected loading = false;
   protected title = 'BookStore';
-  private user: LoginUser;
-  element: any;
+
   constructor(
-    private loginService: LoginService,
-    private store: Store<AppState>,
-    private router: Router,
-    private auth: AuthService,
-    ) {
-    // this.user = this.auth.user;
-  }
+    private authSvc: AuthService,
+    private _loading: LoadingService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('auth') === '123456789') {
-      this.store.dispatch({
-        type: LOGIN_USER,
-        payload: {
-          logged: true, userData: {
-        }, auth: '', dashboard: {display: false}}
-      });
-      return null;
-    } else {
-      return this.router.navigateByUrl('home');
+    if (!this.authSvc.isLoggedIn()) {
+      this.router.navigate(['/logout']);
     }
-
+    this.listenToLoading();
   }
 
-  logged(logged: boolean) {
-    console.log(logged);
+  listenToLoading(): void {
+    this._loading.loading
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.loading = loading;
+      });
   }
 }
 
