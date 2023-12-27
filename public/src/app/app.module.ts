@@ -13,6 +13,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NavComponent } from './menu/nav/nav.component';
 import { httpInterceptorProviders } from './Interceptors/interceptors';
 import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ProgressSpinnerModule } from "primeng/progressspinner";
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -33,9 +35,10 @@ import { ToastModule } from 'primeng/toast';
       }
     }),
     ToastModule,
+    ProgressSpinnerModule,
   ],
   bootstrap: [ AppComponent ],
-  providers: [ httpInterceptorProviders ]
+  providers: [ MessageService, httpInterceptorProviders ]
 })
 export class AppModule { }
 
