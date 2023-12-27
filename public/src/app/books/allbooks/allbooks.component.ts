@@ -5,7 +5,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../redux/store/login.state';
+import { MessageService } from "primeng/api";
 
 
 @Component({
@@ -17,18 +17,16 @@ import { AppState } from '../../redux/store/login.state';
     ButtonModule
   ],
   styleUrls: ['./allbooks.component.css'],
-  providers: [ BookService ]
+  providers: [ BookService, MessageService ]
 })
 export class AllBooksComponent implements OnInit {
 
   protected books: any;
 
-
   constructor(
     private bookService: BookService,
-    private router: Router,
-    private activateRoute: ActivatedRoute,
-    private store: Store<AppState>
+    private msgSvc: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -86,5 +84,18 @@ export class AllBooksComponent implements OnInit {
 
   edit (bookId: number) {
     this.router.navigateByUrl('books/edit/' +  bookId);
+  }
+
+  delete (id: number) {
+    this.bookService.deleteBook(id).subscribe((result:any) => {
+      if (result.success) {
+        this.msgSvc.add({
+          key: 'book',
+          severity: 'success',
+          summary: 'System Service',
+          detail: result.message
+        });
+      }
+    });
   }
 }
