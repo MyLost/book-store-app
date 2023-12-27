@@ -9,11 +9,13 @@ import {
   HttpHeaders,
   HttpParams
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Employee } from '../data/employees.interface';
 import { BookInterface } from './common/BookInterface';
-import { BaseService } from "../base.service";
-import { Genre } from "./common/Genre";
+import { BaseService } from '../base.service';
+import { Genre } from './common/Genre';
+import { BookRequest } from "./addbook/addbook.component";
+import { SearchBookRequest } from "./common/search-book-request";
 
 // const employeesUrl = '../../../../../../../resources/Employees.json';
 // const employeeUrl = '../../../../../../../resources/Employee.json';
@@ -55,7 +57,15 @@ import { Genre } from "./common/Genre";
 //   employee: string;
 // }
 
-@Injectable()
+export interface BookEditData {
+  book: BookInterface;
+  listIndex: number;
+}
+
+export const $bookChangeSource = new Subject<BookEditData>();
+
+
+@Injectable({providedIn: 'root'})
 export class BookService extends BaseService<any> {
 
   private booksUrl = this.baseUrl + 'books';
@@ -69,7 +79,6 @@ export class BookService extends BaseService<any> {
     });
 */
   }
-
 
     // client(): Observable<HttpResponse<Employee>> {
     //
@@ -127,7 +136,7 @@ export class BookService extends BaseService<any> {
     // }
 
     getAll() {
-      return this.http.get<BookInterface>(this.booksUrl, {});
+      return this.http.get<BookInterface>(this.booksUrl);
     }
 
     getPromotions() {
@@ -142,19 +151,27 @@ export class BookService extends BaseService<any> {
       return this.http.get<Genre[]>(this.booksUrl + '/genres',  {});
     }
 
-
-
     addBook(body: any) {
       return this.http.post(this.booksUrl, body);
     }
 
-
-
-    deleteBook(body: any) {
-      return this.http.post('http://localhost:8000/deleteBook', body);
+    getById(bookId: number): Observable<BookInterface> {
+      return this.http.get<BookInterface>(this.booksUrl + '/' + bookId);
     }
 
-    findBook(body: any) {
-      return this.http.post('http://localhost:8000/findBook', body);
+    update (id: any, value: BookRequest) {
+      return this.http.post<BookInterface>(this.booksUrl + '/' + id, value);
     }
+
+    findBook(request: any) {
+      return this.http.post<BookInterface[]>(this.booksUrl + '/search', request);
+    }
+
+    deleteBook(bookId: number) {
+      return this.http.delete(this.booksUrl + '/' + bookId);
+    }
+
+
+
+
 }
