@@ -8,7 +8,6 @@ import { PromotionsComponent } from './books/promotions/promotions.component';
 import { StoreComponent } from './books/store/store.book.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { MailComponent } from './common/mail/mail.component';
-import { BookComponent } from './books/book/book.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmployeesComponent } from './Employees/employees.component';
