@@ -2,12 +2,12 @@
    <p-table [value]="books" [rows]="20" [paginator]="true">
      <ng-template pTemplate="header">
        <tr>
-         <th class="text-center"><a (click)="sort('Author')">author</a></th>
-         <th class="text-center"><a (click)="sort('Title')">title</a></th>
-         <th class="text-center"><a (click)="sort('Price')">price</a></th>
-         <th class="text-center"><a (click)="sort('Genre')">kind</a></th>
-         <th class="text-center"><a (click)="sort('Cover')">cover</a></th>
-         <th class="text-center"><a (click)="sort('NumberOfBooks')">numberOfBooks</a></th>
+         <th class="text-center"><a (click)="sort('Author')">Author</a></th>
+         <th class="text-center"><a (click)="sort('Title')">Title</a></th>
+         <th class="text-center"><a (click)="sort('Price')">Price</a></th>
+         <th class="text-center"><a (click)="sort('Genre')">Kind</a></th>
+         <th class="text-center"><a (click)="sort('Cover')">Cover</a></th>
+         <th class="text-center"><a (click)="sort('NumberOfBooks')">NumberOfBooks</a></th>
          <th class="text-center">Actions</th>
        </tr>
      </ng-template>
@@ -22,7 +22,7 @@
           <td class="text-center">
             <div class="flex justify-content-between">
               <p-button icon="pi pi-pencil" severity="info" (onClick)="edit(book.id)"></p-button>
-              <p-button icon="pi pi-trash" severity="danger"></p-button>
+              <p-button icon="pi pi-trash" severity="danger" (onClick)="delete(book.id)"></p-button>
             </div>
           </td>
         </tr>
