@@ -1,0 +1,51 @@
+<p-toast></p-toast>
+<div class="flex justify-content-center">
+  <p-panel header="EDIT BOOK" [style]="{width: '400px'}" class="p-fluid">
+    <div class="edit-book" [formGroup] ="editForm">
+
+      <div class="p-float-label mt-4">
+        <input id="author" type="text" pInputText formControlName="author" />
+        <label for="author">Author</label>
+      </div>
+      <div class="p-float-label mt-4">
+        <input id="title" #title  type="text" pInputText  formControlName="title" />
+        <label for="title">Title</label>
+      </div>
+      <div class="p-float-label mt-4">
+        <input id="price" #price  type="text" pInputText  formControlName="price"/>
+        <label for="price">Price</label>
+      </div>
+      <div class="p-float-label mt-4">
+        <p-dropdown
+          id="genre"
+          appendTo="body"
+          [options]="genres"
+          [autoDisplayFirst]="false"
+          optionLabel="name"
+          optionValue="id"
+          formControlName="genreId"
+        />
+        <label for="genre">Genre</label>
+      </div>
+      <div class="p-float-label mt-4">
+        <p-dropdown
+          [options]="coverDropdownOptions"
+          [autoDisplayFirst]="false"
+          id="cover"
+          appendTo="body"
+          formControlName="cover"
+        />
+        <label for="cover">Cover</label>
+      </div>
+      <div class="p-float-label mt-4">
+        <input id="book-number" #numberOfBooks  type="text" pInputText formControlName="numberOfBooks"/>
+        <label for="book-number">Number Of Books</label>
+      </div>
+      <br />
+      <div>
+        <p-button (click)="editBook()" label="edit book" class="ui-button-rounded" severity="warning"></p-button>
+      </div>
+    </div>
+  </p-panel>
+</div>
+
