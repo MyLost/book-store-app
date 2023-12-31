@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <p-card>
+    <h1>Login page</h1>
+    <form>
+      <div class="field">
+        <label for="username">Username:</label>
+        <input class="w-full" #usernameRef (keyup)="validationInput(usernameRef)" type="text" name="username" id="username" pInputText [(ngModel)]="user.username" />
+        @if (correctInputUsername) {
+          <div>
+            <p-message severity="warn" text="Unallowable Symbol"></p-message>
+          </div>
+        }
+      </div>
+      <div class="field">
+        <label class="mr-2" for="password">Password:</label>
+        <input class="w-full" #passwordRef (keyup)="validationInput(passwordRef)" type="text" name="password" id="password" pInputText [(ngModel)]="user.password" />
+        @if (correctInputPassword) {
+          <div>
+            <p-message severity="warn" text="Unallowable Symbol"></p-message>
+          </div>
+        }
+      </div>
+      <div class="grid p-fluid">
+        <p-button class="col-2" label="Login" (onClick)="login()"></p-button>
+        <p-button class="col-4" icon="fa fa-google"  label="Sign in with google" (onClick)="google()" severity="warning"></p-button>
+        <p-button class="col-6" icon="fa fa-facebook" label="Sign in with facebook" (onClick)="facebook()" severity="help"></p-button>
+      </div>
+    </form>
+    <p-toast position="top-right"></p-toast>
+  </p-card>
+</div>
