@@ -1,0 +1,26 @@
+.container{
+        width: 100%;
+        height: 300px;
+        background-size: 100%;
+        background-image: url("/assets/resources/book-prize-anniversary-1198x516px.jpg");
+        border-bottom: #3bacf7 3px solid;
+    }
+.slug{
+        padding-left: 20px;
+        color: white;
+        margin-top: 0px;
+        margin-bottom: 10px;
+}
+
+.time, .lang{
+        width:800px;
+        float: right;
+        text-align: right;
+}
+
+
+.time, .lang div {
+        margin-top: 5px;
+}
+
+
