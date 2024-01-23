@@ -1,0 +1,71 @@
+<p-card class="container mt-4">
+  <h1 class="text-center">Register Page</h1>
+  <form  [formGroup]="register" (ngSubmit)="onSubmit()" class="grid p-fluid">
+    <div class="input-group col-6">
+      <label for="username">FirstName:</label>
+      <input (keyup)=validateFirstName() type="text"  pInputText formControlName="firstName" />
+      @if (validFirstName) {
+        <div class="message">
+          <p-message severity="warn" [text]="messageFirstName"></p-message>
+        </div>
+      }
+    </div>
+
+    <div class="input-group col-6">
+      <label for="password">LastName:</label>
+      <input (keyup)=validateLastName() type="text"  pInputText formControlName="lastName"/>
+      @if (validLastName) {
+        <div  class="message">
+          <p-message severity="warn" [text]="messageLastName"></p-message>
+        </div>
+      }
+    </div>
+
+    <div class="input-group col-6">
+      <label for="username">Username:</label>
+      <input (keyup)=validateUsername() type="text" id="username"  pInputText formControlName="username" />
+      @if (validUsername) {
+        <div class="message">
+          <p-message severity="warn" [text]="messageUsername"></p-message>
+        </div>
+      }
+    </div>
+
+    <div class="input-group col-6">
+      <label for="born_date">Born date:</label>
+      <p-calendar (click)="validateBornOn()" (keyup)="validateBornOn()" id="born_date" [showIcon]="true" formControlName="bornDate"></p-calendar>
+      @if (validBornOn) {
+        <div class="message">
+          <p-message severity="warn" [text]="messageBornOn"></p-message>
+        </div>
+      }
+    </div>
+
+    <div class="input-group col-6">
+      <label for="password">Password:</label>
+      <input (keyup)=validatePassword() type="text" id="password" pInputText formControlName="password" />
+      @if (validPassword) {
+        <div class="message">
+          <p-message severity="warn" [text]="messagePassword"></p-message>
+        </div>
+      }
+    </div>
+
+    <div class="input-group col-6">
+      <label for="confirmPassword">Confirm pasword:</label>
+      <input (keyup)=validateConfirmPassword() type="text" id="confirmPassword" pInputText formControlName="confirmPassword" />
+      @if (validConfirmPassword) {
+        <div class="message">
+          <p-message severity="warn" [text]="messageConfirmPassword"></p-message>
+        </div>
+      }
+    </div>
+
+    <div class="col-6"></div>
+
+    <div class="col-6 ">
+      <button pButton type="submit" label="Register" [disabled]="!register.valid"></button>
+    </div>
+
+  </form>
+</p-card>
