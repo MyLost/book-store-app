@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { appRouts } from './app.routes';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { httpInterceptorProviders } from './Interceptors/interceptors';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ProgressSpinnerModule } from "primeng/progressspinner";
+import { CustomErrorHandler } from "./common/Utils";
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -38,7 +39,9 @@ import { ProgressSpinnerModule } from "primeng/progressspinner";
     ProgressSpinnerModule,
   ],
   bootstrap: [ AppComponent ],
-  providers: [ MessageService, httpInterceptorProviders ]
+  providers: [ MessageService, httpInterceptorProviders,
+    { provide: ErrorHandler, useClass: CustomErrorHandler }
+  ]
 })
 export class AppModule { }
 
