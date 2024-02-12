@@ -9,7 +9,7 @@ import { StoreComponent } from './books/store/store.book.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { MailComponent } from './common/mail/mail.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { EmployeesComponent } from './Employees/employees.component';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
