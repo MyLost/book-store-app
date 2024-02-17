@@ -1,0 +1,21 @@
+.container{
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+}
+
+.cards{
+        margin-top: 50px !important;
+
+}
+
+.card{
+        text-align: center;
+        width: 25%;
+        display: inline-block;
+}
+
+.card img{
+        width: 300px;
+}
+
