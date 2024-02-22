@@ -1,0 +1,22 @@
+Except that most Ajax clients send a X-Requested-With=XMLHttpRequest HTTP header
+$_SERVER['HTTP_X_REQUESTED_WITH']
+ //dd($request->getClientIP());
+        // dd($request->isXmlHttpRequest());
+//  $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+        /*
+        if (!$this->csrfTokenManager->isTokenValid($token)) {
+            throw new InvalidCsrfTokenException();
+        }
+        */
+    //    $conn = $this->entityManager->getConnection();
+    //    $stmt = $conn->prepare('
+    //    SELECT * FROM users
+    //    INNER JOIN api_token WHERE users.id = api_token.user_id');
+    //    $stmt->execute();
+    
+        dd('user home error');
+        return $this->json([
+            'success' => false,
+            'contollerName' => 'UserContoller',
+            'method' => 'loginFail'
+        ]);
