@@ -1,0 +1,15 @@
+config:
+  headers:
+    localhost: 
+      Access-Control-Allow-Origin: '*'
+      Content-Type: '*'
+      Access-Control-Allow-Headers: '*'
+      Access-Control-Allow-Methods: '*'
+      Access-Control-Request-Method: '*'
+      Access-Control-Expose-Headers: Authorization 
+      Access-Control-Request-Headers: '*'
+      Access-Control-Max-Age: '*'
+  origins:
+    localhost: http://localhost:4200
+    postman: chrome-extension://coohjcphdfgbiolnekdpbcijmhambjff 
+    server: null
