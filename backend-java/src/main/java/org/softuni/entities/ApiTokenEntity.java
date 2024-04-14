@@ -1,4 +1,4 @@
-package org.lost.backendjava.entities;
+package org.softuni.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +14,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.lost.backendjava.enums.TokenType;
+import org.softuni.enums.TokenType;
 
 @Entity
 @Getter
