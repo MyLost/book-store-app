@@ -1,6 +1,6 @@
-package org.lost.backendjava;
+package org.softuni;
 
-import org.lost.backendjava.services.BookService;
+import org.softuni.services.BookService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
