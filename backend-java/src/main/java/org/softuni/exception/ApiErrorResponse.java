@@ -1,4 +1,4 @@
-package org.lost.backendjava.exception;
+package org.softuni.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
