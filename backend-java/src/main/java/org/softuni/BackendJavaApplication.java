@@ -1,4 +1,4 @@
-package org.lost.backendjava;
+package org.softuni;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
