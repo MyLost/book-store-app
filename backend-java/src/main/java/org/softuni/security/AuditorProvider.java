@@ -1,8 +1,8 @@
-package org.lost.backendjava.security;
+package org.softuni.security;
 
 import java.util.Optional;
 import java.util.UUID;
-import org.lost.backendjava.entities.UsersEntity;
+import org.softuni.entities.UsersEntity;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
