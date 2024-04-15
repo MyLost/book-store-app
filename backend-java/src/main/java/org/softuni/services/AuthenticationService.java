@@ -1,12 +1,12 @@
-package org.lost.backendjava.services;
+package org.softuni.services;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import org.lost.backendjava.entities.UsersEntity;
-import org.lost.backendjava.models.AuthenticationResponseModel;
-import org.lost.backendjava.models.LoginModel;
-import org.lost.backendjava.models.RegisterModel;
+
+import org.softuni.models.AuthenticationResponseModel;
+import org.softuni.models.LoginModel;
+import org.softuni.models.RegisterModel;
 
 public interface AuthenticationService {
 
