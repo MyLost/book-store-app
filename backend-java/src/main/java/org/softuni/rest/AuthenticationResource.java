@@ -1,14 +1,14 @@
-package org.lost.backendjava.rest;
+package org.softuni.rest;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
+
 import lombok.RequiredArgsConstructor;
-import org.lost.backendjava.models.AuthenticationResponseModel;
-import org.lost.backendjava.models.LoginModel;
-import org.lost.backendjava.models.RegisterModel;
-import org.lost.backendjava.services.AuthenticationService;
+import org.softuni.models.AuthenticationResponseModel;
+import org.softuni.models.LoginModel;
+import org.softuni.models.RegisterModel;
+import org.softuni.services.AuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
