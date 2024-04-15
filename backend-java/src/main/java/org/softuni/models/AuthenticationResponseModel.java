@@ -1,4 +1,4 @@
-package org.lost.backendjava.models;
+package org.softuni.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
