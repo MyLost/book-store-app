@@ -1,6 +1,5 @@
-package org.lost.backendjava.exception;
+package org.softuni.exception;
 
-import java.sql.Timestamp;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
