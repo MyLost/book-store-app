@@ -1,15 +1,13 @@
-package org.lost.backendjava.mappers;
+package org.softuni.mappers;
 
-import jakarta.persistence.Convert;
 import lombok.Getter;
 import lombok.Setter;
-import org.lost.backendjava.dtos.BookResponse;
-import org.lost.backendjava.dtos.BookGenreResponse;
-import org.lost.backendjava.dtos.BookRequest;
-import org.lost.backendjava.entities.BookEntity;
-import org.lost.backendjava.entities.BookGenreEntity;
-import org.lost.backendjava.repositories.GenreRepository;
-import org.mapstruct.AfterMapping;
+import org.softuni.dtos.BookResponse;
+import org.softuni.dtos.BookGenreResponse;
+import org.softuni.dtos.BookRequest;
+import org.softuni.entities.BookEntity;
+import org.softuni.entities.BookGenreEntity;
+import org.softuni.repositories.GenreRepository;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
