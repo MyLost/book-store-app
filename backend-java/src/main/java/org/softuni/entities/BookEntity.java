@@ -1,4 +1,4 @@
-package org.lost.backendjava.entities;
+package org.softuni.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,12 +7,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
-import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.lost.backendjava.enums.BookCover;
+import org.softuni.enums.BookCover;
 
 @Entity
 @Getter
