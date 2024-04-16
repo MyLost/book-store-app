@@ -1,4 +1,4 @@
-package org.lost.backendjava.dtos;
+package org.softuni.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
