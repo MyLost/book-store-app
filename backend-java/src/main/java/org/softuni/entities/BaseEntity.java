@@ -1,4 +1,4 @@
-package org.lost.backendjava.entities;
+package org.softuni.entities;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
