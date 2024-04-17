@@ -1,10 +1,10 @@
-package org.lost.backendjava.services;
+package org.softuni.services;
 
 import java.util.List;
-import org.lost.backendjava.dtos.BookResponse;
-import org.lost.backendjava.dtos.BookGenreResponse;
-import org.lost.backendjava.dtos.BookRequest;
-import org.lost.backendjava.params.BookSearchParams;
+import org.softuni.dtos.BookResponse;
+import org.softuni.dtos.BookGenreResponse;
+import org.softuni.dtos.BookRequest;
+import org.softuni.params.BookSearchParams;
 
 public interface BookService {
 
