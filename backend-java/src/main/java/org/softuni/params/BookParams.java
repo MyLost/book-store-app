@@ -1,4 +1,4 @@
-package org.lost.backendjava.params;
+package org.softuni.params;
 
 import lombok.Getter;
 import lombok.Setter;
