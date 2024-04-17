@@ -1,13 +1,13 @@
-package org.lost.backendjava.rest;
+package org.softuni.rest;
 
 import java.io.IOException;
 import java.util.List;
-import org.lost.backendjava.dtos.BookResponse;
-import org.lost.backendjava.dtos.BookGenreResponse;
-import org.lost.backendjava.dtos.BookRequest;
-import org.lost.backendjava.dtos.DeleteResponse;
-import org.lost.backendjava.params.BookSearchParams;
-import org.lost.backendjava.services.BookService;
+import org.softuni.dtos.BookResponse;
+import org.softuni.dtos.BookGenreResponse;
+import org.softuni.dtos.BookRequest;
+import org.softuni.dtos.DeleteResponse;
+import org.softuni.params.BookSearchParams;
+import org.softuni.services.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
