@@ -1,4 +1,4 @@
-package org.lost.backendjava.dtos;
+package org.softuni.dtos;
 
 import java.math.BigDecimal;
 import lombok.Getter;
