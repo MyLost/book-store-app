@@ -1,6 +1,6 @@
-package org.lost.backendjava.repositories;
+package org.softuni.repositories;
 
-import org.lost.backendjava.entities.CommentEntity;
+import org.softuni.entities.CommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
