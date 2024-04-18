@@ -1,18 +1,18 @@
-package org.lost.backendjava.services.impl;
+package org.softuni.services.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
-import org.lost.backendjava.dtos.BookResponse;
-import org.lost.backendjava.dtos.BookGenreResponse;
-import org.lost.backendjava.dtos.BookRequest;
-import org.lost.backendjava.entities.BookEntity;
-import org.lost.backendjava.entities.BookGenreEntity;
-import org.lost.backendjava.enums.BookCover;
-import org.lost.backendjava.mappers.BookMapper;
-import org.lost.backendjava.params.BookSearchParams;
-import org.lost.backendjava.repositories.BookRepository;
-import org.lost.backendjava.repositories.GenreRepository;
-import org.lost.backendjava.services.BookService;
+import org.softuni.dtos.BookResponse;
+import org.softuni.dtos.BookGenreResponse;
+import org.softuni.dtos.BookRequest;
+import org.softuni.entities.BookEntity;
+import org.softuni.entities.BookGenreEntity;
+import org.softuni.enums.BookCover;
+import org.softuni.mappers.BookMapper;
+import org.softuni.params.BookSearchParams;
+import org.softuni.repositories.BookRepository;
+import org.softuni.repositories.GenreRepository;
+import org.softuni.services.BookService;
 import org.springframework.stereotype.Service;
 
 @Service
