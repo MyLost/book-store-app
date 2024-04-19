@@ -1,4 +1,4 @@
-package org.lost.backendjava.filters;
+package org.softuni.filters;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
