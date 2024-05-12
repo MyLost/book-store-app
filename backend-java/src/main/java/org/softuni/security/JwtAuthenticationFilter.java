@@ -1,15 +1,15 @@
-package org.lost.backendjava.security;
+package org.softuni.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import lombok.RequiredArgsConstructor;
-import org.lost.backendjava.entities.UsersEntity;
-import org.lost.backendjava.repositories.ApiTokenRepository;
-import org.lost.backendjava.repositories.UserRepository;
-import org.lost.backendjava.services.JwtService;
+
+import org.softuni.entities.UsersEntity;
+import org.softuni.repositories.ApiTokenRepository;
+import org.softuni.repositories.UserRepository;
+import org.softuni.services.JwtService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
