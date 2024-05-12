@@ -1,9 +1,9 @@
-package org.lost.backendjava.services;
+package org.softuni.services;
 
 import io.jsonwebtoken.Claims;
 import java.util.Map;
 import java.util.function.Function;
-import org.lost.backendjava.entities.UsersEntity;
+import org.softuni.entities.UsersEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public interface JwtService {
