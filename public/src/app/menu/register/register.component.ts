@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     confirmPassword: '',
-    bornDate: ''
+    bornOn: ''
   };
 
   constructor(
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
       username: [this.user.username, [Validators.required, validateInputCustomValidator(/[<>]/)]],
       password: [this.user.password, [Validators.required, validateInputCustomValidator(/[<>]/)]],
       confirmPassword: [this.user.confirmPassword, [Validators.required, validateInputCustomValidator(/[<>]/)]],
-      bornDate: [this.user.bornDate, [Validators.required, validateInputCustomValidator(/[<>]/)]],
+      bornDate: [this.user.bornOn, [Validators.required, validateInputCustomValidator(/[<>]/)]],
     });
   }
 
