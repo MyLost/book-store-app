@@ -1,4 +1,4 @@
-package org.lost.backendjava.models;
+package org.softuni.models;
 
 import java.time.LocalDate;
 import lombok.Getter;
