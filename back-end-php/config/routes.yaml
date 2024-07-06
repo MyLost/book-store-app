@@ -1,0 +1,81 @@
+#Auth routes
+auth:
+    path: /auth/auth
+    controller: App\Controller\AuthenticationController::auth
+security:
+    path: /auth/security
+    controller: App\Controller\AuthenticationController::security
+profile:
+    path: /auth/profile
+    controller: App\Controller\AuthenticationController::profile
+homepage:
+    path: /auth/homepage
+    controller: App\Controller\AuthenticationController::homepage
+apiAccount:
+    path: /auth/api/account
+    controller: App\Controller\AuthenticationController::apiAccount
+#User routes
+UserLoginFail:
+    path: /user/loginFail
+    controller: App\Controller\UserController::loginFail
+UserLogin:
+    path: /user/login
+    controller: App\Controller\UserController::login
+    methods: [POST, OPTIONS]
+userLogged:
+    path: /user/userLogged
+    controller: App\Controller\UserController::userLogged
+UserLogout:
+    path: /user/logout
+    controller: App\Controller\UserController::logout
+    methods: [POST]
+UserLogoutProcess:
+    path: /user/logoutProcess
+    controller: App\Controller\UserController::logoutProcess
+home:
+    path: /
+    controller: App\Controller\UserController::logout
+simpleMethod:
+    path: /user/home
+    controller: App\Controller\UserController::home
+#Api routes
+getApi:
+    path: /api/getapi
+    controller: App\Controller\Api\ApiController::getApi
+    methods: [GET, OPTIONS]
+getData:
+    path: /api/getData
+    controller: App\Controller\Api\ApiController::getData
+secretService:
+    path: /api/secretService
+    controller: App\Controller\Api\ApiController::callSecretService
+apiError:
+    path: /api/error
+    controller: App\Controller\Api\ApiController::apiError
+#Google routes
+googleConnect:
+    path: google/connect
+    controller: App\Controller\GoogleController::connectAction
+    methods: [GET, OPTIONS]
+googleCheck:
+    path: google/connect/check
+    controller: App\Controller\GoogleController::connectCheckAction
+    methods: [GET, OPTIONS]
+#Defaults
+logout:
+    path: /logout
+    controller: App\Controller\DefaultController::logout
+    methods: [GET]
+#Error
+userBadCredentials:
+    path: /error/credentials
+    controller: App\Controller\ErrorController::badCredentials
+userNotFound:
+    path: /error/userNotFound
+    controller: App\Controller\ErrorController::userNotFound
+userTokenNotFound:
+    path: /error/userTokenNotFound
+    controller: App\Controller\ErrorController::userTokenNotFound
+userTokenError:
+    path: /error/userTokenError
+    controller: App\Controller\ErrorController::userTokenError
