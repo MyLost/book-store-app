@@ -1,5 +1,5 @@
 <p-toast position="top-right" key="app" [baseZIndex]="999999999" [autoZIndex]="false"></p-toast>
-
+<p-toast position="top-right"/>
 <app-nav />
 
 <!--@if (loading) {-->
@@ -10,6 +10,6 @@
 
 <footer class="footer">
   <div></div>
-  <p>Posted by: lost lost all right reserved by lost</p>
-  <p>Contact information:<a href="mail">someone&#64;lost.com</a></p>
+  <p>{{ 'Posted by: lost lost all right reserved by lost' | translate }}</p>
+  <p>{{ 'Contact information' | translate }}: <a href="mailto:{{environment.contactEmail}}">{{environment.contactEmail}}</a></p>
 </footer>
