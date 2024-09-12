@@ -1,15 +1,23 @@
 <p-toast position="top-right" key="app" [baseZIndex]="999999999" [autoZIndex]="false"></p-toast>
+
 <p-toast position="top-right"/>
+
 <app-nav />
 
-<!--@if (loading) {-->
-<!--  <p-progressSpinner></p-progressSpinner>-->
-<!--}-->
+<div class="flex mb-0">
 
-<router-outlet />
+  <div class="side-nav pt-1 mx-auto mb-0">
+  <p-tieredMenu [model]="sideBarItems()"/>
+  </div>
+
+  <div class="container mx-auto mb-0">
+    <router-outlet> </router-outlet>
+  </div>
+
+</div>
 
 <footer class="footer">
   <div></div>
-  <p>{{ 'Posted by: lost lost all right reserved by lost' | translate }}</p>
-  <p>{{ 'Contact information' | translate }}: <a href="mailto:{{environment.contactEmail}}">{{environment.contactEmail}}</a></p>
+  <p> {{ 'Posted by: lost lost all right reserved by lost' | translate }} </p>
+  <p> {{ 'Contact information' | translate }}: <a href="mailto:{{environment.contactEmail}}">{{environment.contactEmail}} </a></p>
 </footer>
