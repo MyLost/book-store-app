@@ -5,6 +5,8 @@ import lombok.Getter;
 public class AllowedUrls {
 
     private static final String[] allowedUrls = {
+        "/api/v1/books/most-popular",
+        "/api/v1/books/paged-list",
         "/api/v1/auth/**",
         "/api/v1/test/**",
         "/v2/api-docs",
