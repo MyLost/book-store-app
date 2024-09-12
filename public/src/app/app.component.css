@@ -1,3 +1,11 @@
+.container {
+  width: 88%;
+}
+
+.side-nav {
+  width: 10%;
+}
+
 header {
     height: 300px;
     margin: 0;
