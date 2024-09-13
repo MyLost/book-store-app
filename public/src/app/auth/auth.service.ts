@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
 import { BaseService } from '../base.service';
 import { jwtDecode } from 'jwt-decode';
@@ -12,10 +12,9 @@ export class AuthService extends BaseService<any> {
 
   private readonly usersUrl = this.baseUrl + 'users/';
 
-  constructor (
-    private http: HttpClient,
-  ) { super(); }
+  constructor () { super(); }
 
+  private http = inject(HttpClient);
 
   public get authorizationToken() {
     return localStorage.getItem('access_token');
