@@ -63,7 +63,7 @@ export class AddBookComponent implements OnInit {
     this.bookService.getGenres().subscribe(result => this.genres = result);
   }
 
-  checkInput(event: any, type: any) {
+  protected checkInput(event: any, type: any) {
 
     if (this.bookRequestModel.author === '' && type.name === 'author') {
       this.messageService.add({ key: 'book', severity: 'error', summary: 'Error', detail: 'Author is required '});
@@ -183,7 +183,7 @@ export class AddBookComponent implements OnInit {
     }
   }
 
-  cheker(type: any) {
+  protected cheker(type: any) {
     if ( type.name === 'author' && this.bookRequestModel.author.match('<')) {
       this.keyMessage = 'author';
       this.flag = true;
@@ -218,7 +218,7 @@ export class AddBookComponent implements OnInit {
     return this.flag;
   }
 
-  addBook() {
+  protected addBook() {
     this.bookService.addBook(this.bookRequestModel).subscribe((result: BookInterface) => {
       if (result) {
         this.bookRequestModel = {} as BookRequest;
