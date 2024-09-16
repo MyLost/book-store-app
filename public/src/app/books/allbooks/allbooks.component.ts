@@ -5,7 +5,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { MessageService } from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 
 @Component({
@@ -14,10 +15,11 @@ import { MessageService } from "primeng/api";
   templateUrl: './allbooks.component.html',
   imports: [
     TableModule,
-    ButtonModule
+    ButtonModule,
+    ConfirmDialogModule
   ],
   styleUrls: ['./allbooks.component.css'],
-  providers: [ BookService, MessageService ]
+  providers: [ BookService, MessageService, ConfirmationService ]
 })
 export class AllBooksComponent implements OnInit {
 
@@ -26,16 +28,22 @@ export class AllBooksComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private msgSvc: MessageService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private cnfSvc: ConfirmationService
   ) { }
 
   ngOnInit() {
+    this.loadBooks();
+  }
+
+  private loadBooks() {
     this.bookService.getAll().subscribe((data: BookInterface)  => {
       this.books = data;
     });
   }
 
-  sort(value: any) {
+  protected sort(value: any) {
     switch (value) {
       case 'author':
       this.books.sort(function(a: any, b: any) {
@@ -82,20 +90,26 @@ export class AllBooksComponent implements OnInit {
     }
   }
 
-  edit (bookId: number) {
-    this.router.navigateByUrl('books/edit/' +  bookId);
+  protected edit (bookId: number) {
+    this.router.navigate(['../','edit', bookId], { relativeTo: this.route});
   }
 
-  delete (id: number) {
-    this.bookService.deleteBook(id).subscribe((result:any) => {
-      if (result.success) {
-        this.msgSvc.add({
-          key: 'book',
-          severity: 'success',
-          summary: 'System Service',
-          detail: result.message
+  protected delete (id: number) {
+    this.cnfSvc.confirm({
+      message: 'Are you sure that you want to perform this action? This book will be deleted permanently',
+      accept: () => {
+        this.bookService.deleteBook(id).subscribe((result:any) => {
+          if (result.success) {
+            this.msgSvc.add({
+              key: 'book',
+              severity: 'success',
+              summary: 'System Service',
+              detail: result.message
+            });
+            this.loadBooks();
+          }
         });
       }
-    });
+    })
   }
 }
