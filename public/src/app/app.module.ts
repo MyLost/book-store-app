@@ -24,6 +24,9 @@ import { CustomErrorHandler } from './common/Utils';
 import { MessagesModule } from "primeng/messages";
 import {environment} from "../environments/environment";
 import {TieredMenuModule} from "primeng/tieredmenu";
+import {SidebarModule} from "primeng/sidebar";
+import {MenuModule} from "primeng/menu";
+import {PanelMenuModule} from "primeng/panelmenu";
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -48,6 +51,9 @@ import {TieredMenuModule} from "primeng/tieredmenu";
     ProgressSpinnerModule,
     MessagesModule,
     TieredMenuModule,
+    SidebarModule,
+    MenuModule,
+    PanelMenuModule,
   ],
   bootstrap: [ AppComponent ],
   providers: [ MessageService, httpInterceptorProviders,
