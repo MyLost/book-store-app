@@ -7,6 +7,8 @@ import {AuthService} from './auth/auth.service';
 import {environment} from "../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {translateEmitter} from "./common/Utils";
+import {BookService} from "./books/book.service";
+import {Genre} from "./books/common/Genre";
 
 @Component({
   selector: 'app-root',
@@ -16,11 +18,17 @@ import {translateEmitter} from "./common/Utils";
 })
 export class AppComponent implements OnInit {
 
+  protected genreItems = [];
+
   protected loading = false;
 
   protected title = 'BookStore';
 
-  protected sideBarItems = signal<MenuItem[]>([]);
+  protected sideBarItems = signal<MenuItem[]>([{
+    label: "Books",
+    icon: 'pi pi-book',
+    items: this.genreItems
+  }]);
 
   protected readonly environment = environment;
 
@@ -28,7 +36,8 @@ export class AppComponent implements OnInit {
     private authSvc: AuthService,
     private _loading: LoadingService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private bookSvc: BookService
     ) { }
 
   ngOnInit() {
@@ -47,18 +56,20 @@ export class AppComponent implements OnInit {
         });
       })
     });
+
+    this.bookSvc.getGenres().subscribe((genres: Genre[]) => {
+      genres.forEach(genre => {
+        this.genreItems.push({
+          label: genre.name,
+          icon: 'pi pi-tag',
+          routerLink: ['books', 'genre', genre.id]
+        });
+      })
+    });
   }
 
   private get getSideBarItems() {
-    return [
-      {
-        label: "Books",
-        icon: 'pi pi-book',
-        items: [],
-        routerLink: ["books"]
-
-      }
-    ];
+    return this.sideBarItems();
   }
 
   private listenToLoading(): void {
@@ -82,9 +93,21 @@ export class AppComponent implements OnInit {
   private async loadMenuItems() {
     const translations = await this.getTranslateMenuItemLabels();
     return this.getSideBarItems.map(item => {
+      if(item.items) {
+        this.translateGenres(item.items).then(keys => {
+          for(let entry of item.items) {
+            entry.label = keys[entry.label];
+          }
+        });
+
+      }
       item.label = translations[item.label];
       return item;
     });
+  }
+
+  private async translateGenres(items: MenuItem[]) {
+    return await lastValueFrom(this.translate.get(items.map(item => item.label)));
   }
 
 }
