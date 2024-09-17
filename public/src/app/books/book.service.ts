@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
-  HttpResponse,
-  HttpEvent,
-  HttpInterceptor,
-  HttpHandler,
-  HttpRequest,
-  HttpHeaders,
   HttpParams
 } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { Employee } from '../data/employees.interface';
 import { BookInterface } from './common/BookInterface';
 import { BaseService } from '../base.service';
 import { Genre } from './common/Genre';
-import { BookRequest } from "./addbook/addbook.component";
-import { SearchBookRequest } from "./common/search-book-request";
+import { BookRequest } from './addbook/addbook.component';
+import {PaginatorState} from "primeng/paginator";
 
 // const employeesUrl = '../../../../../../../resources/Employees.json';
 // const employeeUrl = '../../../../../../../resources/Employee.json';
@@ -135,9 +128,33 @@ export class BookService extends BaseService<any> {
     //   });
     // }
 
-    getAll() {
-      return this.http.get<BookInterface>(this.booksUrl);
+  getPagedListByGenre(params: PaginatorState, genreId: number) {
+
+    let body = {
+      "page": params.page,
+      "rows": params.rows
     }
+
+    return this.http.post<any>(this.booksUrl  + `/genre/${genreId}` , body);
+  }
+
+  getPagedList(params: PaginatorState) {
+
+    let body = {
+      "page": params.page,
+      "rows": params.rows
+    }
+
+    return this.http.post<any>(this.booksUrl  + '/paged-list' , body);
+  }
+
+  getAll() {
+    return this.http.get<BookInterface>(this.booksUrl);
+  }
+
+  getMostPopular() {
+    return this.http.get<BookInterface[]>(this.booksUrl + '/most-popular');
+  }
 
     getPromotions() {
       const queryParams = new HttpParams();
