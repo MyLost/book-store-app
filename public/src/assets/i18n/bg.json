@@ -1,4 +1,14 @@
 {
+  "Home": "Главна страница",
+  "About": "За нас",
+  "Login": "Влизане",
+  "Register": "Регистрация",
+  "Books": "Книги",
+  "Dashboard": "Дъска",
+  "Promotion": "Промоции",
+  "Store": "Склад",
+  "Logout": "Излизане",
+
   "Username": "Потребителско име",
   "Password": "Парола",
   "Welcome to login page" : "Добре дошли  на страницата за вход в системата.",
@@ -6,7 +16,7 @@
   "Under Construction! Not work" : "Страницата се разработва. В момента не е достъпна!",
   "Under Construction!" : "Страницата се разработва!",
   "Here you can save your system information": "Тук можеш да запазиш твоята информация",
-  "Posted by: lost lost all right reserved by lost": "Разработено от лост лост всички права запазени за лост",
+  "Posted by: lost lost all right reserved by lost": "Разработено от lost, всички права запазени",
   "Contact information:": "За контакти ",
   "Sed eget mattis arcu. Nullam id auctor mauris, id blandit erat. Mauris et auctor tellus. Etiam tincidunt a risus a bibendum. Praesent finibus imperdiet leo. Nulla tincidunt luctus neque, in bibendum orci bibendum eu. Aenean dolor erat, convallis at nisi eget, porta feugiat urna. Vivamus sodales est finibus odio mattis consequat. Aenean lobortis consequat orci, sit amet volutpat diam blandit sit amet. Nulla tristique in ante in pharetra. Nullam non cursus felis. Curabitur aliquet vitae tellus ac ullamcorper. Fusce tincidunt iaculis ex, vel ultrices magna scelerisque eu. Fusce a nibh pharetra, egestas massa sit amet, efficitur quam.":"Лорем Ипсум е елементарен примерен текст, използван в печатарската и типографската индустрия. Лорем Ипсум е индустриален стандарт от около 1500 година, когато неизвестен печатар взема няколко печатарски букви и ги разбърква, за да напечата с тях книга с примерни шрифтове. Този начин не само е оцелял повече от 5 века, но е навлязъл и в публикуването на електронни издания като е запазен почти без промяна. Популяризиран е през 60те години на 20ти век със издаването на Letraset листи, съдържащи Лорем Ипсум пасажи, популярен е и в наши дни във софтуер за печатни издания като Aldus PageMaker, който включва различни версии на Лорем Ипсум",
   "Phasellus vel fringilla tellus. Curabitur elementum ullamcorper erat imperdiet porttitor. Sed dapibus convallis nibh quis egestas. Etiam faucibus felis vitae diam efficitur ullamcorper. Mauris convallis urna eget fermentum mollis. Curabitur dignissim, lacus sit amet egestas commodo, ex lectus scelerisque neque, ac ultricies lorem neque a tortor. Pellentesque ex odio, luctus ac felis efficitur, faucibus vestibulum sapien. Proin quis est molestie, vestibulum nisl at, elementum orci. Nulla tempus augue id gravida volutpat.": "Известен факт е, че читателя обръща внимание на съдържанието, което чете, а не на оформлението му. Свойството на Лорем Ипсум е, че до голяма степен има нормално разпределение на буквите и се чете по-лесно, за разлика от нормален текст на английски език като „Това е съдържание, това е съдържание“. Много системи за публикуване и редактори на Уеб страници използват Лорем Ипсум като примерен текстов модел „по подразбиране“, поради което при търсене на фразата „Лорем Ипсум“ в Интернет ще бъдат открити много сайтове в процес на разработка. Някой от тези сайтове биват променяни с времето, а други по случайност или нарочно(за забавление и пр.) биват оставяни в този си незавършен вид.",
@@ -19,5 +29,22 @@
   "Username:": "потребителско име",
   "Password:": "парола",
   "Confirm pasword:": "потвърди паролата",
-  "Register!": "Регистрация!"
+  "Register!": "Регистрация!",
+  "HELLO": "Здравей",
+  "BOOKSTORE SOFTWARE": "ОНЛАЙН КНИЖАРНИЦА",
+  "Most popular books": "Най-четените книги",
+  "The newest books": "Най-новите книги",
+  "Contact information": "Контакти",
+  "INSTOCK": "НА СКЛАД",
+
+  "Fiction": "Художествена литература",
+  "Adventure": "Приключение",
+  "Coming-of-age": "Навършване на пълнолетие",
+  "Family saga": "Семейна сага",
+  "Fantasy": "Фантазия",
+  "Fantasy, absurdist fiction": "Фентъзи, абсурдна фантастика",
+  "Fantasy, children's fiction": "Фентъзи, детска фантастика",
+  "Historical fiction": "Историческа фантастика",
+  "Mystery": "Мистерия",
+  "Mystery thriller": "Мистериозен трилър"
 }
