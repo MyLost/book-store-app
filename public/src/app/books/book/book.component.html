@@ -1,10 +1,56 @@
-<p-toast key="book"></p-toast>
+<div class="grid">
+  @if(books.length === 0) {
+    <h1 class="underline"> No results found </h1>
+  } @else {
+    @for(book of books; track book.id) {
+      <div class="col-2">
+      <p-card class="h-25rem my-1">
+        <ng-template pTemplate="header">
+          <p-tag
+            value="{{ book.inventoryStatus | translate }}"
+            [severity]="getSeverity(book.inventoryStatus)"
+            [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+          <img
+            [style.cursor]="'pointer'"
+            (click)="bookNavigate(book)"
+            [ngSrc]="book.coverImage ? book.coverImage : environment.defaultImageUrl"
+            [width]="10"
+            [height]="150"
+            [alt]="book.title"
+            class="w-full border-round" />
+        </ng-template>
 
-<p-panel header="You can menage books from here">
+        <ng-template pTemplate="title">
+          <div class="text-center h-5rem">
+            {{ book.title }}
+          </div>
+        </ng-template>
 
-  <p-menubar [model]="items" styleClass="mb-4"></p-menubar>
+        <ng-template pTemplate="content">
+        </ng-template>
 
-  <router-outlet />
-</p-panel>
+        <ng-template pTemplate="footer">
+          <div class="flex align-items-center justify-content-between">
+            <div class="mt-0 font-semibold text-xl">
+              {{ '$' + book.price }}
+            </div>
+            <div>
+              <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
+              <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+      </div>
+    }
+  }
+</div>
 
-
+@if(books.length > 0) {
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[10, 20, 30]" />
+}
