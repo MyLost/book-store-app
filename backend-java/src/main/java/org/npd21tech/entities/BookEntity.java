@@ -4,9 +4,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
+import java.sql.Blob;
+import org.hibernate.annotations.Type;
 
 import org.npd21tech.enums.BookCover;
 
@@ -14,6 +17,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.npd21tech.enums.InventoryStatus;
+import org.npd21tech.enums.PriceStatus;
 
 @Entity
 @Getter
@@ -43,4 +48,15 @@ public class BookEntity extends BaseEntity {
     private BookCover cover;
 
     private Integer numberOfBooks;
+
+    private Integer rating;
+
+    @Lob()
+    private byte[] coverImage;
+
+    @Enumerated(EnumType.STRING)
+    private InventoryStatus inventoryStatus;
+
+    @Enumerated(EnumType.STRING)
+    private PriceStatus priceStatus;
 }
