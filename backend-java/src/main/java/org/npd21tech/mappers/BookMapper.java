@@ -31,6 +31,13 @@ public abstract class BookMapper {
     public abstract BookResponse toDto(BookEntity bookEntity);
 
     @Mapping(target = "genre", source = "genreId", qualifiedByName = "genreMapping")
+    @Mapping(target = "rating", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "promotion", ignore = true)
+    @Mapping(target = "coverImage", ignore = true)
+
+    @Mapping(target = "inventoryStatus", ignore = true)
+    @Mapping(target = "priceStatus", ignore = true)
     public abstract BookEntity fromDto(BookRequest bookRequest);
 
     public abstract BookGenreResponse toGenreDto(BookGenreEntity bookGenreEntity);
