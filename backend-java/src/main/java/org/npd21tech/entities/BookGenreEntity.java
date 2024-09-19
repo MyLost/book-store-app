@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Map;
+
 @Entity
 @Getter
 @Setter
@@ -23,4 +25,5 @@ public class BookGenreEntity extends BaseEntity {
 
     @Column
     private String descriptions;
+
 }
