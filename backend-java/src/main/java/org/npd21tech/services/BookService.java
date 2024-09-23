@@ -6,8 +6,12 @@ import org.npd21tech.dtos.BookGenreResponse;
 import org.npd21tech.dtos.BookRequest;
 import org.npd21tech.dtos.BookResponse;
 import org.npd21tech.params.BookSearchParams;
+import org.npd21tech.params.PagedList;
+import org.npd21tech.params.PagedParams;
 
 public interface BookService {
+
+    PagedList<BookResponse> getPagedList(PagedParams params);
 
     List<BookResponse> getAll(BookSearchParams bookSearchParams);
 
@@ -24,4 +28,6 @@ public interface BookService {
     BookResponse update(Long id, BookRequest bookRequest);
 
     void delete(Long id);
+
+    PagedList<BookResponse> getPagedListByGenre(PagedParams params, Long genreId);
 }
