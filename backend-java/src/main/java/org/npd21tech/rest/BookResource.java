@@ -8,6 +8,8 @@ import org.npd21tech.dtos.BookRequest;
 import org.npd21tech.dtos.BookResponse;
 import org.npd21tech.dtos.DeleteResponse;
 import org.npd21tech.params.BookSearchParams;
+import org.npd21tech.params.PagedList;
+import org.npd21tech.params.PagedParams;
 import org.npd21tech.services.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +33,22 @@ public class BookResource {
     @GetMapping
     public ResponseEntity<List<BookResponse>> fetchAll() throws IOException {
         return ResponseEntity.ok().body(bookService.getAll(null));
+    }
+
+    @GetMapping(path = "/most-popular")
+    public ResponseEntity<List<BookResponse>> fetchMostPopular() throws IOException {
+        return ResponseEntity.ok().body(bookService.getAll(null));
+    }
+
+    @PostMapping(path="/genre/{genreId}")
+    public ResponseEntity<PagedList<BookResponse>> fetchPagedListByGenre(@RequestBody PagedParams params, @PathVariable Long genreId) {
+        return ResponseEntity.ok().body(bookService.getPagedListByGenre(params, genreId));
+    }
+
+    @PostMapping(path = "/paged-list")
+    public ResponseEntity<PagedList<BookResponse>> fetchPagedList(@RequestBody PagedParams params) throws IOException {
+        var result = bookService.getPagedList(params);
+        return ResponseEntity.ok().body(result);
     }
 
     @GetMapping("/{id}")
