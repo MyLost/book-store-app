@@ -1,9 +1,9 @@
-<p-sidebar [(visible)]="display"  position="right" styleClass="ui-sidebar-sm" [baseZIndex]="10000"
-  [dismissible]="true">
-  <h2 class="text-center">Welcome {{user?.username}}</h2>
-  <div class="flex justify-content-center">
-    <app-menu-dashboard></app-menu-dashboard>
-  </div>
-</p-sidebar>
-<app-edit-user-component></app-edit-user-component>
-<app-delete-user></app-delete-user>
+
+<app-menu-dashboard></app-menu-dashboard>
+
+<div class="mt-2">
+<router-outlet />
+</div>
+
+<!--<app-edit-user-component></app-edit-user-component>-->
+<!--<app-delete-user></app-delete-user>-->
