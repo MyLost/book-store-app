@@ -6,6 +6,7 @@ import { EditUserComponentComponent } from '../../user/edit-user-component/edit-
 import { AuthService } from '../../auth/auth.service';
 import { User, UserInterface } from '../../user/User';
 import { DeleteUserComponent } from "../../user/delete-user/delete-user.component";
+import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,8 @@ import { DeleteUserComponent } from "../../user/delete-user/delete-user.componen
     SidebarModule,
     MenuDashboardComponent,
     EditUserComponentComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    RouterOutlet
   ],
   styleUrls: ['./dashboard.component.css']
 })
