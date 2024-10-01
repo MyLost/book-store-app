@@ -62,7 +62,7 @@ export class EditUserComponentComponent implements OnInit {
     });
   }
 
-  edit() {
+  protected edit() {
     this.userSvc.editUser(this.user).subscribe( (result: UserEditResponse) => {
       if (result) {
         const user = null;
@@ -88,7 +88,7 @@ export class EditUserComponentComponent implements OnInit {
     });
   }
 
-  hide() {
+  protected hide() {
     this.display = false;
     dashboard.emit(true);
   }
