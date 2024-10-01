@@ -1,12 +1,9 @@
-<p-dialog [(visible)]="display">
+<ng-template pTemplate="header">Delete user</ng-template>
 
-  <ng-template pTemplate="header">Delete user</ng-template>
+This functionality not supported!
 
-  This functionality not supported!
+<p-footer class="grid p-fluid">
+  <p-button severity="danger" type="button" label="Delete" class="ui-button-rounded col-6"></p-button>
+  <p-button type="button" label="Cancel" class="ui-button-rounded col-6" (click)="hide()"></p-button>
+</p-footer>
 
-  <p-footer class="grid p-fluid">
-    <p-button severity="danger" type="button" label="Delete" class="ui-button-rounded col-6"></p-button>
-    <p-button type="button" label="Cancel" class="ui-button-rounded col-6" (click)="hide()"></p-button>
-  </p-footer>
-
-</p-dialog>
