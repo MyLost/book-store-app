@@ -111,7 +111,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
     };
   }
 
-  editBook() {
+  protected editBook() {
     this.editForm.markAllAsTouched();
     if (this.editForm.valid) {
       this.bookService.update(this.bookModel.id, this.editForm.value).subscribe(result => {
