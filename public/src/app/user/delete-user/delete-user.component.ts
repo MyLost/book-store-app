@@ -28,7 +28,7 @@ export class DeleteUserComponent implements OnInit {
      deleteUser.subscribe( data => this.display = data);
   }
 
-  hide () {
+  protected hide () {
     this.display = false;
     deleteUser.emit(false);
   }
