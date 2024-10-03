@@ -5,6 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="/usr/share/java/gradle" />
         <option name="gradleJvm" value="azul-17" />
         <option name="modules">
           <set>
@@ -14,6 +15,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/backend-java" />
+        <option name="gradleHome" value="/usr/share/java/gradle" />
         <option name="gradleJvm" value="azul-17" />
         <option name="modules">
           <set>
