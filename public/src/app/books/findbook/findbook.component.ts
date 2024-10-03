@@ -41,7 +41,7 @@ export class FinBookComponent implements OnInit {
 
   ngOnInit() {}
 
-  findBook (findForm: FormGroup) {
+  protected findBook (findForm: FormGroup) {
     this.bookSvc.findBook(findForm.value).subscribe(books => this.books = books);
   }
 }
