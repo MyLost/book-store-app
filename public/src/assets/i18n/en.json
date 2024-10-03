@@ -1,0 +1,29 @@
+{
+  "Потребителско име": "Username",
+  "Парола" : "Password",
+  "Добре дошли на страницата за вход в системата." :  "Welcome to login page",
+  "Вход" : "Push",
+  "Тук можеш да запазиш твоята информация": "Here you can save your system information",
+  "Здравей": "HELLO",
+  "Разработено от лост лост всички права запазени за лост": "Posted by: lost lost all right reserved by lost",
+  "Главна страница": "Home",
+  "За нас": "About",
+  "Влизане": "Login",
+  "Регистрация": "Register",
+  "Най-новите книги": "The newest books",
+
+
+  "Книги": "Books",
+
+  "Художествена литература": "Fiction",
+  "Приключение": "Adventure",
+  "Навършване на пълнолетие": "Coming-of-age",
+  "Семейна сага": "Family saga",
+  "Фантазия": "Fantasy",
+  "Фентъзи, абсурдна фантастика": "Fantasy, absurdist fiction",
+  "Фентъзи, детска фантастика": "Fantasy, children's fiction",
+  "Историческа фантастика": "Historical fiction",
+  "Мистерия": "Mystery",
+  "Мистериозен трилър": "Mystery thriller"
+
+}
