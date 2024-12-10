@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgOptimizedImage } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { translateEmitter } from '../Utils';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-language',
@@ -19,27 +20,27 @@ import { translateEmitter } from '../Utils';
 })
 export class LanguageComponent implements OnInit {
 
-  protected countries: any[] = [];
-  protected selectedCountry: any;
-  constructor( private translate: TranslateService ) {
-    this.countries = [
-      { name: 'EN', flag: 'assets/resources/En.png' },
-      { name: 'BG', flag: 'assets/resources/Bg.png' }];
+  protected languageOptions =  [
+    { id: 'en', label: 'EN', flag: 'assets/resources/En.png' },
+    { id: 'bg', label: 'BG', flag: 'assets/resources/Bg.png' }
+  ];
+
+  protected selectedLanguage: { id: string, label: string, flag: string };
+
+  constructor( private translate: TranslateService ) {}
+
+  ngOnInit() {
+    this.selectedLanguage = this.languageOptions.filter(language => language.id === environment.defaultLanguage)[0];
+    this.switchLang();
   }
 
-  ngOnInit() {}
-
-  switchLang() {
-
-    if (this.selectedCountry.name === 'BG') {
-      this.translate.setDefaultLang('BG');
-      this.translate.use('BG');
-      translateEmitter.emit('BG');
+  protected switchLang() {
+    if (this.selectedLanguage.label === 'BG') {
+      this.translate.setDefaultLang('bg');
+      this.translate.use('bg').subscribe( () => translateEmitter.emit('bg'));
     } else {
-      this.translate.setDefaultLang('EN');
-      this.translate.use('EN');
-      translateEmitter.emit('EN');
-
+      this.translate.setDefaultLang('en');
+      this.translate.use('en').subscribe( () => translateEmitter.emit('en'));
     }
   }
 }
