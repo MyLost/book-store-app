@@ -1,5 +1,5 @@
 <div class="countryFlag">
-  <p-selectButton [options]="countries" [(ngModel)]="selectedCountry" (onChange)="switchLang()" >
+  <p-selectButton [options]="languageOptions" [(ngModel)]="selectedLanguage" (onChange)="switchLang()" >
     <ng-template let-item pTemplate>
       <div style="padding: .2em .2em">
         <img style="vertical-align: middle; margin-right: .5em" src="{{item.flag}}" height="20px"/>
