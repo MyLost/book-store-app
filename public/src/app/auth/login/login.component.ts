@@ -17,6 +17,8 @@ import { AuthenticationResponseModel } from './authentication-response-model';
 import { jwtDecode } from 'jwt-decode';
 import { LoginState } from '../../redux/store/login.state';
 import { AuthService } from '../auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import {loginEmitter} from "../../common/Utils";
 
 @Component({
   standalone: true,
@@ -65,47 +67,61 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.user.username = '';
     this.user.password = '';
   }
 
-  google() {
+  protected google() {
   this.loginService.google().subscribe((result: AuthenticationResponseModel) => {
   });
   }
 
-  login() {
-    this.loginService.login(this.user).subscribe( (result: AuthenticationResponseModel) => {
-      if (result) {
-        localStorage.setItem('access_token', result.accessToken);
-        localStorage.setItem('refresh_token', result.refreshToken);
-        localStorage.setItem('expires_at', jwtDecode(result.accessToken).exp.toString());
-        // setCookie(this.user.username, result.cookie);
-        this.autSvc.user.subscribe(user => {
-          this.store.dispatch({
-            type: LOGIN_USER,
-            payload: {
-              logged: true,
-              access_token: result.accessToken,
-              refresh_token: result.refreshToken,
-              authenticated: true,
-              dashboard: { display: true },
-              user: user
-            }
-          });
-        });
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'user successfully login'
-        });
-        this.router.navigate(['home']);
-      }
+  protected login() {
+    this.loginService.login(this.user).subscribe({
+        next: this.handleResponse.bind(this),
+        error: this.handleError.bind(this)
+      });
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: error.error.message ? error.error.message : error.message
     });
   }
 
-  validationInput(event: any) {
+  private handleResponse(result: AuthenticationResponseModel) {
+    if (result) {
+      localStorage.setItem('access_token', result.accessToken);
+      localStorage.setItem('refresh_token', result.refreshToken);
+      localStorage.setItem('expires_at', jwtDecode(result.accessToken).exp.toString());
+      // setCookie(this.user.username, result.cookie);
+      this.autSvc.user.subscribe(user => {
+        this.store.dispatch({
+          type: LOGIN_USER,
+          payload: {
+            logged: true,
+            access_token: result.accessToken,
+            refresh_token: result.refreshToken,
+            authenticated: true,
+            dashboard: { display: true },
+            user: user
+          }
+        });
+      });
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'user successfully login'
+      });
+      loginEmitter.emit(true);
+      this.router.navigate(['home']);
+    }
+  }
+
+  protected validationInput(event: any) {
     if (event.name === 'username') {
       this.loginGroup.setValue({'username': event.value, 'password': null});
       if (!this.loginGroup.valid) {
@@ -124,7 +140,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  facebook () {}
+  protected facebook () {}
 }
 
 export function setCookie(name: string, val: string) {
