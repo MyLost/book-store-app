@@ -47,8 +47,7 @@ export class MailComponent implements OnInit {
 
   ngOnInit() {}
 
-
-  submit(contactForm: NgForm) {
+  protected submit(contactForm: NgForm) {
     contactForm.form.markAllAsTouched();
     if (contactForm.valid) {
       console.log(contactForm.value);
