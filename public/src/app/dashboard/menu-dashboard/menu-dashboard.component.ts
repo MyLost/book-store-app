@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem, MenuItemCommandEvent } from 'primeng/api';
 import { dashboard, deleteUser, editUser } from '../../common/Utils';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import {MenubarModule} from "primeng/menubar";
 @Component({
   selector: 'app-menu-dashboard',
   standalone: true,
   templateUrl: './menu-dashboard.component.html',
-  imports: [ PanelMenuModule ],
+  imports: [ PanelMenuModule, MenubarModule ],
   styleUrls: ['./menu-dashboard.component.css']
 })
 export class MenuDashboardComponent implements OnInit {
@@ -18,14 +19,14 @@ export class MenuDashboardComponent implements OnInit {
     ngOnInit() {
       this.items = [
         {
-          label: 'Promotion',
+          label: 'Promotions',
           icon: 'pi pi-list',
-          routerLink: '/listBook'
+          routerLink: ['manage/promotions']
         },
         {
           label: 'Store',
           icon: 'pi pi-database',
-          routerLink: '/storeBook',
+          routerLink: ['manage/store'],
         },
         {
           label: 'Mail',
@@ -33,14 +34,14 @@ export class MenuDashboardComponent implements OnInit {
           command (event: MenuItemCommandEvent) {
             dashboard.emit(false);
           },
-          routerLink: '/mail',
+          routerLink: ['manage/mail'],
         },
         {
           label: 'USER',
           icon: 'pi pi-user',
           items: [
-            { label: 'Edit User', icon: '', command: () => { editUser.emit(true); } },
-            { label: 'Delete User', icon: '', command: () => { deleteUser.emit(true);  } }
+            { label: 'Edit User', icon: '', routerLink: ['manage/edit-user'] },
+            { label: 'Delete User', icon: '', routerLink: ['manage/delete-user'] }
           ]
         },
         {
@@ -49,7 +50,12 @@ export class MenuDashboardComponent implements OnInit {
             dashboard.emit(false);
           },
           icon: 'pi pi-users',
-          routerLink: '/employees',
+          routerLink: ['manage/employees'],
+        },
+        {
+          label: 'Manage books',
+          icon: 'pi pi-list',
+          routerLink: ['manage/books']
         },
       ];
     }
