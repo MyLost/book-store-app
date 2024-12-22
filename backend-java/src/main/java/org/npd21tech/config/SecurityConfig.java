@@ -64,9 +64,9 @@ public class SecurityConfig {
                 form
                     .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                     .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                    .defaultSuccessUrl("http://localhost:4202/home")
-                    .loginPage("http://localhost:4202/login")
-                    .failureForwardUrl("http://localhost:4202/error")
+                    .defaultSuccessUrl("http://localhost:4200/home")
+                    .loginPage("http://localhost:4200/login")
+                    .failureForwardUrl("http://localhost:4200/error")
                     .permitAll()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -107,7 +107,7 @@ public class SecurityConfig {
 
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4202, http://localhost:8000"));
+        configuration.setAllowedOrigins(List.of("http://localhost:4200, http://localhost:8000"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(MAX_AGE);

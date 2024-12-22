@@ -38,6 +38,7 @@ public class ApiTokenEntity extends BaseEntity {
     private UsersEntity user;
 
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     TokenType tokenType = TokenType.BEARER;
 
     @Column

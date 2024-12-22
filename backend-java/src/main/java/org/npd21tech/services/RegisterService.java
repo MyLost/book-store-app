@@ -1,4 +1,4 @@
-package org.softuni.services;
+package org.npd21tech.services;
 
 public interface RegisterService {
 }
