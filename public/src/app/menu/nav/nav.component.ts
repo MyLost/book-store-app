@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import { NavService } from './nav.service';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -6,7 +6,9 @@ import { DashboardComponent } from '../../dashboard/dashboard/dashboard.componen
 import { LanguageComponent } from '../../common/language/language.component';
 import { Store } from '@ngrx/store';
 import { LoginState } from '../../redux/store/login.state';
-import { logout } from '../../common/Utils';
+import {TranslateModule} from "@ngx-translate/core";
+import {loginEmitter, logout, translateEmitter} from "../../common/Utils";
+import {MenubarModule} from "primeng/menubar";
 
 @Component({
   selector: 'app-nav',
@@ -15,13 +17,15 @@ import { logout } from '../../common/Utils';
   imports: [
     TabMenuModule,
     DashboardComponent,
-    LanguageComponent
+    LanguageComponent,
+    TranslateModule,
+    MenubarModule
   ],
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
 
-  protected items: MenuItem[];
+  protected items = signal<MenuItem[]>([]);
 
   protected currentData = new Date().toLocaleString();
 
@@ -31,14 +35,17 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    logout.subscribe(logout => {
-      if (logout) {
-        this.items = [...this.navSvc.menuItems()];
-      }
+    this.navSvc.loadMenuItems().then(menuItems => this.items.set(menuItems));
+    translateEmitter.subscribe( () => {
+      this.navSvc.loadMenuItems().then(menuItems => {
+        this.items.set(menuItems)
+      });
+      loginEmitter.subscribe( (login) => { this.navSvc.loadMenuItems().then(menuItems => {
+        this.items.set(menuItems)
+      })})
+      logout.subscribe( (logout) => { this.navSvc.loadMenuItems().then(menuItems => {
+        this.items.set(menuItems)
+      }); })
     });
-    this.store.select('loginData').subscribe(data => {
-      this.items = [...this.navSvc.menuItems()];
-    });
-    this.items = this.navSvc.menuItems();
   }
 }
