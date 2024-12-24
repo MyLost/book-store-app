@@ -20,20 +20,18 @@ export interface BookRequest {
 }
 
 @Component({
-  selector: 'app-addbook',
-  standalone: true,
-  templateUrl: './addbook.component.html',
-  styleUrls: ['./addbook.component.css'],
-  imports: [
-    ToastModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule,
-    PanelModule,
-    DropdownModule
-  ],
-  providers: [ MessageService, BookService ]
-
+    selector: 'app-addbook',
+    templateUrl: './addbook.component.html',
+    styleUrls: ['./addbook.component.css'],
+    imports: [
+        ToastModule,
+        FormsModule,
+        InputTextModule,
+        ButtonModule,
+        PanelModule,
+        DropdownModule
+    ],
+    providers: [MessageService, BookService]
 })
 export class AddBookComponent implements OnInit {
 
