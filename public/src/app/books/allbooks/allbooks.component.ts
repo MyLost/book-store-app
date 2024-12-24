@@ -10,16 +10,15 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 
 @Component({
-  selector: 'app-allbooks',
-  standalone: true,
-  templateUrl: './allbooks.component.html',
-  imports: [
-    TableModule,
-    ButtonModule,
-    ConfirmDialogModule
-  ],
-  styleUrls: ['./allbooks.component.css'],
-  providers: [ BookService, MessageService, ConfirmationService ]
+    selector: 'app-allbooks',
+    templateUrl: './allbooks.component.html',
+    imports: [
+        TableModule,
+        ButtonModule,
+        ConfirmDialogModule
+    ],
+    styleUrls: ['./allbooks.component.css'],
+    providers: [BookService, MessageService, ConfirmationService]
 })
 export class AllBooksComponent implements OnInit {
 
