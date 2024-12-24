@@ -8,20 +8,19 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.LocalDateTime;
-
-import org.npd21tech.enums.TokenType;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.npd21tech.enums.TokenType;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "api_token")
+@Table(name = "api_token", schema = "bookStore")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,12 +37,17 @@ public class ApiTokenEntity extends BaseEntity {
     private UsersEntity user;
 
     @Enumerated(EnumType.STRING)
-    @Builder.Default
-    TokenType tokenType = TokenType.BEARER;
+    TokenType tokenType;
 
     @Column
     public boolean revoked;
 
     @Column
     public boolean expired;
+
+    @Column
+    private String test;
+
+    @Column
+    private String test2;
 }
