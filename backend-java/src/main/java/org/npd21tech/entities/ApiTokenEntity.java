@@ -44,10 +44,4 @@ public class ApiTokenEntity extends BaseEntity {
 
     @Column
     public boolean expired;
-
-    @Column
-    private String test;
-
-    @Column
-    private String test2;
 }
