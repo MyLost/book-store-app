@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "articles")
+@Table(name = "articles", schema = "bookStore")
 @AllArgsConstructor
 public class ArticleEntity extends BaseEntity {
 
