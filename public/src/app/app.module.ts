@@ -27,6 +27,7 @@ import {TieredMenuModule} from "primeng/tieredmenu";
 import {SidebarModule} from "primeng/sidebar";
 import {MenuModule} from "primeng/menu";
 import {PanelMenuModule} from "primeng/panelmenu";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -57,6 +58,7 @@ import {PanelMenuModule} from "primeng/panelmenu";
   ],
   bootstrap: [ AppComponent ],
   providers: [ MessageService, httpInterceptorProviders,
+    provideHttpClientTesting(),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: ErrorHandler, useClass: CustomErrorHandler },
   ]
