@@ -11,10 +11,11 @@ import {BookService} from "./books/book.service";
 import {Genre} from "./books/common/Genre";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [ MessageService ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    providers: [MessageService],
+    standalone: false
 })
 export class AppComponent implements OnInit {
 
