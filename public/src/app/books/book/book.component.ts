@@ -18,27 +18,26 @@ import {PaginatorModule, PaginatorState} from "primeng/paginator";
 import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-book',
-  standalone: true,
-  templateUrl: './book.component.html',
-  imports: [
-    TabViewModule,
-    AllBooksComponent,
-    AddBookComponent,
-    EditBookComponent,
-    RouterOutlet,
-    PanelModule,
-    MenubarModule,
-    ToastModule,
-    NgOptimizedImage,
-    TagModule,
-    NgStyle,
-    Button,
-    CardModule,
-    PaginatorModule,
-    TranslateModule,
-  ],
-  styleUrls: ['./book.component.css']
+    selector: 'app-book',
+    templateUrl: './book.component.html',
+    imports: [
+        TabViewModule,
+        AllBooksComponent,
+        AddBookComponent,
+        EditBookComponent,
+        RouterOutlet,
+        PanelModule,
+        MenubarModule,
+        ToastModule,
+        NgOptimizedImage,
+        TagModule,
+        NgStyle,
+        Button,
+        CardModule,
+        PaginatorModule,
+        TranslateModule,
+    ],
+    styleUrls: ['./book.component.css']
 })
 
 export class BookComponent implements OnInit {
