@@ -28,6 +28,10 @@ import {SidebarModule} from "primeng/sidebar";
 import {MenuModule} from "primeng/menu";
 import {PanelMenuModule} from "primeng/panelmenu";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { providePrimeNG } from "primeng/config";
+import Nora from '@primeng/themes/nora';
+
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -60,6 +64,19 @@ import { provideHttpClientTesting } from "@angular/common/http/testing";
   providers: [ MessageService, httpInterceptorProviders,
     provideHttpClientTesting(),
     provideHttpClient(withInterceptorsFromDi()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: Nora,
+        options: {
+          darkModeSelector: 'none',
+          // cssLayer: {
+          //   name: 'primeng',
+          //   order: 'tailwind-base, primeng, tailwind-utilities'
+          // }
+        }
+      }
+    }),
     { provide: ErrorHandler, useClass: CustomErrorHandler },
   ]
 })
