@@ -14,7 +14,7 @@ import java.util.Map;
 @Entity
 @Getter
 @Setter
-@Table(name = "book_genres")
+@Table(name = "book_genres", schema = "bookStore")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
