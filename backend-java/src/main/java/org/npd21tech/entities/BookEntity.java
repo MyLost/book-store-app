@@ -23,7 +23,7 @@ import org.npd21tech.enums.PriceStatus;
 @Entity
 @Getter
 @Setter
-@Table(name = "books")
+@Table(name = "books", schema = "bookStore")
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookEntity extends BaseEntity {
@@ -37,7 +37,7 @@ public class BookEntity extends BaseEntity {
     @Column
     private BigDecimal price;
 
-    @Column(columnDefinition = "boolean default false")
+    @Column
     private boolean promotion;
 
     @ManyToOne
