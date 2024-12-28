@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name="comments")
+@Table(name="comments", schema = "bookStore")
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentEntity extends BaseEntity {
