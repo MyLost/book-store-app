@@ -1,0 +1,42 @@
+[
+            array(
+            'author' => 'Robert Jordan',
+            'title' => 'The eye of the world',
+            'price' => '100$',
+            'kind' => 'fantasy',
+            'cover' => 'soft',
+            'numberOfBooks' => '10'
+            ),
+            array(
+                'author' => 'Robert Jordan',
+            'title' => 'The eye of the world',
+            'price' => '100$',
+            'kind' => 'fantasy',
+            'cover' => 'soft',
+            'numberOfBooks' => '10'
+            ),
+            array(
+                'author' => 'Robert Jordan',
+            'title' => 'The eye of the world',
+            'price' => '100$',
+            'kind' => 'fantasy',
+            'cover' => 'soft',
+            'numberOfBooks' => '10'
+            ),
+            array(
+                'author' => 'Robert Jordan',
+            'title' => 'The eye of the world',
+            'price' => '100$',
+            'kind' => 'fantasy',
+            'cover' => 'soft',
+            'numberOfBooks' => '10'
+            ),
+            array(
+                'author' => 'Robert Jordan',
+            'title' => 'The eye of the world',
+            'price' => '100$',
+            'kind' => 'fantasy',
+            'cover' => 'soft',
+            'numberOfBooks' => '10'
+            ),
+        ]
