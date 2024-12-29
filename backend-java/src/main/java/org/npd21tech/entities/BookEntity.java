@@ -51,7 +51,7 @@ public class BookEntity extends BaseEntity {
 
     private Integer rating;
 
-    @Lob()
+    @Lob
     private byte[] coverImage;
 
     @Enumerated(EnumType.STRING)
