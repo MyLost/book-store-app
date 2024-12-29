@@ -9,17 +9,16 @@ import { DeleteUserComponent } from "../../user/delete-user/delete-user.componen
 import {RouterOutlet} from "@angular/router";
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  templateUrl: './dashboard.component.html',
-  imports: [
-    SidebarModule,
-    MenuDashboardComponent,
-    EditUserComponentComponent,
-    DeleteUserComponent,
-    RouterOutlet
-  ],
-  styleUrls: ['./dashboard.component.css']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    imports: [
+        SidebarModule,
+        MenuDashboardComponent,
+        EditUserComponentComponent,
+        DeleteUserComponent,
+        RouterOutlet
+    ],
+    styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
