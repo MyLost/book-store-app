@@ -7,5 +7,5 @@ export interface BookInterface {
   cover: string;
   numberOfBooks: string;
   inventoryStatus: string;
-  coverImage: any
+  coverImage: {image: string, name: string};
 }
