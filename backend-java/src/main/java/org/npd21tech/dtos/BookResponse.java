@@ -22,4 +22,5 @@ public class BookResponse {
     private Integer numberOfBooks;
     private InventoryStatus inventoryStatus;
     private PriceStatus priceStatus;
+    private String coverImage;
 }
