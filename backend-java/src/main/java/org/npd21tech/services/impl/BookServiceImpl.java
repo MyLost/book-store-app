@@ -1,6 +1,7 @@
 package org.npd21tech.services.impl;
 
 import java.math.BigDecimal;
+import java.util.Base64;
 import java.util.List;
 
 import org.npd21tech.dtos.BookGenreResponse;
@@ -62,11 +63,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookResponse> getAll(BookSearchParams bookSearchParams) {
         if (bookSearchParams == null) {
-            return bookRepository.findAll().stream().map(bookMapper::toDto).toList();
+            var books = bookRepository.findAll().stream().map(bookMapper::toDto).toList();
+            return books;
         }
-        return bookRepository
-            .findAllByAuthorEqualsAndTitleEquals(bookSearchParams.getAuthor(), bookSearchParams.getTitle())
-            .stream().map(bookMapper::toDto).toList();
+        var books = bookRepository
+                .findAllByAuthorEqualsAndTitleEquals(bookSearchParams.getAuthor(), bookSearchParams.getTitle())
+                .stream().map(bookMapper::toDto).toList();
+        return books;
     }
 
     @Override
@@ -103,11 +106,13 @@ public class BookServiceImpl implements BookService {
             entity.setAuthor(bookRequest.getAuthor());
             entity.setTitle(bookRequest.getTitle());
             entity.setNumberOfBooks(bookRequest.getNumberOfBooks());
-            entity.setGenre(genreRepository.getReferenceById(id));
+            entity.setGenre(genreRepository.getReferenceById(bookRequest.getGenreId()));
             entity.setCover(BookCover.valueOf(bookRequest.getCover()));
+            entity.setCoverImage(Base64.getDecoder().decode(bookRequest.getCoverImage().getImage()));
             entity.setPrice(bookRequest.getPrice());
 
-            response = bookMapper.toDto(bookRepository.save(entity));
+            bookRepository.save(entity);
+            response = bookMapper.toDto(entity);
         }
         return response;
     }
