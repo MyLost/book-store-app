@@ -8,17 +8,16 @@ import { SharedModule } from "primeng/api";
 import { deleteUser } from "../../common/Utils";
 
 @Component({
-  selector: 'app-delete-user',
-  standalone: true,
-  imports: [
-    ButtonModule,
-    DialogModule,
-    FormsModule,
-    InputTextModule,
-    PanelModule,
-    SharedModule
-  ],
-  templateUrl: './delete-user.component.html',
+    selector: 'app-delete-user',
+    imports: [
+        ButtonModule,
+        DialogModule,
+        FormsModule,
+        InputTextModule,
+        PanelModule,
+        SharedModule
+    ],
+    templateUrl: './delete-user.component.html'
 })
 export class DeleteUserComponent implements OnInit {
 
