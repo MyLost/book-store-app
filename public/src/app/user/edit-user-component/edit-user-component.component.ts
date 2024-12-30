@@ -12,6 +12,7 @@ import { MessageService } from "primeng/api";
 import { LOGIN_USER } from "../../redux/actions/loginActions";
 import { LoginState } from "../../redux/store/login.state";
 import { Store } from "@ngrx/store";
+import { Button } from "primeng/button";
 
 
 export interface UserEditRequest {
@@ -26,17 +27,17 @@ export interface UserEditResponse {
 }
 
 @Component({
-  selector: 'app-edit-user-component',
-  standalone: true,
-  templateUrl: './edit-user-component.component.html',
+    selector: 'app-edit-user-component',
+    templateUrl: './edit-user-component.component.html',
   imports: [
     DialogModule,
     FileUploadModule,
     FormsModule,
     InputTextModule,
-    PanelModule
+    PanelModule,
+    Button
   ],
-  styleUrls: ['./edit-user-component.component.css']
+    styleUrls: ['./edit-user-component.component.css']
 })
 export class EditUserComponentComponent implements OnInit {
 
