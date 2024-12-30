@@ -31,6 +31,7 @@ import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { providePrimeNG } from "primeng/config";
 import Nora from '@primeng/themes/nora';
+import { CommonModule } from "@angular/common";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import Nora from '@primeng/themes/nora';
     RouterModule.forRoot(appRouts),
     RouterOutlet,
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({
       loginData: loginReducer
