@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MessageService, SelectItem } from 'primeng/api';
 import { BookService } from '../book.service';
 import { ToastModule } from 'primeng/toast';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
 import { Genre } from '../common/Genre';
 import { BookInterface } from '../common/BookInterface';
+import { FloatLabel } from "primeng/floatlabel";
+import { Fluid } from "primeng/fluid";
+import { Select } from "primeng/select";
+import { JsonPipe } from "@angular/common";
 
 export interface BookRequest {
   author: string;
@@ -23,17 +27,24 @@ export interface BookRequest {
     selector: 'app-addbook',
     templateUrl: './addbook.component.html',
     styleUrls: ['./addbook.component.css'],
-    imports: [
-        ToastModule,
-        FormsModule,
-        InputTextModule,
-        ButtonModule,
-        PanelModule,
-        DropdownModule
-    ],
+  imports: [
+    ToastModule,
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+    PanelModule,
+    DropdownModule,
+    FloatLabel,
+    Fluid,
+    Select,
+    JsonPipe
+  ],
     providers: [MessageService, BookService]
 })
 export class AddBookComponent implements OnInit {
+
+  @ViewChild(NgForm)
+  protected ngForm: NgForm;
 
   protected coverDropdownOptions: SelectItem[] = [
     {label: 'Hard', value: 'HARD' },
@@ -134,7 +145,7 @@ export class AddBookComponent implements OnInit {
       this.flag = false;
     }
 
-    if (this.cheker(type) && (event.key === '<' || event.key === '>')) {
+    if (this.checker(type) && (event.key === '<' || event.key === '>')) {
       // console.log('success.author' + this.success.author);
       // console.log('success.title' + this.success.author);
 
@@ -181,7 +192,7 @@ export class AddBookComponent implements OnInit {
     }
   }
 
-  protected cheker(type: any) {
+  protected checker(type: any) {
     if ( type.name === 'author' && this.bookRequestModel.author.match('<')) {
       this.keyMessage = 'author';
       this.flag = true;
@@ -217,13 +228,26 @@ export class AddBookComponent implements OnInit {
   }
 
   protected addBook() {
-    this.bookService.addBook(this.bookRequestModel).subscribe((result: BookInterface) => {
-      if (result) {
-        this.bookRequestModel = {} as BookRequest;
-        this.messageService.add({key: 'book', severity: 'success', summary: 'Service Message', detail: 'Book added correctly'});
-      } else {
-        this.messageService.add({key: 'book', severity: 'error', summary: 'Service Message', detail: 'Book not added correctly'});
-      }
-    });
+    this.ngForm.form.markAllAsTouched();
+    if(this.ngForm.valid) {
+      this.bookService.addBook(this.bookRequestModel).subscribe((result: BookInterface) => {
+        if (result) {
+          this.bookRequestModel = {} as BookRequest;
+          this.messageService.add({
+            key: 'book',
+            severity: 'success',
+            summary: 'Service Message',
+            detail: 'Book added correctly'
+          });
+        } else {
+          this.messageService.add({
+            key: 'book',
+            severity: 'error',
+            summary: 'Service Message',
+            detail: 'Book not added correctly'
+          });
+        }
+      });
+    }
   }
 }
