@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { MessageService, SelectItem } from 'primeng/api';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -11,36 +11,37 @@ import { BookInterface } from '../common/BookInterface';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Genre } from '../common/Genre';
+import { NgOptimizedImage } from "@angular/common";
+import { CardModule } from "primeng/card";
+import { Fluid } from "primeng/fluid";
+import { FloatLabel } from "primeng/floatlabel";
+import { Select } from "primeng/select";
 
 @Component({
-  selector: 'app-editbook',
-  standalone: true,
-  templateUrl: './editbook.component.html',
-  styleUrls: ['./editbook.component.css'],
+    selector: 'app-editbook',
+    templateUrl: './editbook.component.html',
+    styleUrls: ['./editbook.component.css'],
   imports: [
     ToastModule,
-    ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
     PanelModule,
-    DropdownModule
+    DropdownModule,
+    NgOptimizedImage,
+    CardModule,
+    Fluid,
+    FloatLabel,
+    Select,
+    FormsModule
   ],
-  providers: [ MessageService, BookService ]
+    providers: [MessageService, BookService]
 })
 export class EditBookComponent implements OnInit, OnDestroy {
 
-  protected bookModel: BookInterface;
-  protected bookFormModel: {
-    id: string;
-    author: string;
-    title: string;
-    price: string;
-    genreId: number;
-    cover: string;
-    numberOfBooks: string;
-  };
+  @ViewChild(NgForm)
+  protected ngForm: NgForm;
 
-  protected editForm: FormGroup;
+  protected bookModel: BookInterface;
   protected subscriptions: Subscription = new Subscription();
 
   protected coverDropdownOptions: SelectItem[] = [
@@ -48,73 +49,37 @@ export class EditBookComponent implements OnInit, OnDestroy {
     {label: 'Soft', value: 'SOFT' }
   ];
 
+  protected coverImageSignal = signal<string>("");
+
   protected genres: Genre[];
 
   constructor(
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
     private bookService: BookService
-  ) {
-
-    this.editForm = new FormGroup ({
-      id: new FormControl(this.bookModel?.id),
-      author: new FormControl(this.bookModel?.author, [
-         Validators.required,
-         Validators.minLength(4)
-      ]),
-      title: new FormControl(this.bookModel?.title, [
-        Validators.required,
-        Validators.minLength(4)
-     ]),
-     price: new FormControl(this.bookModel?.price, [
-        Validators.required,
-        Validators.minLength(2)
-      ]),
-      genreId: new FormControl(this.bookModel?.genre.id, [
-        Validators.required,
-        Validators.minLength(4)
-      ]),
-      cover: new FormControl(this.bookModel?.cover, [
-        Validators.required,
-        Validators.minLength(4)
-      ]),
-      numberOfBooks: new FormControl(this.bookModel?.numberOfBooks, [
-        Validators.required,
-        Validators.minLength(4)
-      ]),
-    });
-  }
+  ) { }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
   ngOnInit() {
-    this.bookService.getGenres().subscribe(result => this.genres = result);
-
     this.activatedRoute.data.subscribe((book: { book: BookInterface } ) => {
-      this.bookModel = book.book;
-      this.bookFormModel = this.mapBookModelToFormModel(this.bookModel);
-      this.editForm.setValue(this.bookFormModel);
+      this.bookService.getGenres().subscribe(result => {
+        this.genres = result;
+        this.bookModel = book.book;
+        this.coverImageSignal.set("data:image/png;base64," + this.bookModel.coverImage);
+        console.log(this.coverImageSignal());
+      });
     });
   }
 
-  private mapBookModelToFormModel (bookModel: BookInterface) {
-    return {
-      author: bookModel.author,
-      cover: bookModel.cover,
-      genreId: bookModel.genre.id,
-      id: bookModel.id,
-      numberOfBooks: bookModel.numberOfBooks,
-      price: bookModel.price,
-      title: bookModel.title
-    };
-  }
-
   protected editBook() {
-    this.editForm.markAllAsTouched();
-    if (this.editForm.valid) {
-      this.bookService.update(this.bookModel.id, this.editForm.value).subscribe(result => {
+    this.ngForm.form.markAllAsTouched();
+    if (this.ngForm.valid) {
+      let value = this.ngForm.value;
+      value.coverImage = this.bookModel.coverImage;
+      this.bookService.update(this.bookModel.id, value).subscribe(result => {
         if (result) {
           this.messageService.add({
             severity: 'success',
@@ -123,6 +88,28 @@ export class EditBookComponent implements OnInit, OnDestroy {
           });
         }
       });
+    }
+  }
+
+  addCover(event: any) {
+
+    const imageData: {image: string, name: string} = {
+    } as {image: string, name: string};
+
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+       const base64Image = reader.result;
+       imageData.image = (<string>base64Image).split(',')[1];
+       imageData.name = file.name;
+
+       this.bookModel.coverImage = imageData;
+       this.coverImageSignal.set(<string>base64Image);
+      };
+      reader.readAsDataURL(file); // Read the image file as a data URL
     }
   }
 }
