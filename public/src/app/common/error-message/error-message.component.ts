@@ -4,15 +4,13 @@ import { ValidationPipe } from '../pipes/validation.pipe';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-error-message',
-  standalone: true,
-  imports: [
-    ValidationPipe,
-    NgIf
-  ],
-  templateUrl: './error-message.component.html',
-  host: { style: 'color: red;' },
-
+    selector: 'app-error-message',
+    imports: [
+        ValidationPipe,
+        NgIf
+    ],
+    templateUrl: './error-message.component.html',
+    host: { style: 'color: red;' }
 })
 export class ErrorMessageComponent {
 
