@@ -10,19 +10,18 @@ import { TableModule } from "primeng/table";
 
 
 @Component({
-  selector: 'app-findbook',
-  standalone: true,
-  templateUrl: './findbook.component.html',
-  styleUrls: ['./findbook.component.css'],
-  imports: [
-    ToastModule,
-    ReactiveFormsModule,
-    MessageModule,
-    InputTextModule,
-    ButtonModule,
-    TableModule
-  ],
-  providers: []
+    selector: 'app-findbook',
+    templateUrl: './findbook.component.html',
+    styleUrls: ['./findbook.component.css'],
+    imports: [
+        ToastModule,
+        ReactiveFormsModule,
+        MessageModule,
+        InputTextModule,
+        ButtonModule,
+        TableModule
+    ],
+    providers: []
 })
 export class FinBookComponent implements OnInit {
 
