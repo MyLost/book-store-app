@@ -21,19 +21,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import {loginEmitter} from "../../common/Utils";
 
 @Component({
-  standalone: true,
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  imports: [
-    ToastModule,
-    ButtonModule,
-    FormsModule,
-    InputTextModule,
-    MessageModule,
-    CardModule
-],
-  providers: [ MessageService ]
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    imports: [
+        ToastModule,
+        ButtonModule,
+        FormsModule,
+        InputTextModule,
+        MessageModule,
+        CardModule
+    ],
+    providers: [MessageService]
 })
 
 export class LoginComponent implements OnInit {

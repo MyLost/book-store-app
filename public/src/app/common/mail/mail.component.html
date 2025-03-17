@@ -22,7 +22,7 @@
       }
     </div>
     <div class="col-12">
-      <textarea pInputTextarea placeholder="Your message" ngModel name="message" #message="ngModel"></textarea><br />
+      <textarea placeholder="Your message" ngModel name="message" #message="ngModel"></textarea><br />
       @if (!message.valid) {
         <div>
           <p-message  severity="info" text="Wrong Symbol"></p-message>

@@ -1,13 +1,13 @@
 package org.npd21tech.mappers;
 
-import java.util.UUID;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.npd21tech.dtos.UserResponse;
 import org.npd21tech.entities.UsersEntity;
 import org.npd21tech.models.RegisterModel;
+
+import java.util.UUID;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, imports = { UUID.class })
 public interface UserMapper {

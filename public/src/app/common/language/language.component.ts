@@ -7,16 +7,15 @@ import { translateEmitter } from '../Utils';
 import {environment} from "../../../environments/environment";
 
 @Component({
-  selector: 'app-language',
-  templateUrl: './language.component.html',
-  styleUrls: ['./language.component.css'],
-  imports: [
-    SelectButtonModule,
-    FormsModule,
-    NgOptimizedImage
-  ],
-  standalone: true,
-  providers: [ TranslateService ]
+    selector: 'app-language',
+    templateUrl: './language.component.html',
+    styleUrls: ['./language.component.css'],
+    imports: [
+        SelectButtonModule,
+        FormsModule,
+        NgOptimizedImage
+    ],
+    providers: [TranslateService]
 })
 export class LanguageComponent implements OnInit {
 

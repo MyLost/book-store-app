@@ -1,7 +1,5 @@
 package org.npd21tech.services.impl;
 
-import java.util.UUID;
-
 import org.npd21tech.dtos.UserEditRequest;
 import org.npd21tech.dtos.UserEditResponse;
 import org.npd21tech.dtos.UserResponse;
@@ -10,6 +8,8 @@ import org.npd21tech.repositories.UserRepository;
 import org.npd21tech.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEditResponse editUser(UserEditRequest userEditRequest) {
-        if(!userEditRequest.getPassword().equals(userEditRequest.getConfirmPassword())) {
+        if (!userEditRequest.getPassword().equals(userEditRequest.getConfirmPassword())) {
             throw new RuntimeException("Password mismatch");
         }
         var entity = this.userRepository.findById(UUID.fromString(userEditRequest.getId())).get();

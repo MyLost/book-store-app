@@ -5,23 +5,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
-
 import org.npd21tech.enums.Roles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
 @Validated
-@Table(name="users")
+@Table(name="users", schema = "bookStore")
 public class UsersEntity implements UserDetails {
 
     @Id

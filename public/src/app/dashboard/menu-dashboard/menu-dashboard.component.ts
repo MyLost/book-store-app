@@ -4,11 +4,10 @@ import { dashboard, deleteUser, editUser } from '../../common/Utils';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import {MenubarModule} from "primeng/menubar";
 @Component({
-  selector: 'app-menu-dashboard',
-  standalone: true,
-  templateUrl: './menu-dashboard.component.html',
-  imports: [ PanelMenuModule, MenubarModule ],
-  styleUrls: ['./menu-dashboard.component.css']
+    selector: 'app-menu-dashboard',
+    templateUrl: './menu-dashboard.component.html',
+    imports: [PanelMenuModule, MenubarModule],
+    styleUrls: ['./menu-dashboard.component.css']
 })
 export class MenuDashboardComponent implements OnInit {
 

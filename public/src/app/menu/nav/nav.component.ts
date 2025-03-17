@@ -11,17 +11,16 @@ import {loginEmitter, logout, translateEmitter} from "../../common/Utils";
 import {MenubarModule} from "primeng/menubar";
 
 @Component({
-  selector: 'app-nav',
-  standalone: true,
-  templateUrl: './nav.component.html',
-  imports: [
-    TabMenuModule,
-    DashboardComponent,
-    LanguageComponent,
-    TranslateModule,
-    MenubarModule
-  ],
-  styleUrls: ['./nav.component.css']
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    imports: [
+        TabMenuModule,
+        DashboardComponent,
+        LanguageComponent,
+        TranslateModule,
+        MenubarModule
+    ],
+    styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
 

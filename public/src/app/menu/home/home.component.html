@@ -3,93 +3,68 @@
  <section class="text-center">
 
    <p-panel header="{{ 'Most popular books' | translate }}">
-     <p-carousel
-       [value]="books"
-       [numVisible]="7"
-       [numScroll]="3"
-       [circular]="false"
-       [responsiveOptions]="responsiveOptions"
-       autoplayInterval="6000">
-       <ng-template let-book pTemplate="item">
-         <div class="border-1 surface-border border-round m-1 p-1 h-20rem">
-           <div class="mb-3">
-             <div class="relative mx-auto">
-               <img
-                 [ngSrc]="book.image ? book.image : environment.defaultImageUrl"
-                 [width]="10"
-                 [height]="150"
-                 [alt]="book.title"
-                 class="w-full border-round" />
-               <p-tag
-                 [value]="book.inventoryStatus"
-                 [severity]="getSeverity(book.inventoryStatus)"
-                 class="absolute"
-                 [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
-             </div>
-           </div>
-           <div [style.height]="'10%'" class="mb-6 text-base">
-             {{ book.title }}
-           </div>
-           <div class="flex justify-content-between align-items-center">
-             <div class="mt-0 font-semibold text-xl">
-               {{ '$' + book.price }}
-             </div>
-             <span>
-              <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
-              <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
-            </span>
-           </div>
-         </div>
-       </ng-template>
-     </p-carousel>
+
+     <ng-container
+       [ngTemplateOutlet]="carouselTemplate"
+       [ngTemplateOutletContext]="{$implicit: books}"
+     />
+
    </p-panel>
  </section>
-
 
   <section class="text-center mt-1">
 
     <p-panel header="{{ 'The newest books' | translate }}">
 
-    <p-carousel
-      [value]="books"
-      [numVisible]="7"
-      [numScroll]="3"
-      [circular]="false"
-      [responsiveOptions]="responsiveOptions"
-      autoplayInterval="6000">
-      <ng-template let-book pTemplate="item">
-        <div class="border-1 surface-border border-round m-1 p-1 h-20rem">
-          <div class="mb-3">
-            <div class="relative mx-auto">
-              <img
-                [ngSrc]="book.image ? book.image : environment.defaultImageUrl"
-                [width]="10"
-                [height]="150"
-                [alt]="book.title"
-                class="w-full border-round" />
-                <p-tag
-                  [value]="book.inventoryStatus"
-                  [severity]="getSeverity(book.inventoryStatus)"
-                  class="absolute"
-                  [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
-            </div>
-          </div>
-          <div [style.height]="'10%'" class="mb-6 text-base">
-            {{ book.title }}
-          </div>
-          <div class="flex justify-content-between align-items-center">
-            <div class="mt-0 font-semibold text-xl">
-              {{ '$' + book.price }}
-            </div>
-            <span>
-              <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
-              <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
-            </span>
-          </div>
-        </div>
-      </ng-template>
-    </p-carousel>
+      <ng-container
+        [ngTemplateOutlet]="carouselTemplate"
+        [ngTemplateOutletContext]="{$implicit: books}"
+      />
+
     </p-panel>
   </section>
 
 </article>
+
+
+<ng-template #carouselTemplate let-books>
+  <p-carousel
+    [value]="books"
+    [numVisible]="7"
+    [numScroll]="3"
+    [circular]="false"
+    [responsiveOptions]="responsiveOptions"
+    autoplayInterval="6000">
+    <ng-template let-book pTemplate="item">
+      <div class="border border-surface rounded-border m-2 p-4 h-30rem">
+        <div class="mb-3" style="height: 60%">
+          <div class="relative mx-auto">
+            <img
+              [src]="book.coverImage ? 'data:image/png;base64,' + book.coverImage : environment.defaultImageUrl"
+              [width]="10"
+              [height]="100"
+              [alt]="book.title"
+              class="w-full border-round" />
+            <p-tag
+              [value]="book.inventoryStatus"
+              [severity]="getSeverity(book.inventoryStatus)"
+              class="absolute"
+              [ngStyle]="{ 'left.px': 0, 'top.px': 0 }" />
+          </div>
+        </div>
+        <div [style.height]="'20%'" class="mb-6 text-base">
+          {{ book.title }}
+        </div>
+        <div class="flex justify-between items-center mt-4">
+          <div class="mt-0 font-semibold text-xl">
+            {{ '$' + book.price }}
+          </div>
+          <span>
+                <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
+                <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
+              </span>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</ng-template>

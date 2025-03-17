@@ -3,7 +3,6 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MessageModule } from 'primeng/message';
 
 import { ButtonModule } from 'primeng/button';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
@@ -13,21 +12,19 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
 
 
 @Component({
-  selector: 'app-mail',
-  standalone: true,
-  templateUrl: './mail.component.html',
-  imports: [
-    MessageModule,
-    ButtonModule,
-    InputTextareaModule,
-    InputTextModule,
-    PanelModule,
-    FormsModule,
-    DropdownModule,
-    ToastModule,
-    ErrorMessageComponent
-  ],
-  styleUrls: ['./mail.component.css']
+    selector: 'app-mail',
+    templateUrl: './mail.component.html',
+    imports: [
+        MessageModule,
+        ButtonModule,
+        InputTextModule,
+        PanelModule,
+        FormsModule,
+        DropdownModule,
+        ToastModule,
+        ErrorMessageComponent
+    ],
+    styleUrls: ['./mail.component.css']
 })
 export class MailComponent implements OnInit {
 

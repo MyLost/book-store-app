@@ -14,19 +14,18 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
-  imports: [
-    ReactiveFormsModule,
-    ToastModule,
-    MessageModule,
-    CalendarModule,
-    InputTextModule,
-    CardModule
-],
-  providers: [ MessageService ]
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
+    imports: [
+        ReactiveFormsModule,
+        ToastModule,
+        MessageModule,
+        CalendarModule,
+        InputTextModule,
+        CardModule
+    ],
+    providers: [MessageService]
 })
 export class RegisterComponent implements OnInit {
 

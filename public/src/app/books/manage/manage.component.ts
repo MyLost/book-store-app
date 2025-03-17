@@ -6,16 +6,15 @@ import {ToastModule} from "primeng/toast";
 import {MenuItem} from "primeng/api";
 
 @Component({
-  selector: 'app-manage',
-  standalone: true,
+    selector: 'app-manage',
     imports: [
         MenubarModule,
         PanelModule,
         RouterOutlet,
         ToastModule
     ],
-  templateUrl: './manage.component.html',
-  styleUrl: './manage.component.scss'
+    templateUrl: './manage.component.html',
+    styleUrl: './manage.component.scss'
 })
 export class ManageComponent implements OnInit {
 

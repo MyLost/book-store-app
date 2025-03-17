@@ -8,17 +8,16 @@ import { ImageModule } from "primeng/image";
 
 
 @Component({
-  selector: 'app-list-store',
-  standalone: true,
-  templateUrl: './promotions.component.html',
-  imports: [
-    ButtonModule,
-    RippleModule,
-    JsonPipe,
-    ImageModule
-],
-  styleUrls: ['./promotions.component.css'],
-  providers: [ BookService ]
+    selector: 'app-list-store',
+    templateUrl: './promotions.component.html',
+    imports: [
+        ButtonModule,
+        RippleModule,
+        JsonPipe,
+        ImageModule
+    ],
+    styleUrls: ['./promotions.component.css'],
+    providers: [BookService]
 })
 export class PromotionsComponent implements OnInit {
 

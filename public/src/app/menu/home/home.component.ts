@@ -3,7 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { RouterLink } from '@angular/router';
 import {TranslateModule} from "@ngx-translate/core";
 import {CarouselModule} from "primeng/carousel";
-import {NgOptimizedImage} from "@angular/common";
+import { NgOptimizedImage, NgStyle, NgTemplateOutlet } from "@angular/common";
 import {PanelModule} from "primeng/panel";
 import {BookService} from "../../books/book.service";
 import {BookInterface} from "../../books/common/BookInterface";
@@ -13,10 +13,9 @@ import {CardModule} from "primeng/card";
 
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
   imports: [
     ButtonModule,
     RouterLink,
@@ -25,8 +24,10 @@ import {CardModule} from "primeng/card";
     NgOptimizedImage,
     PanelModule,
     TagModule,
-    CardModule
-  ],
+    CardModule,
+    NgStyle,
+    NgTemplateOutlet
+  ]
 })
 export class HomeComponent implements OnInit {
 
@@ -39,7 +40,10 @@ export class HomeComponent implements OnInit {
   constructor(private bookSvc: BookService ) {}
 
   ngOnInit() {
-    this.bookSvc.getMostPopular().subscribe((data: BookInterface[])=> this.books = data);
+    this.bookSvc.getMostPopular().subscribe((data: BookInterface[])=> {
+      console.log(data);
+      this.books = data
+    });
   }
 
   protected getSeverity(status: string) {
@@ -49,7 +53,7 @@ export class HomeComponent implements OnInit {
       case 'LOWSTOCK':
         return 'info';
       case 'HIGHSTOCK':
-        return 'warning';
+        return 'warn';
       case 'OUTOFSTOCK':
         return 'danger';
     }

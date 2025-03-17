@@ -1,0 +1,118 @@
+security:
+    encoders:
+        App\Entity\Users:
+            algorithm: argon2i
+    #https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    #providers:
+        #in_memory: { memory: ~ }
+    providers:
+        #providers:
+            #oauth:
+                #id: knpu.oauth2.user_provider
+        user_provider:
+            entity:
+                class: App\Entity\Users
+                property: username
+            #id: App\Providers\UserProvider
+        api_provider:
+            entity:
+                class: App\Entity\ApiToken
+                property: token
+            #id: App\Providers\UserProvider
+        token_provider:
+            id: App\Providers\TokenProvider
+        chain_providers:
+            chain:
+                providers: [user_provider, token_provider]
+    firewalls:
+        default:
+            stateless: true
+            pattern: ^/auth/
+            anonymous: ~
+            #guard:
+                #authenticators:
+                    #- App\Security\MainAuthenticator
+        user:
+            stateless: true
+            pattern: ^/user/
+            guard:
+                authenticators:
+                    - App\Security\LoginAuthenticator
+            provider: user_provider
+            #logout:
+                #path: UserLogout
+                #handlers: [mybundle_logoutlistener]
+                #target: /logout
+        api:
+            stateless: true
+            pattern: ^/api/
+            guard:
+                authenticators:
+                    - App\Security\ApiTokenAuthenticator                    
+            provider: chain_providers
+        google:
+            stateless: true
+            pattern: ^/google/
+            guard:
+                authenticators:
+                    - App\Security\GoogleAuthenticator
+            provider: user_provider
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        token:
+            stateless: true
+            pattern: ^/token/
+            guard:
+                authenticators:    
+                    - App\Security\TokenAuthenticator
+            provider: user_provider
+        #default:
+            #logout:
+               # path: /logout
+               # handlers: [mybundle_logoutlistener]
+                
+            #secured_area:
+               # logout:
+                #path: /logout
+            #target: /auth
+            #methods: [GET]
+            #pattern: ^\auth          
+            #entry_point: App\Security\LoginAuthenticator
+            #anonymous: 
+                #pattern: ^/
+                #providers: my_provider
+        #form_login:
+            #username_parameter: username
+            #password_parameter: password
+            #username_parameter:  security.credentials.login
+            #password_parameter: security.credentials.password
+            #login_path: auth
+            #check_path: auth
+            #username_path: security.credentials.login
+            #password_path: security.credentials.password
+            #default_target_path: /profile
+            #failure_path: /errorPage
+        
+            
+        #remember_me: 
+            #secret: '%kernel.secret%'
+            #lifetime: 2592000 # 30 days in seconds
+            #activate different ways to authenticate
+
+            #http_basic: true
+            #https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            #form_login: true
+            #https://symfony.com/doc/current/security/form_login_setup.html
+
+    #Easy way to control access for large sections of your site
+    #Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/auth/security, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+       #- { path: ^/profile, roles: ROLE_USER }
+       #- { path: ^/change-password, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+       #- { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/user, roles: IS_AUTHENTICATED_FULLY }
+
