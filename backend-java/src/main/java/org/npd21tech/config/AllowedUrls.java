@@ -9,6 +9,7 @@ public class AllowedUrls {
         "/api/v1/books/genre/{genreId}",
         "/api/v1/books/paged-list",
         "/api/v1/books/genres",
+        "/api/v1/categories",
         "/api/v1/auth/**",
         "/api/v1/test/**",
         "/v2/api-docs",

@@ -43,6 +43,12 @@ public class UsersEntity implements UserDetails {
     private LocalDate bornOn;
 
     @Column
+    private LocalDate test1;
+
+    @Column
+    private LocalDate test2;
+
+    @Column
     private String email;
 
     @Column

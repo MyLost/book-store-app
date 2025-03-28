@@ -129,12 +129,10 @@ export class BookService extends BaseService<any> {
     // }
 
   getPagedListByGenre(params: PaginatorState, genreId: number) {
-
     let body = {
       "page": params.page,
       "rows": params.rows
     }
-
     return this.http.post<any>(this.booksUrl  + `/genre/${genreId}` , body);
   }
 
@@ -167,6 +165,10 @@ export class BookService extends BaseService<any> {
     getGenres() {
       return this.http.get<Genre[]>(this.booksUrl + '/genres',  {});
     }
+
+  getCategories() {
+    return this.http.get<any[]>(this.baseUrl + 'categories',  {});
+  }
 
     addBook(body: any) {
       return this.http.post(this.booksUrl, body);

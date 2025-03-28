@@ -25,11 +25,7 @@ export class AppComponent implements OnInit {
 
   protected title = 'BookStore';
 
-  protected sideBarItems = signal<MenuItem[]>([{
-    label: "Books",
-    icon: 'pi pi-book',
-    items: this.genreItems
-  }]);
+  protected sideBarItems = signal<MenuItem[]>([]);
 
   protected readonly environment = environment;
 
@@ -58,14 +54,12 @@ export class AppComponent implements OnInit {
       })
     });
 
-    this.bookSvc.getGenres().subscribe((genres: Genre[]) => {
-      genres.forEach(genre => {
-        this.genreItems.push({
-          label: genre.name,
-          icon: 'pi pi-tag',
-          routerLink: ['books', 'genre', genre.id]
-        });
-      })
+    this.bookSvc.getCategories().subscribe(categories => {
+      const newItems = categories.map(category => ({
+        label: category.name,
+        items: category.genres
+      }));
+      this.sideBarItems.update((items: MenuItem[]) => [...items, ...newItems]);
     });
   }
 

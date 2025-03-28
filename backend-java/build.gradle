@@ -55,7 +55,7 @@ jar {
 liquibase {
 	activities {
 		main {
-			changelogFile "src/main/resources/db/changelog.xml"
+			changelogFile "src/main/resources/db/changelog/changelog.xml"
 			url "jdbc:mariadb://localhost:3306/bookStore"
 			username "midas"
 			password "king@midas12"
