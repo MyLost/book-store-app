@@ -6,6 +6,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Blob;
@@ -23,7 +24,7 @@ import org.npd21tech.enums.PriceStatus;
 @Entity
 @Getter
 @Setter
-@Table(name = "books", schema = "bookStore")
+@Table(name = "books")
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookEntity extends BaseEntity {
@@ -49,7 +50,8 @@ public class BookEntity extends BaseEntity {
 
     private Integer numberOfBooks;
 
-    private Integer rating;
+    @OneToOne
+    private Ratings rating;
 
     @Lob
     private byte[] coverImage;

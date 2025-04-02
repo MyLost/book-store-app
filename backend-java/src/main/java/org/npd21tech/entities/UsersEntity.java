@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.npd21tech.enums.Roles;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,7 +22,8 @@ import java.util.UUID;
 @Setter
 @Entity
 @Validated
-@Table(name="users", schema = "bookStore")
+@Table(name="users")
+@NoArgsConstructor
 public class UsersEntity implements UserDetails {
 
     @Id
@@ -41,12 +43,6 @@ public class UsersEntity implements UserDetails {
 
     @Column
     private LocalDate bornOn;
-
-    @Column
-    private LocalDate test1;
-
-    @Column
-    private LocalDate test2;
 
     @Column
     private String email;

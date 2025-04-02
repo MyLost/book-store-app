@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Table(name = "api_token", schema = "bookStore")
+@Table(name = "api_token")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

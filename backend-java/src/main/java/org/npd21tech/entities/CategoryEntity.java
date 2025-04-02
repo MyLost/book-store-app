@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "categories", schema = "bookStore")
+@Table(name = "categories")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
