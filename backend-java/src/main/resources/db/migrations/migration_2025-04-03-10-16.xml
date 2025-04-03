@@ -1,0 +1,146 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="midas (generated)" id="1743664614899-1">
+        <addColumn tableName="api_token">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-2">
+        <addColumn tableName="articles">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-3">
+        <addColumn tableName="book_genres">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-4">
+        <addColumn tableName="books">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-5">
+        <addColumn tableName="categories">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-6">
+        <addColumn tableName="comments">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-7">
+        <addColumn tableName="ratings">
+            <column name="created_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-8">
+        <addColumn tableName="api_token">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-9">
+        <addColumn tableName="articles">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-10">
+        <addColumn tableName="book_genres">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-11">
+        <addColumn tableName="books">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-12">
+        <addColumn tableName="categories">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-13">
+        <addColumn tableName="comments">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-14">
+        <addColumn tableName="ratings">
+            <column name="created_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-15">
+        <addColumn tableName="api_token">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-16">
+        <addColumn tableName="articles">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-17">
+        <addColumn tableName="book_genres">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-18">
+        <addColumn tableName="books">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-19">
+        <addColumn tableName="categories">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-20">
+        <addColumn tableName="comments">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-21">
+        <addColumn tableName="ratings">
+            <column name="modified_by" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-22">
+        <addColumn tableName="api_token">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-23">
+        <addColumn tableName="articles">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-24">
+        <addColumn tableName="book_genres">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-25">
+        <addColumn tableName="books">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-26">
+        <addColumn tableName="categories">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-27">
+        <addColumn tableName="comments">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-28">
+        <addColumn tableName="ratings">
+            <column name="modified_date" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743664614899-29">
+        <dropColumn columnName="testCOlumn" tableName="categories"/>
+    </changeSet>
+</databaseChangeLog>
