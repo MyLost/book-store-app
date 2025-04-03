@@ -41,6 +41,11 @@ public abstract class BookMapper {
     @Mapping(target = "promotion", ignore = true)
     @Mapping(target = "inventoryStatus", ignore = true)
     @Mapping(target = "priceStatus", ignore = true)
+
+    @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "modifiedDate", ignore = true)
+    @Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "modifiedBy", ignore = true)
     public abstract BookEntity fromDto(BookRequest bookRequest);
 
     public abstract BookGenreResponse toGenreDto(BookGenreEntity bookGenreEntity);

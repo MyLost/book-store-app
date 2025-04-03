@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<UsersEntity, UUID> {
 
     Optional<UsersEntity> findByUsername(String username);
+
     Page<UsersEntity> findAll(Pageable pageable);
 
 }

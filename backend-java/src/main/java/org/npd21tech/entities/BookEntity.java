@@ -48,17 +48,22 @@ public class BookEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BookCover cover;
 
+    @Column(name="number_of_books")
     private Integer numberOfBooks;
 
     @OneToOne
     private Ratings rating;
 
     @Lob
+    @Column(name="cover_image")
     private byte[] coverImage;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="inventory_status")
     private InventoryStatus inventoryStatus;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="price_status")
     private PriceStatus priceStatus;
+
 }

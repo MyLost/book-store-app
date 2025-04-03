@@ -15,6 +15,7 @@ plugins {
 
 }
 
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -51,7 +52,7 @@ jar {
     enabled = true
 }
 
-static def getTimestamp() {
+def static getTimestamp() {
     def date = new Date()
     return date.format('yyyy-MM-dd-HH-mm')
 }
@@ -63,7 +64,6 @@ liquibase {
     activities {
         main {
             changelogFile "$MIGRATION_NAME"
-            diffChangeLogFile "src/main/resources/db/changelog/db.changelog-diff.xml"
             url "jdbc:postgresql://localhost:5432/bookstore"
             username "bookstore"
             password "book@Store12book@Store12"
@@ -73,6 +73,7 @@ liquibase {
         }
     }
 }
+
 
 configurations {
     liquibaseRuntime.extendsFrom runtime
@@ -123,8 +124,10 @@ dependencies {
     liquibaseRuntime group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.2.0'
     liquibaseRuntime 'org.springframework.boot:spring-boot-autoconfigure:3.4.4'
     liquibaseRuntime group: 'org.springframework.security', name: 'spring-security-core', version: '6.4.4'
+    liquibaseRuntime group: 'org.springframework', name: 'spring-aspects', version: '6.2.5'
     liquibaseRuntime sourceSets.main.output
-
+    liquibaseRuntime files('build/classes/java/main')
+    liquibaseRuntime files('build/resources/main')
 }
 
 tasks.named('test') {
