@@ -18,7 +18,7 @@ public interface UserMapper {
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "phoneNumber", ignore = true)
     @Mapping(target = "apiTokens", ignore = true)
-    @Mapping(target = "google_email", ignore = true)
+    @Mapping(target = "googleEmail", ignore = true)
     @Mapping(target = "authorities", ignore = true)
     UsersEntity fromDto(RegisterModel registerModel);
 

@@ -27,42 +27,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new RuntimeException("User not found!");
         }
 
-        return new UserDetails() {
-
-            @Override
-            public Collection<? extends GrantedAuthority> getAuthorities() {
-                return userEntity.getAuthorities();
-            }
-
-            @Override
-            public String getPassword() {
-                return userEntity.getPassword();
-            }
-
-            @Override
-            public String getUsername() {
-                return userEntity.getUsername();
-            }
-
-            @Override
-            public boolean isAccountNonExpired() {
-                return userEntity.isAccountNonExpired();
-            }
-
-            @Override
-            public boolean isAccountNonLocked() {
-                return userEntity.isAccountNonLocked();
-            }
-
-            @Override
-            public boolean isCredentialsNonExpired() {
-                return userEntity.isCredentialsNonExpired();
-            }
-
-            @Override
-            public boolean isEnabled() {
-                return userEntity.isEnabled();
-            }
-        };
+        return userEntity;
     }
 }

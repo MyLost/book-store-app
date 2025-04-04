@@ -36,8 +36,8 @@
     [responsiveOptions]="responsiveOptions"
     autoplayInterval="6000">
     <ng-template let-book pTemplate="item">
-      <div class="border border-surface rounded-border m-2 p-4 h-30rem">
-        <div class="mb-3" style="height: 60%">
+      <div class="border border-surface rounded-border m-2 p-4 h-20rem">
+        <div class="mb-3" style="height: 45%">
           <div class="relative mx-auto">
             <img
               [src]="book.coverImage ? 'data:image/png;base64,' + book.coverImage : environment.defaultImageUrl"

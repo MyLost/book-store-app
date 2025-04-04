@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   backendHost: 'http://localhost:8000',
+  backendFullHost: 'http://localhost:8000/api/v1/',
   googleHost: '',
   contactEmail: 'someone@lost.com',
   defaultLanguage: 'bg',

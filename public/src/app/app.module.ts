@@ -62,8 +62,9 @@ import { CommonModule } from "@angular/common";
     MenuModule,
     PanelMenuModule,
   ],
+  exports: [],
   bootstrap: [ AppComponent ],
-  providers: [ MessageService, httpInterceptorProviders,
+  providers: [ httpInterceptorProviders,
     provideHttpClientTesting(),
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
@@ -79,7 +80,7 @@ import { CommonModule } from "@angular/common";
         }
       }
     }),
-    { provide: ErrorHandler, useClass: CustomErrorHandler },
+    { provide: ErrorHandler, useClass: CustomErrorHandler }, MessageService
   ]
 })
 export class AppModule { }

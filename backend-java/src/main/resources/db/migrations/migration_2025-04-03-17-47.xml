@@ -1,0 +1,43 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="midas (generated)" id="1743691643898-1">
+        <addColumn tableName="users">
+            <column name="born_on" type="date"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-2">
+        <addColumn tableName="users">
+            <column name="first_name" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-3">
+        <addColumn tableName="users">
+            <column name="is_active" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-4">
+        <addColumn tableName="users">
+            <column name="last_name" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-5">
+        <addColumn tableName="users">
+            <column name="phone_number" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-6">
+        <dropColumn columnName="bornOn" tableName="users"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-7">
+        <dropColumn columnName="firstName" tableName="users"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-8">
+        <dropColumn columnName="isActive" tableName="users"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-9">
+        <dropColumn columnName="lastName" tableName="users"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743691643898-10">
+        <dropColumn columnName="phoneNumber" tableName="users"/>
+    </changeSet>
+</databaseChangeLog>

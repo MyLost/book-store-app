@@ -1,0 +1,65 @@
+/* Carousel container: optionally add spacing or background */
+.custom-carousel-container {
+  padding: 1rem;
+}
+
+/* Each item wrapper in the carousel */
+.carousel-item-wrapper {
+  padding: 0.5rem;
+  /* Remove col-2 or h-25rem so items can size naturally */
+}
+
+/* The card that wraps each book */
+.book-card {
+  position: relative; /* needed for the absolute-positioned tag */
+  width: 100%;
+  min-height: 350px; /* optional: ensure enough space for content */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Status Tag: position it at top-left inside the card */
+.status-tag {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 2;
+}
+
+/* Book Cover Image */
+.cover-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* limit so it doesn't push everything down */
+  object-fit: contain; /* ensures the entire image is visible */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Book Title styling */
+.book-title {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 40px; /* helps keep card height consistent if titles vary */
+}
+
+/* Footer area: price & action buttons */
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto; /* push footer to bottom if you want consistent spacing */
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}

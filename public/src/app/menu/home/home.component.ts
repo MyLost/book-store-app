@@ -1,15 +1,14 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { RouterLink } from '@angular/router';
-import {TranslateModule} from "@ngx-translate/core";
-import {CarouselModule} from "primeng/carousel";
-import { NgOptimizedImage, NgStyle, NgTemplateOutlet } from "@angular/common";
-import {PanelModule} from "primeng/panel";
-import {BookService} from "../../books/book.service";
-import {BookInterface} from "../../books/common/BookInterface";
-import {environment} from "../../../environments/environment";
-import {TagModule} from "primeng/tag";
-import {CardModule} from "primeng/card";
+import { TranslateModule } from "@ngx-translate/core";
+import { CarouselModule } from "primeng/carousel";
+import { NgStyle, NgTemplateOutlet } from "@angular/common";
+import { PanelModule } from "primeng/panel";
+import { BookService } from "../../books/book.service";
+import { BookInterface } from "../../books/common/BookInterface";
+import { environment } from "../../../environments/environment";
+import { TagModule } from "primeng/tag";
+import { CardModule } from "primeng/card";
 
 
 @Component({
@@ -18,15 +17,13 @@ import {CardModule} from "primeng/card";
     styleUrls: ['./home.component.css'],
   imports: [
     ButtonModule,
-    RouterLink,
     TranslateModule,
     CarouselModule,
-    NgOptimizedImage,
     PanelModule,
     TagModule,
     CardModule,
-    NgStyle,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    NgStyle
   ]
 })
 export class HomeComponent implements OnInit {

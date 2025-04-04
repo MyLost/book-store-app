@@ -11,7 +11,7 @@ import {BookComponent} from "./books/book/book.component";
 
 
 export const appRouts: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
   { path: 'about' , component: AboutComponent},

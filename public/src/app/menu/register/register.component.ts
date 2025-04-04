@@ -1,33 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import {RegisterService} from './register.service';
-import {validateInputCustomValidator} from '../../common/BookValidator';
-import {MessageService} from 'primeng/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RegisterService } from './register.service';
+import { validateInputCustomValidator } from '../../common/BookValidator';
+import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
+import { DatePickerModule } from 'primeng/datepicker';
 
 import { CardModule } from 'primeng/card';
 import { AuthenticationResponseModel } from '../../auth/login/authentication-response-model';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { FloatLabel } from "primeng/floatlabel";
+import { NgIf } from "@angular/common";
+import { ButtonDirective } from "primeng/button";
+import { DropdownModule } from "primeng/dropdown";
+import { Panel } from "primeng/panel";
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
-    imports: [
-        ReactiveFormsModule,
-        ToastModule,
-        MessageModule,
-        CalendarModule,
-        InputTextModule,
-        CardModule
-    ],
+  imports: [
+    ReactiveFormsModule,
+    DatePickerModule,
+    ToastModule,
+    MessageModule,
+    CalendarModule,
+    InputTextModule,
+    CardModule,
+    FloatLabel,
+    NgIf,
+    ButtonDirective,
+    DropdownModule,
+    Panel
+  ],
     providers: [MessageService]
 })
 export class RegisterComponent implements OnInit {
+
+  @ViewChild("NgForm")
+  protected ngForm: NgForm;
 
   protected validFirstName: boolean;
   protected validLastName: boolean;
@@ -48,7 +63,9 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     confirmPassword: '',
-    bornOn: ''
+    bornOn: '',
+    email: '',
+    favoriteGenre: ''
   };
 
   constructor(
@@ -66,6 +83,8 @@ export class RegisterComponent implements OnInit {
       lastName: [this.user.lastName, [Validators.required, validateInputCustomValidator(/[<>]/)]],
       username: [this.user.username, [Validators.required, validateInputCustomValidator(/[<>]/)]],
       password: [this.user.password, [Validators.required, validateInputCustomValidator(/[<>]/)]],
+      email: [this.user.email, [Validators.required]],
+      // favoriteGenre: [this.user.favoriteGenre, [Validators.required]],
       confirmPassword: [this.user.confirmPassword, [Validators.required, validateInputCustomValidator(/[<>]/)]],
       bornDate: [this.user.bornOn, [Validators.required, validateInputCustomValidator(/[<>]/)]],
     });

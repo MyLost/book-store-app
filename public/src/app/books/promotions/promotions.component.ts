@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonPipe } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { BookService } from '../book.service';
@@ -10,12 +9,11 @@ import { ImageModule } from "primeng/image";
 @Component({
     selector: 'app-list-store',
     templateUrl: './promotions.component.html',
-    imports: [
-        ButtonModule,
-        RippleModule,
-        JsonPipe,
-        ImageModule
-    ],
+  imports: [
+    ButtonModule,
+    RippleModule,
+    ImageModule
+  ],
     styleUrls: ['./promotions.component.css'],
     providers: [BookService]
 })

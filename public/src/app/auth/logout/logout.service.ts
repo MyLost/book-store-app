@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from '../../base.service';
+import { BaseService } from '../../common/base.service';
 import { HttpClient } from '@angular/common/http';
 import { shareReplay } from 'rxjs';
 import { logout } from '../../common/Utils';
@@ -10,7 +10,7 @@ export class LogoutService extends BaseService<any> {
   private logoutUrl = this.baseUrl + 'auth/logout';
 
   constructor( private http: HttpClient ) {
-    super();
+    super(http);
   }
 
   logout() {

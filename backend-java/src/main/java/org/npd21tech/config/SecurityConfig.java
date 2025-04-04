@@ -98,7 +98,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuditorAware<UUID> auditorAware() {
+    public AuditorAware<String> auditorAware() {
         return new AuditorProvider();
     }
 

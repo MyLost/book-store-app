@@ -12,7 +12,6 @@ import { BookInterface } from '../common/BookInterface';
 import { FloatLabel } from "primeng/floatlabel";
 import { Fluid } from "primeng/fluid";
 import { Select } from "primeng/select";
-import { JsonPipe } from "@angular/common";
 
 export interface BookRequest {
   author: string;
@@ -36,8 +35,7 @@ export interface BookRequest {
     DropdownModule,
     FloatLabel,
     Fluid,
-    Select,
-    JsonPipe
+    Select
   ],
     providers: [MessageService, BookService]
 })

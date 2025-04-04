@@ -4,14 +4,13 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import {  BookService } from '../book.service';
+import { BookService } from '../book.service';
 import { PanelModule } from 'primeng/panel';
 import { DropdownModule } from 'primeng/dropdown';
 import { BookInterface } from '../common/BookInterface';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Genre } from '../common/Genre';
-import { NgOptimizedImage } from "@angular/common";
 import { CardModule } from "primeng/card";
 import { Fluid } from "primeng/fluid";
 import { FloatLabel } from "primeng/floatlabel";
@@ -27,7 +26,6 @@ import { Select } from "primeng/select";
     ButtonModule,
     PanelModule,
     DropdownModule,
-    NgOptimizedImage,
     CardModule,
     Fluid,
     FloatLabel,

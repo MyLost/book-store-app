@@ -29,7 +29,7 @@ public class ApiTokenEntity extends BaseEntity {
     @Column
     private String token;
 
-    @Column
+    @Column(name="expire_at")
     private LocalDateTime expiredAt;
 
     @ManyToOne(targetEntity= UsersEntity.class, fetch = FetchType.LAZY )
@@ -37,6 +37,7 @@ public class ApiTokenEntity extends BaseEntity {
     private UsersEntity user;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="token_type")
     TokenType tokenType;
 
     @Column

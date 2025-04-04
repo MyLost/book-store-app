@@ -9,10 +9,10 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-public class AuditorProvider implements AuditorAware<UUID> {
+public class AuditorProvider implements AuditorAware<String> {
 
     @Override
-    public Optional<UUID> getCurrentAuditor() {
+    public Optional<String> getCurrentAuditor() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -23,6 +23,6 @@ public class AuditorProvider implements AuditorAware<UUID> {
         }
 
         UsersEntity user = (UsersEntity) authentication.getPrincipal();
-        return Optional.ofNullable(user.getId());
+        return Optional.ofNullable(user.getId().toString());
     }
 }

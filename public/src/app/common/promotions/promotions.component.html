@@ -1,0 +1,47 @@
+<p-dialog header="Add promotion" [modal]="true" [visible]="showPromotion()" (visibleChange)="showPromotion.set(false)"
+          [style]="{ width: '25rem' }" (onShow)="getPromotions()">
+  <form #form="ngForm" (ngSubmit)="doSubmit(form)">
+    <div class="mb-2"></div>
+    <p-floatlabel variant="on" class="mb-4">
+      <p-select [showClear]="true" [required]="true" [ngModel]="null" [options]="promotionTypes()" id="promotion_type"
+                class="w-full" name="promotionType"/>
+      <label for="promotion_type" class="font-sans">Promotion type</label>
+    </p-floatlabel>
+    <p-inputgroup class="mb-4">
+      <p-inputgroup-addon>$</p-inputgroup-addon>
+      <p-floatlabel variant="on">
+        <input ngModel pKeyFilter="money" [required]="true" pInputText id="price" class="w-full" autocomplete="off"
+               name="price"/>
+        <label for="price" class="font-sans">Price</label>
+      </p-floatlabel>
+    </p-inputgroup>
+    <p-inputgroup class="mb-4">
+      <p-inputgroup-addon>$</p-inputgroup-addon>
+      <p-floatlabel variant="on">
+        <input ngModel name="discountValue" [required]="true" pKeyFilter="money" pInputText id="discount_value" class="w-full"
+               autocomplete="off"/>
+        <label for="discount_value" class="font-sans">Discount price</label>
+      </p-floatlabel>
+    </p-inputgroup>
+    <p-floatlabel variant="on" class="mb-4">
+      <label for="description" class="font-sans">Discount price</label>
+      <textarea ngModel name="description" id="description" rows="5" cols="30" pTextarea class="w-full"></textarea>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="mb-4">
+      <p-datePicker ngModel name="startDate" id="start_date" [required]="true" styleClass="w-full" showIcon="true"
+                  appendTo="body" #startDateRef="ngModel"></p-datePicker>
+      <label for="start_date" class="font-sans">Start date</label>
+    </p-floatlabel>
+    <p-floatlabel variant="on" class="mb-4">
+      <p-datePicker ngModel name="endDate" [required]="true" id="end_date" styleClass="w-full" showIcon="true"
+                  appendTo="body" [minDate]="startDateRef.control.value"></p-datePicker>
+      <label for="end_date" class="font-sans">End date</label>
+    </p-floatlabel>
+
+    <div class="flex justify-end gap-2">
+      <p-button label="Cancel" severity="secondary" (onClick)="showPromotion.set(false)"/>
+      <p-button type="submit" [disabled]="form.invalid" label="Save"/>
+    </div>
+  </form>
+</p-dialog>
+

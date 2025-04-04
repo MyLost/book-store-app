@@ -2,22 +2,18 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { dashboard, editUser } from '../../common/Utils';
 import { SidebarModule } from 'primeng/sidebar';
 import { MenuDashboardComponent } from '../menu-dashboard/menu-dashboard.component';
-import { EditUserComponentComponent } from '../../user/edit-user-component/edit-user-component.component';
 import { AuthService } from '../../auth/auth.service';
-import { User, UserInterface } from '../../user/User';
-import { DeleteUserComponent } from "../../user/delete-user/delete-user.component";
-import {RouterOutlet} from "@angular/router";
+import { UserInterface } from '../../user/User';
+import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
-    imports: [
-        SidebarModule,
-        MenuDashboardComponent,
-        EditUserComponentComponent,
-        DeleteUserComponent,
-        RouterOutlet
-    ],
+  imports: [
+    SidebarModule,
+    MenuDashboardComponent,
+    RouterOutlet
+  ],
     styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {

@@ -1,25 +1,23 @@
-import {Component, OnInit, signal} from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import { Component, OnInit, signal } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { NavService } from './nav.service';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { DashboardComponent } from '../../dashboard/dashboard/dashboard.component';
 import { LanguageComponent } from '../../common/language/language.component';
 import { Store } from '@ngrx/store';
 import { LoginState } from '../../redux/store/login.state';
-import {TranslateModule} from "@ngx-translate/core";
-import {loginEmitter, logout, translateEmitter} from "../../common/Utils";
-import {MenubarModule} from "primeng/menubar";
+import { TranslateModule } from "@ngx-translate/core";
+import { loginEmitter, logout, translateEmitter } from "../../common/Utils";
+import { MenubarModule } from "primeng/menubar";
 
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.component.html',
-    imports: [
-        TabMenuModule,
-        DashboardComponent,
-        LanguageComponent,
-        TranslateModule,
-        MenubarModule
-    ],
+  imports: [
+    TabMenuModule,
+    LanguageComponent,
+    TranslateModule,
+    MenubarModule
+  ],
     styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {

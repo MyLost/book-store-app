@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
-import { BaseService } from '../base.service';
+import { BaseService } from '../common/base.service';
 import { jwtDecode } from 'jwt-decode';
 import { HttpClient } from '@angular/common/http';
 import { shareReplay } from 'rxjs';
@@ -12,9 +12,8 @@ export class AuthService extends BaseService<any> {
 
   private readonly usersUrl = this.baseUrl + 'users/';
 
-  constructor () { super(); }
+  constructor (private http: HttpClient) { super(http); }
 
-  private http = inject(HttpClient);
 
   public get authorizationToken() {
     return localStorage.getItem('access_token');

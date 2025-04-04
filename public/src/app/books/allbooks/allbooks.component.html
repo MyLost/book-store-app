@@ -1,41 +1,43 @@
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
-<h1>ALL BOOKS</h1>
-<p-table [value]="books" [rows]="20" [paginator]="true">
-  <ng-template pTemplate="header">
-    <tr>
-      <th class="text-center"><a (click)="sort('Author')">Author</a></th>
-      <th class="text-center"><a (click)="sort('Title')">Title</a></th>
-      <th class="text-center"><a (click)="sort('Price')">Price</a></th>
-      <th class="text-center"><a (click)="sort('Genre')">Kind</a></th>
-      <th class="text-center"><a (click)="sort('Cover')">Cover</a></th>
-      <th class="text-center"><a (click)="sort('NumberOfBooks')">NumberOfBooks</a></th>
-      <th class="text-center">Actions</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-book let-index="rowIndex">
-    <tr>
-      <td class="text-center">{{ book.author }}</td>
-      <td class="text-center">{{ book.title }}</td>
-      <td class="text-center">{{ book.price }}</td>
-      <td class="text-center">{{ book.genre.name }}</td>
-      <td class="text-center">{{ book.cover }}</td>
-      <td class="text-center">{{ book.numberOfBooks }}</td>
-      <td class="text-center">
-        <div class="flex justify-content-between">
-          <p-button icon="pi pi-at" severity="warn" (onClick)="showPromotion.set(true)"
-                    pTooltip="add promotion" tooltipPosition="bottom"
-          ></p-button>
-          <p-button icon="pi pi-pencil" severity="info" (onClick)="edit(book.id)"
-                    pTooltip="edit" tooltipPosition="bottom"
-          ></p-button>
-          <p-button icon="pi pi-trash" severity="danger" (onClick)="delete(book.id)"
-                    pTooltip="delete" tooltipPosition="bottom"
-          ></p-button>
-        </div>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-
-<app-promotions [showPromotion]="showPromotion()" (showPromotionChange)="showPromotion.set(false)"></app-promotions>
+<p-panel header="BOOKS">
+  <p-table [value]="books" [rows]="20" [paginator]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="text-center"><a (click)="sort('Author')">Author</a></th>
+        <th class="text-center"><a (click)="sort('Title')">Title</a></th>
+        <th class="text-center"><a (click)="sort('Price')">Price</a></th>
+        <th class="text-center"><a (click)="sort('Genre')">Kind</a></th>
+        <th class="text-center"><a (click)="sort('Cover')">Cover</a></th>
+        <th class="text-center"><a (click)="sort('NumberOfBooks')">NumberOfBooks</a></th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book let-index="rowIndex">
+      <tr>
+        <td class="text-center">{{ book.author }}</td>
+        <td class="text-center">{{ book.title }}</td>
+        <td class="text-center">{{ book.price }}</td>
+        <td class="text-center">{{ book.genre.name }}</td>
+        <td class="text-center">{{ book.cover }}</td>
+        <td class="text-center">{{ book.numberOfBooks }}</td>
+        <td class="text-center">
+          <div class="flex justify-content-between">
+            <p-button icon="pi pi-at" severity="warn" (onClick)="showPromotion.set(true); currentBookId.set(book.id)"
+                      pTooltip="add promotion" tooltipPosition="bottom"
+            ></p-button>
+            <p-button icon="pi pi-pencil" severity="info" (onClick)="edit(book.id)"
+                      pTooltip="edit" tooltipPosition="bottom"
+            ></p-button>
+            <p-button icon="pi pi-trash" severity="danger" (onClick)="delete(book.id)"
+                      pTooltip="delete" tooltipPosition="bottom"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>
+<app-promotions
+  [itemId]="currentBookId()"
+  [showPromotion]="showPromotion()" (showPromotionChange)="showPromotion.set(false)"></app-promotions>

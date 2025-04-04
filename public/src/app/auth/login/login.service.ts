@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, shareReplay } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginUser } from '../../redux/models/login.model';
-import { BaseService } from '../../base.service';
+import { BaseService } from '../../common/base.service';
 import { LoginModel } from './login-model';
 import { environment } from '../../../environments/environment';
 
@@ -17,7 +17,7 @@ export class LoginService extends BaseService<any> {
   constructor(
     private http: HttpClient
   ) {
-    super();
+    super(http);
   }
 
   login(user: LoginModel): Observable<any>  {

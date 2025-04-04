@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl, FormControl, NgForm } from '@angular/forms';
-import { ValidationPipe } from '../pipes/validation.pipe';
+import { ValidationPipe } from '../pipes/validation-pipe/validation.pipe';
 import { NgIf } from '@angular/common';
 
 @Component({

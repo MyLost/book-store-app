@@ -1,71 +1,93 @@
-<p-card class="container mt-4">
-  <h1 class="text-center">Register Page</h1>
-  <form  [formGroup]="register" (ngSubmit)="onSubmit()" class="grid p-fluid">
-    <div class="input-group col-6">
-      <label for="username">FirstName:</label>
-      <input (keyup)=validateFirstName() type="text"  pInputText formControlName="firstName" />
-      @if (validFirstName) {
-        <div class="message">
+<p-panel header="Bookstore Registration" class="container mt-4">
+  <form [formGroup]="register" (ngSubmit)="onSubmit()">
+    <div class="grid ">
+
+      <div class="col-3">
+        <p-floatlabel variant="on">
+          <input class="w-full" (keyup)="validateFirstName()" type="text" pInputText formControlName="firstName"/>
+          <label>First Name</label>
+        </p-floatlabel>
+        <div *ngIf="validFirstName" class="message">
           <p-message severity="warn" [text]="messageFirstName"></p-message>
         </div>
-      }
-    </div>
+      </div>
 
-    <div class="input-group col-6">
-      <label for="password">LastName:</label>
-      <input (keyup)=validateLastName() type="text"  pInputText formControlName="lastName"/>
-      @if (validLastName) {
-        <div  class="message">
+      <div class="col-3">
+        <p-floatlabel variant="on">
+          <input class="w-full" (keyup)="validateLastName()" type="text" pInputText formControlName="lastName"/>
+          <label>Last Name</label>
+        </p-floatlabel>
+        <div *ngIf="validLastName" class="message">
           <p-message severity="warn" [text]="messageLastName"></p-message>
         </div>
-      }
-    </div>
+      </div>
 
-    <div class="input-group col-6">
-      <label for="username">Username:</label>
-      <input (keyup)=validateUsername() type="text" id="username"  pInputText formControlName="username" />
-      @if (validUsername) {
-        <div class="message">
+      <div class="col-3">
+        <p-floatlabel variant="on">
+          <input class="w-full" (keyup)="validateUsername()" type="text" pInputText formControlName="username"/>
+          <label>Username</label>
+        </p-floatlabel>
+        <div *ngIf="validUsername" class="message">
           <p-message severity="warn" [text]="messageUsername"></p-message>
         </div>
-      }
-    </div>
+      </div>
 
-    <div class="input-group col-6">
-      <label for="born_date">Born date:</label>
-      <p-calendar (click)="validateBornOn()" (keyup)="validateBornOn()" id="born_date" [showIcon]="true" formControlName="bornDate"></p-calendar>
-      @if (validBornOn) {
-        <div class="message">
+      <div class="col-3">
+        <p-floatlabel variant="on">
+          <input class="w-full" type="email" pInputText formControlName="email" email />
+          <label>Email</label>
+        </p-floatlabel>
+        <div *ngIf="ngForm?.errors?.['email']" class="message">
+          <p-message severity="warn" [text]="'Not valid email'"></p-message>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <p-floatlabel variant="on">
+          <p-datePicker styleClass="w-full" (onSelect)="validateBornOn()" (keyup)="validateBornOn()"
+                        showIcon="true"
+                        formControlName="bornDate"></p-datePicker>
+          <label>Date of Birth</label>
+        </p-floatlabel>
+        <div *ngIf="validBornOn" class="message">
           <p-message severity="warn" [text]="messageBornOn"></p-message>
         </div>
-      }
-    </div>
+      </div>
 
-    <div class="input-group col-6">
-      <label for="password">Password:</label>
-      <input (keyup)=validatePassword() type="text" id="password" pInputText formControlName="password" />
-      @if (validPassword) {
-        <div class="message">
+      <div class="col-3">
+        <p-floatlabel variant="on">
+        <input class="w-full" (keyup)="validatePassword()" type="password" pInputText formControlName="password"/>
+        <label>Password</label>
+        </p-floatlabel>
+        <div *ngIf="validPassword" class="message">
           <p-message severity="warn" [text]="messagePassword"></p-message>
         </div>
-      }
-    </div>
+      </div>
 
-    <div class="input-group col-6">
-      <label for="confirmPassword">Confirm pasword:</label>
-      <input (keyup)=validateConfirmPassword() type="text" id="confirmPassword" pInputText formControlName="confirmPassword" />
-      @if (validConfirmPassword) {
-        <div class="message">
+      <div class="col-3">
+        <p-float-label variant="on">
+        <input class="w-full" (keyup)="validateConfirmPassword()" type="password" pInputText formControlName="confirmPassword"/>
+          <label>Confirm Password</label>
+        </p-float-label>
+        <div *ngIf="validConfirmPassword" class="message">
           <p-message severity="warn" [text]="messageConfirmPassword"></p-message>
         </div>
-      }
+      </div>
+
+<!--      <div class="col-3">-->
+<!--        <p-floatlabel variant="on">-->
+<!--          <p-dropdown class="w-full" formControlName="favoriteGenre"/>-->
+<!--          <label>Favorite Genre</label>-->
+<!--        </p-floatlabel>-->
+<!--        <div *ngIf="ngForm?.errors?.['favoriteGenre']" class="message">-->
+<!--          <p-message severity="warn"></p-message>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <div class="col-3">
+        <button class="w-full" pButton type="submit" label="Register" [disabled]="!register.valid"></button>
+      </div>
+
     </div>
-
-    <div class="col-6"></div>
-
-    <div class="col-6 ">
-      <button pButton type="submit" label="Register" [disabled]="!register.valid"></button>
-    </div>
-
   </form>
-</p-card>
+</p-panel>

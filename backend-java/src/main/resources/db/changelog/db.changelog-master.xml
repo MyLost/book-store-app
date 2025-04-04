@@ -9,7 +9,10 @@
     <include file="db/migrations/migration_2025-04-02-18-11.xml"/>
     <include file="db/migrations/migration_2025-04-02-18-13.xml"/>
     <include file="db/migrations/migration_2025-04-03-10-16.xml"/>
-
+    <include file="db/migrations/migration_2025-04-03-17-47.xml"/>
+    <include file="db/migrations/migration_2025-04-03-18-27.xml"/>
+    <include file="db/migrations/migration_2025-04-04-12-35.xml"/>
+    <include file="db/migrations/migration_2025-04-04-16-42.xml"/>
 
     <include file="db/data/import.sql"/>
     <include file="db/data/categories.sql"/>

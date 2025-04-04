@@ -5,50 +5,10 @@ import {
 } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { BookInterface } from './common/BookInterface';
-import { BaseService } from '../base.service';
+import { BaseService } from '../common/base.service';
 import { Genre } from './common/Genre';
 import { BookRequest } from './addbook/addbook.component';
 import {PaginatorState} from "primeng/paginator";
-
-// const employeesUrl = '../../../../../../../resources/Employees.json';
-// const employeeUrl = '../../../../../../../resources/Employee.json';
-//
-// const filePhp = 'http://localhost/myData.php';
-// const backEnd = 'http://localhost:8000/get/employees';
-//
-// const header = { 'MyHeader': 'myvalue', 'MyHeaderOne': 'myvalue', 'MyHeaderTwo': 'myvalue',
-//  'MyHeaderThree': 'myvalue', 'Content-Type': 'MycontenttypeKakvo stava' };
-
-
-
-// @Injectable()
-// export class MyInterceptor implements HttpInterceptor {
-//
-//   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-/*
-    const secureReq = req.clone({
-      // url: req.url.replace('http://', 'https://'),
-      headers: req.headers.set('Authorization', authToken),
-
-
-    });
-*/
-    // console.log('This is from intercept: ' + secureReq.responseType);
-
-//     console.log(req.headers);
-//     return next.handle(req);
-//   }
-//
-// }
-//
-// export interface Config {
-//   heroesUrl: string;
-//   textfile: string;
-// }
-//
-// export interface Config {
-//   employee: string;
-// }
 
 export interface BookEditData {
   book: BookInterface;
@@ -65,68 +25,9 @@ export class BookService extends BaseService<any> {
   // headers = new HttpHeaders(header);
 
   constructor(private http: HttpClient) {
-    super();
-/*
-    this.store.dispatch({
-      type: APP_MESSAGE
-    });
-*/
+    super(http);
+
   }
-
-    // client(): Observable<HttpResponse<Employee>> {
-    //
-    //   return this.http.get<Employee>(employeesUrl, {
-    //     headers: {
-    //       'Content-Type': ['application/json', 'text/plain', 'my/text']
-    //     },
-    //     observe: 'response',
-    //
-    //
-    //
-    //
-    //   });
-    //
-    // }
-    // getCLient(): Observable<HttpResponse<Object>> {
-    //
-    //   return this.http.get<HttpResponse<Object>>(employeeUrl);
-    // }
-    //
-    // getClientResponse(): Observable<Response> {
-    //
-    //   return this.http.get<Response>(employeesUrl, {
-    //     headers: {
-    //       'Content-Type': ['application/json', 'text/plain', 'my/text']
-    //     },
-    //
-    //   });
-    //
-    // }
-
-
-
-    // getPHPFile(): Observable<HttpResponse<string>>  {
-    //   return this.http.get(filePhp, {
-    //     responseType: 'text',
-    //     headers: this.headers,
-    //     observe: 'response',
-    //     reportProgress: true,
-    //    // withCredentials: true
-    //
-    //   });
-    // }
-    //
-    // getBackEnd(): Observable<HttpResponse<any>> {
-    //   return this.http.get<Response>(backEnd, {
-    //     headers: {
-    //       'Authorization' : '1234567891242151cgdgjmbnhsgkkjftrsnubkjkjkubybyvtyvYygifgppspfjIJKLIHJLFWSE',
-    //       'Myheader' : '123456789'
-    //     },
-    //     observe: 'response',
-    //
-    //
-    //   });
-    // }
 
   getPagedListByGenre(params: PaginatorState, genreId: number) {
     let body = {
@@ -189,8 +90,4 @@ export class BookService extends BaseService<any> {
     deleteBook(bookId: number) {
       return this.http.delete(this.booksUrl + '/' + bookId);
     }
-
-
-
-
 }

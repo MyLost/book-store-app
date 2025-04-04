@@ -31,10 +31,10 @@ public class UsersEntity implements UserDetails {
     @Id
     private UUID id;
 
-    @Column
+    @Column(name="first_name")
     private String firstName;
 
-    @Column
+    @Column(name="last_name")
     private String lastName;
 
     @Column
@@ -43,26 +43,27 @@ public class UsersEntity implements UserDetails {
     @Column
     private String password;
 
-    @Column
+    @Column(name="born_on")
     private LocalDate bornOn;
 
     @Column
     private String email;
 
-    @Column
+    @Column(name="is_active")
     private boolean isActive;
 
     @Column
     private Roles role;
 
-    @Column
+    @Column(name="phone_number")
     private String phoneNumber;
 
     @OneToMany(targetEntity=ApiTokenEntity.class, mappedBy="user")
+    @Column(name="api_tokens")
     private List<ApiTokenEntity> apiTokens;
 
-    @Column
-    private String google_email;
+    @Column(name="google_email")
+    private String googleEmail;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

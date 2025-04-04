@@ -13,13 +13,15 @@ public class BaseExceptionHandler {
     @ExceptionHandler({ Exception.class })
     public final ResponseEntity<ApiErrorResponse> handleException(Exception ex, WebRequest request) {
 
+        ex.printStackTrace();
+
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.NOT_FOUND;
 
         return new ResponseEntity<>(
             ApiErrorResponse.builder()
-            .error(ex.getMessage())
-            .message(ex.getMessage())
+            .error("Unexpected server error")
+            .message("Unexpected server error")
             .httpStatusCode(HttpStatus.NOT_FOUND)
             .path(request.getContextPath())
             .timestamp(System.currentTimeMillis())

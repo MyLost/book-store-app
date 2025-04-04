@@ -1,42 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { TabViewModule } from 'primeng/tabview';
-import { AllBooksComponent } from '../allbooks/allbooks.component';
-import { AddBookComponent } from '../addbook/addbook.component';
-import { EditBookComponent } from '../editbook/editbook.component';
-import {ActivatedRoute, RouterOutlet} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
 import { ToastModule } from 'primeng/toast';
-import {NgOptimizedImage, NgStyle} from "@angular/common";
-import {TagModule} from "primeng/tag";
-import {Button} from "primeng/button";
-import {BookInterface} from "../common/BookInterface";
-import {BookService} from "../book.service";
-import {environment} from "../../../environments/environment";
-import {CardModule} from "primeng/card";
-import {PaginatorModule, PaginatorState} from "primeng/paginator";
-import {TranslateModule} from "@ngx-translate/core";
+import { NgOptimizedImage, NgStyle } from "@angular/common";
+import { TagModule } from "primeng/tag";
+import { Button } from "primeng/button";
+import { BookInterface } from "../common/BookInterface";
+import { BookService } from "../book.service";
+import { environment } from "../../../environments/environment";
+import { CardModule } from "primeng/card";
+import { PaginatorModule, PaginatorState } from "primeng/paginator";
+import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
-    imports: [
-        TabViewModule,
-        AllBooksComponent,
-        AddBookComponent,
-        EditBookComponent,
-        RouterOutlet,
-        PanelModule,
-        MenubarModule,
-        ToastModule,
-        NgOptimizedImage,
-        TagModule,
-        NgStyle,
-        Button,
-        CardModule,
-        PaginatorModule,
-        TranslateModule,
-    ],
+  imports: [
+    TabViewModule,
+    PanelModule,
+    MenubarModule,
+    ToastModule,
+    NgOptimizedImage,
+    TagModule,
+    NgStyle,
+    Button,
+    CardModule,
+    PaginatorModule,
+    TranslateModule,
+  ],
     styleUrls: ['./book.component.css']
 })
 

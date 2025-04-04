@@ -14,7 +14,6 @@ import {Genre} from "./books/common/Genre";
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [MessageService],
     standalone: false
 })
 export class AppComponent implements OnInit {
@@ -57,7 +56,10 @@ export class AppComponent implements OnInit {
     this.bookSvc.getCategories().subscribe(categories => {
       const newItems = categories.map(category => ({
         label: category.name,
-        items: category.genres
+        items: category.genres.map(g => ({
+          label: g.name,
+          routerLink: ['books', 'genre', g.id]
+        }))
       }));
       this.sideBarItems.update((items: MenuItem[]) => [...items, ...newItems]);
     });

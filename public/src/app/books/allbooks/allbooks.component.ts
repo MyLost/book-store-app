@@ -1,29 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { $bookChangeSource, BookService } from '../book.service';
+import { Component, OnInit, signal } from '@angular/core';
+import { BookService } from '../book.service';
 import { BookInterface } from '../common/BookInterface';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import {ConfirmationService, MessageService} from "primeng/api";
-import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { Tooltip } from "primeng/tooltip";
+import { DropdownModule } from "primeng/dropdown";
+import { PromotionsComponent } from "../../common/promotions/promotions.component";
+import { Panel } from "primeng/panel";
 
 
 @Component({
     selector: 'app-allbooks',
     templateUrl: './allbooks.component.html',
-    imports: [
-        TableModule,
-        ButtonModule,
-        ConfirmDialogModule
-    ],
+  imports: [
+    TableModule,
+    ButtonModule,
+    ConfirmDialogModule,
+    Tooltip,
+    DropdownModule,
+    PromotionsComponent,
+    Panel
+  ],
     styleUrls: ['./allbooks.component.css'],
     providers: [BookService, MessageService, ConfirmationService]
 })
 export class AllBooksComponent implements OnInit {
 
   protected books: any;
-
+  protected showPromotion = signal<boolean>(false);
+  protected currentBookId = signal<number>(null);
   constructor(
     private bookService: BookService,
     private msgSvc: MessageService,

@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpHeaders,
+  HttpResponse,
+  HttpErrorResponse
+} from '@angular/common/http';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { LoadingService } from '../loading.service';
+import { MessageService } from "primeng/api";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -11,7 +20,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private authService: AuthService,
-    private _loading: LoadingService
+    private _loading: LoadingService,
+    private messageService: MessageService
 ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -36,6 +46,27 @@ export class AuthInterceptor implements HttpInterceptor {
           }
         }));
     }
-    return next.handle(req);
+    return next.handle(req).pipe(
+      // catchError((error: HttpErrorResponse) => {
+      //   if (error.status === 401) {
+      //     // Optionally, you can further customize the message or extract details from error.error
+      //     this.messageService.add({
+      //       key: 'app',
+      //       severity: 'error',
+      //       summary: 'Unauthorized',
+      //       detail: 'You are not authorized to perform this action.'
+      //     });
+      //   } else {
+      //     // For other errors, you can display a generic error message or handle them accordingly
+      //     this.messageService.add({
+      //       key: 'app',
+      //       severity: 'error',
+      //       summary: 'Error',
+      //       detail: error.message || 'An unexpected error occurred.'
+      //     });
+      //   }
+      //   return throwError(error);
+      // })
+    );
   }
 }

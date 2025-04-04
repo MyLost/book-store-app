@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="midas (generated)" id="1743694026598-1">
+        <addColumn tableName="api_token">
+            <column name="expire_at" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743694026598-2">
+        <addColumn tableName="api_token">
+            <column name="token_type" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743694026598-3">
+        <dropColumn columnName="expiredAt" tableName="api_token"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743694026598-4">
+        <dropColumn columnName="tokenType" tableName="api_token"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,6 +1,7 @@
 import { ErrorHandler, EventEmitter, inject } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DateTime } from "luxon";
 
 export const loginEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 export const logout: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -27,4 +28,13 @@ export class CustomErrorHandler implements ErrorHandler {
 
 export function isObjectEmpty(object: any) {
   return object && Object.keys(object).length === 0 && object.constructor === Object;
+}
+
+export function toLocalDate(value: Date | string | null | undefined): string | null {
+  if (!value) {
+    return null;
+  }
+
+  return DateTime.fromJSDate(new Date(value))
+    .toFormat("yyyy-MM-dd'T'HH:mm:ss");
 }

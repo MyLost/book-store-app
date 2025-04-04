@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
-import { NgOptimizedImage } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { translateEmitter } from '../Utils';
-import {environment} from "../../../environments/environment";
+import { environment } from "../../../environments/environment";
 
 @Component({
     selector: 'app-language',
     templateUrl: './language.component.html',
     styleUrls: ['./language.component.css'],
-    imports: [
-        SelectButtonModule,
-        FormsModule,
-        NgOptimizedImage
-    ],
+  imports: [
+    SelectButtonModule,
+    FormsModule
+  ],
     providers: [TranslateService]
 })
 export class LanguageComponent implements OnInit {
