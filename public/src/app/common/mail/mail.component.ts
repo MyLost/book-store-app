@@ -9,21 +9,25 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessageService, SelectItem } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { Textarea } from "primeng/textarea";
+import { FloatLabel } from "primeng/floatlabel";
 
 
 @Component({
     selector: 'app-mail',
     templateUrl: './mail.component.html',
-    imports: [
-        MessageModule,
-        ButtonModule,
-        InputTextModule,
-        PanelModule,
-        FormsModule,
-        DropdownModule,
-        ToastModule,
-        ErrorMessageComponent
-    ],
+  imports: [
+    MessageModule,
+    ButtonModule,
+    InputTextModule,
+    PanelModule,
+    FormsModule,
+    DropdownModule,
+    ToastModule,
+    ErrorMessageComponent,
+    Textarea,
+    FloatLabel
+  ],
     styleUrls: ['./mail.component.css']
 })
 export class MailComponent implements OnInit {
@@ -34,6 +38,17 @@ export class MailComponent implements OnInit {
   ];
 
   protected validationMessages = {
+    firstName: {
+      required: 'First name is required',
+      firstName: 'Please provide valid first name',
+    },
+    lastName: {
+      required: 'Last name is required',
+      lastName: 'Please provide valid last name',
+    },
+    message: {
+      required: 'Email is required',
+    },
     email: {
       required: 'Email is required',
       email: 'Please provide a valid email',

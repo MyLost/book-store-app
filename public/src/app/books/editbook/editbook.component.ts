@@ -32,7 +32,7 @@ import { Select } from "primeng/select";
     Select,
     FormsModule
   ],
-    providers: [MessageService, BookService]
+    providers: [BookService]
 })
 export class EditBookComponent implements OnInit, OnDestroy {
 

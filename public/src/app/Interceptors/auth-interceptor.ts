@@ -1,17 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpHeaders,
-  HttpResponse,
-  HttpErrorResponse
-} from '@angular/common/http';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { LoadingService } from '../loading.service';
-import { MessageService } from "primeng/api";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -21,7 +12,6 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
     private _loading: LoadingService,
-    private messageService: MessageService
 ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

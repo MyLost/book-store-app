@@ -23,7 +23,8 @@ public class PromotionServiceImpl implements PromotionService {
 
     @Override
     public List<PromotionResponse> getList() {
-        var response = promotionsRepository.findAll();
+        final var response = promotionsRepository.findAll();
+
         return response.stream().map(promotionMapper::fromEntity).toList();
     }
 

@@ -2,42 +2,55 @@
 <form #contactForm="ngForm" (ngSubmit)="submit(contactForm)" novalidate class="my-6 flex justify-content-center">
   <p-panel header="Contact form" class="grid p-fluid">
     <div class="col-12">
-      <input pInputText placeholder="Email" ngModel name="email" #firstName="ngModel" required/><br />
-      <app-error-message [control]="contactForm.controls['email']" [errorMessages]="validationMessages.email" ></app-error-message>
+      <p-floatlabel variant="on">
+        <input pInputText id="email" ngModel name="email" #email="ngModel" [required]="true"/>
+        <label for="email">Email</label>
+      </p-floatlabel>
+      <br />
+      <app-error-message [control]="contactForm.controls['email']"
+                         [errorMessages]="validationMessages.email"></app-error-message>
     </div>
     <div class="col-12">
-      <input  type="text" pInputText placeholder="First name" ngModel name="firstName" #firstName="ngModel"/><br />
-      @if (!firstName.valid) {
-        <div>
-          <p-message  severity="info" text="Wrong Symbol"></p-message>
-        </div>
-      }
+      <p-floatlabel variant="on">
+        <input [required]="true" id="firstName" type="text" pInputText ngModel name="firstName"
+               #firstName="ngModel"/>
+        <label for="firstName">First name</label>
+      </p-floatlabel>
+      <br />
+      <app-error-message [control]="contactForm.controls['firstName']" [errorMessages]="validationMessages.firstName"
+      ></app-error-message>
     </div>
     <div class="col-12">
-      <input type="text" pInputText  placeholder="Last name" ngModel name="lastName" #lastName="ngModel"/><br />
-      @if (!lastName.valid) {
-        <div>
-          <p-message  severity="info" text="Wrong Symbol"></p-message>
-        </div>
-      }
+      <p-floatlabel variant="on">
+        <input type="text" id="lastName" pInputText [required]="true" ngModel name="lastName"
+               #lastName="ngModel"/>
+        <label for="lastName">Last name</label>
+      </p-floatlabel>
+      <br />
+      <app-error-message [control]="contactForm.controls['lastName']"
+                         [errorMessages]="validationMessages.lastName"></app-error-message>
     </div>
     <div class="col-12">
-      <textarea placeholder="Your message" ngModel name="message" #message="ngModel"></textarea><br />
-      @if (!message.valid) {
-        <div>
-          <p-message  severity="info" text="Wrong Symbol"></p-message>
-        </div>
-      }
+      <p-floatlabel variant="on">
+        <textarea id="message" pTextarea ngModel name="message" #message="ngModel"></textarea>
+        <label for="message">Message</label>
+      </p-floatlabel>
+      <br />
+      <app-error-message [control]="contactForm.controls['message']"
+                         [errorMessages]="validationMessages.message"></app-error-message>
     </div>
     <div class="col-12">
-      <p-dropdown
-        [options]="gender"
-        appendTo="body"
-        [autoDisplayFirst]="false"
-        ngModel
-        name="gender"
-        placeholder="Gender"
+      <p-floatlabel variant="on">
+        <p-dropdown
+          styleClass="w-full"
+          [options]="gender"
+          appendTo="body"
+          [ngModel]="null"
+          name="gender"
+          id="genre"
         />
+        <label for="genre">Genre</label>
+      </p-floatlabel>
     </div>
     <div class="col-12">
       <p-button type="submit" label="Send mail"></p-button>

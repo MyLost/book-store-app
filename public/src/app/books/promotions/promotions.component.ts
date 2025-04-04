@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { BookService } from '../book.service';
-import { BookInterface } from '../common/BookInterface';
 import { ImageModule } from "primeng/image";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "primeng/tabs";
+import { PromotionsService } from "../../common/promotions/promotions.service";
+import { environment } from "../../../environments/environment";
+import { TableModule } from "primeng/table";
+import { Observable } from "rxjs";
+import { AsyncPipe } from "@angular/common";
+import { Panel } from "primeng/panel";
 
 
 @Component({
@@ -12,18 +17,28 @@ import { ImageModule } from "primeng/image";
   imports: [
     ButtonModule,
     RippleModule,
-    ImageModule
+    ImageModule,
+    Tabs,
+    TabList,
+    Tab,
+    TabPanels,
+    TabPanel,
+    TableModule,
+    AsyncPipe,
+    Panel
   ],
     styleUrls: ['./promotions.component.css'],
-    providers: [BookService]
+    providers: []
 })
 export class PromotionsComponent implements OnInit {
 
-  protected books: BookInterface[];
+  private svc = inject(PromotionsService);
+  protected $promotions: Observable<any>;
 
-  constructor(private bookSvc: BookService) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.bookSvc.getPromotions().subscribe((data: BookInterface[]) => this.books = data);
+    this.$promotions = this.svc.getList({url: environment.backendFullHost + "promotions"});
   }
 }

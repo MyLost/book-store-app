@@ -1,6 +1,5 @@
 import { Component, inject, Input, model, OnInit, signal } from '@angular/core';
 import { Button } from "primeng/button";
-import { Calendar } from "primeng/calendar";
 import { Dialog } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
 import { FloatLabel } from "primeng/floatlabel";
@@ -10,8 +9,6 @@ import { InputText } from "primeng/inputtext";
 import { KeyFilter } from "primeng/keyfilter";
 import { Textarea } from "primeng/textarea";
 import { PromotionsService } from "./promotions.service";
-import { HttpConfig } from "../http-config";
-import { Environment } from "@angular/cli/lib/config/workspace-schema";
 import { environment } from "../../../environments/environment";
 import { MessageService, SelectItem } from "primeng/api";
 import { Select } from "primeng/select";
@@ -23,7 +20,6 @@ import { DatePicker } from "primeng/datepicker";
   selector: 'app-promotions',
   imports: [
     Button,
-    Calendar,
     Dialog,
     DropdownModule,
     FloatLabel,
@@ -51,15 +47,13 @@ export class PromotionsComponent implements OnInit {
 
   @Input() itemId!: number;
 
-
   ngOnInit(): void {
-
   }
 
   protected getPromotions() {
   }
 
-  doSubmit(form: NgForm) {
+  protected doSubmit(form: NgForm) {
     let value = form.value;
     value.startDate = toLocalDate(value.startDate);
     value.endDate = toLocalDate(value.endDate);
@@ -68,12 +62,11 @@ export class PromotionsComponent implements OnInit {
     if (form.valid) {
       this.svc.save(value, {url: environment.backendFullHost + 'promotions'})
         .subscribe(data => {
-          if(data.result) {
+          if (data.result) {
             this.msgSvc.add({
-              key: 'app',
               detail: data.message,
               severity: "success",
-              summary: "Success"
+              summary: "Promotion saved successfully!"
             })
           }
         });

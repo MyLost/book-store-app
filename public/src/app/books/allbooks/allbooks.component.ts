@@ -25,7 +25,7 @@ import { Panel } from "primeng/panel";
     Panel
   ],
     styleUrls: ['./allbooks.component.css'],
-    providers: [BookService, MessageService, ConfirmationService]
+    providers: [BookService, ConfirmationService]
 })
 export class AllBooksComponent implements OnInit {
 

@@ -1,5 +1,5 @@
 import {Component, OnInit, signal} from '@angular/core';
-import {MenuItem, MessageService} from 'primeng/api';
+import {MenuItem} from 'primeng/api';
 import {LoadingService} from './loading.service';
 import {delay, lastValueFrom} from 'rxjs';
 import {Router} from '@angular/router';
@@ -8,7 +8,6 @@ import {environment} from "../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {translateEmitter} from "./common/Utils";
 import {BookService} from "./books/book.service";
-import {Genre} from "./books/common/Genre";
 
 @Component({
     selector: 'app-root',

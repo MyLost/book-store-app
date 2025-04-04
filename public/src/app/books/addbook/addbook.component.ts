@@ -37,7 +37,7 @@ export interface BookRequest {
     Fluid,
     Select
   ],
-    providers: [MessageService, BookService]
+    providers: [BookService]
 })
 export class AddBookComponent implements OnInit {
 

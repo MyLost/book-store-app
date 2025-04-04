@@ -37,7 +37,7 @@ import { Panel } from "primeng/panel";
     DropdownModule,
     Panel
   ],
-    providers: [MessageService]
+    providers: []
 })
 export class RegisterComponent implements OnInit {
 

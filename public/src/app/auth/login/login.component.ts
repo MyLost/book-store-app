@@ -32,7 +32,7 @@ import {loginEmitter} from "../../common/Utils";
         MessageModule,
         CardModule
     ],
-    providers: [MessageService]
+    providers: []
 })
 
 export class LoginComponent implements OnInit {
