@@ -7,9 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class BookSearchParams {
-
-    private String author;
-    private String title;
-
+public class GenreParams {
+    private String name;
 }

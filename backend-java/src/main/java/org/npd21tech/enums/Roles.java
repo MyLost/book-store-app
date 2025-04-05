@@ -41,7 +41,6 @@ public enum Roles {
         )
     );
 
-
     @Getter
     private final Set<Permission> permissions;
 

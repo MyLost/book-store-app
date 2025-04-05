@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="midas (generated)" id="1743845791089-1">
+        <createTable tableName="promotions_types">
+            <column name="promotion_type_id" type="SMALLINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="promotions_typesPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743845791089-2">
+        <addColumn tableName="promotions">
+            <column name="promotionType_promotion_type_id" type="SMALLINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743845791089-3">
+        <addUniqueConstraint columnNames="promotionType_promotion_type_id" constraintName="UC_PROMOTIONSPROMOTIONTYPE_PROMOTION_TYPE_ID_COL" tableName="promotions"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743845791089-4">
+        <addForeignKeyConstraint baseColumnNames="promotionType_promotion_type_id" baseTableName="promotions" constraintName="FKqvyf6pq6sedh3rqq65ggantrg" deferrable="false" initiallyDeferred="false" referencedColumnNames="promotion_type_id" referencedTableName="promotions_types" validate="true"/>
+    </changeSet>
+    <changeSet author="midas (generated)" id="1743845791089-5">
+        <dropColumn columnName="promotion_type" tableName="promotions"/>
+    </changeSet>
+</databaseChangeLog>

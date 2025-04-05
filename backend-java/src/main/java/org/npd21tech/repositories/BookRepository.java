@@ -17,4 +17,6 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
     Page<BookEntity> findAll(Pageable pageable);
 
     Page<BookEntity> findAllByGenreId(Pageable pageable, Long genreId);
+
+    BookEntity findByAuthorEqualsAndTitleEquals(String attr0, String attr1);
 }

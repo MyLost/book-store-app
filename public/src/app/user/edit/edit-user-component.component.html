@@ -1,0 +1,30 @@
+<p-panel header="Edit user">
+  <div class="grid p-fluid">
+    <div class="col-12">
+      <p-floatlabel variant="on">
+        <input type="text" id="username" class="w-full" pInputText [ngModel]="user?.username"
+               (ngModelChange)="user.username = $event" required>
+        <label for="username">Username</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-12">
+      <p-floatlabel variant="on">
+
+        <input class="col-12" id="password" type="password" pInputText ngModel required
+               (ngModelChange)="user.password =
+      $event">
+        <label for="password">Password</label>
+
+      </p-floatlabel>
+    </div>
+    <div class="col-12">
+      <p-floatlabel variant="on">
+        <input type="password" class="col-12" id="confirm_password" pInputText ngModel required
+               (ngModelChange)="user.confirmPassword = $event">
+        <label for="confirm_password">Confirm password</label>
+
+      </p-floatlabel>
+    </div>
+    <p-button severity="success" type="button" label="Edit" class="ui-button-rounded col-6" (click)="edit()"></p-button>
+  </div>
+</p-panel>

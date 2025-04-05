@@ -12,14 +12,15 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Genre } from '../common/Genre';
 import { CardModule } from "primeng/card";
+import { GenreService } from "../genre.service";
 import { Fluid } from "primeng/fluid";
 import { FloatLabel } from "primeng/floatlabel";
 import { Select } from "primeng/select";
 
 @Component({
-    selector: 'app-editbook',
-    templateUrl: './editbook.component.html',
-    styleUrls: ['./editbook.component.css'],
+    selector: 'app-edit-book',
+    templateUrl: './edit-book.component.html',
+    styleUrls: ['./edit-book.component.css'],
   imports: [
     ToastModule,
     InputTextModule,
@@ -27,10 +28,10 @@ import { Select } from "primeng/select";
     PanelModule,
     DropdownModule,
     CardModule,
+    FormsModule,
     Fluid,
     FloatLabel,
-    Select,
-    FormsModule
+    Select
   ],
     providers: [BookService]
 })
@@ -54,7 +55,8 @@ export class EditBookComponent implements OnInit, OnDestroy {
   constructor(
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService,
+    private genreService: GenreService
   ) { }
 
   ngOnDestroy(): void {
@@ -63,7 +65,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.activatedRoute.data.subscribe((book: { book: BookInterface } ) => {
-      this.bookService.getGenres().subscribe(result => {
+      this.genreService.getGenres().subscribe(result => {
         this.genres = result;
         this.bookModel = book.book;
         this.coverImageSignal.set("data:image/png;base64," + this.bookModel.coverImage);

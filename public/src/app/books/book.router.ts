@@ -1,8 +1,8 @@
 import {ActivatedRouteSnapshot, RouterStateSnapshot, Routes} from '@angular/router';
-import { AddBookComponent } from './addbook/addbook.component';
-import { EditBookComponent } from './editbook/editbook.component';
-import { FinBookComponent } from './findbook/findbook.component';
-import { AllBooksComponent } from './allbooks/allbooks.component';
+import { AddBookComponent } from './add/add-book.component';
+import { EditBookComponent } from './edit/edit-book.component';
+import { FinBookComponent } from './find/find-book.component';
+import { ListBooksComponent } from './list/list-books.component';
 import { BookResolver } from './book-resolver';
 import { inject } from '@angular/core';
 import {ManageComponent} from "./manage/manage.component";
@@ -14,8 +14,8 @@ import {EmployeesComponent} from "../Employees/employees.component";
 import {BookComponent} from "./book/book.component";
 
 export const bookRouts: Routes = [
-  { path: '', component: ManageComponent, canActivateChild: [appGuard], children: [
-    { path: 'all', component: AllBooksComponent},
+  { path: '', component: ManageComponent, canActivateChild: [appGuard], outlet:'books', children: [
+    { path: 'all', component: ListBooksComponent},
     { path: 'manage', component: ManageComponent },
     { path: 'add', component: AddBookComponent},
     { path: 'edit/:id', component: EditBookComponent, resolve: {

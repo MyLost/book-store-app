@@ -13,6 +13,7 @@ import { LOGIN_USER } from "../../redux/actions/loginActions";
 import { LoginState } from "../../redux/store/login.state";
 import { Store } from "@ngrx/store";
 import { Button } from "primeng/button";
+import { FloatLabel } from "primeng/floatlabel";
 
 
 export interface UserEditRequest {
@@ -35,7 +36,8 @@ export interface UserEditResponse {
     FormsModule,
     InputTextModule,
     PanelModule,
-    Button
+    Button,
+    FloatLabel
   ],
     styleUrls: ['./edit-user-component.component.css']
 })

@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="flex mb-4 gap-2 justify-end">
+    @for (category of categories(); track category.name; let i = $index) {
+      <p-button (onClick)="active.set(i.toString())" [routerLink]="['books']" [rounded]="true"
+                [label]="(i+1).toString() "
+                class="w-8 h-8 p-0" [outlined]="active() !== i.toString()"/>
+    }
+  </div>
+
+  <p-accordion [value]="active()" (valueChange)="active.set($event)" (onOpen)="open($event)" [multiple]="false">
+    @for (category of categories(); track category.name; let i = $index) {
+      <p-accordion-panel [value]="i.toString()">
+        <p-accordion-header>{{ category.name }}</p-accordion-header>
+        <p-accordion-content>
+          <router-outlet [name]="categoryOutletMapping.get(category.name)"/>
+        </p-accordion-content>
+      </p-accordion-panel>
+    }
+  </p-accordion>
+</div>

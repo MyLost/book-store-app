@@ -1,0 +1,55 @@
+<div class="flex justify-center">
+  <div class="find-book" [formGroup]="findForm" [style]="{'width': '400px'}">
+    <p-panel header="Search book" class="flex justify-center">
+      <label>Author:</label>
+      <div class="input-group">
+        <input type="text" formControlName="author" pInputText/>
+        @if (!findForm.controls.author.valid) {
+          <div>
+            <p-message severity="warn" text="Unallowable Symbols!"></p-message>
+          </div>
+        }
+      </div>
+      <br/>
+      <label>Title:</label>
+      <div class="input-group">
+        <input type="text" pInputText formControlName="title"/>
+        @if (!findForm.controls.title.valid) {
+          <div>
+            <p-message severity="warn" text="Unallowable Symbols!"></p-message>
+          </div>
+        }
+        <br/>
+      </div>
+      <div class="find-button mt-2">
+        <p-button (click)="findBook(findForm)" label="find book" class="ui-button-rounded"
+                  severity="success"></p-button>
+      </div>
+    </p-panel>
+  </div>
+</div>
+
+@if (this.books?.length) {
+  <p-table [value]="books" [rows]="20" [paginator]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="text-center">Author</th>
+        <th class="text-center">Title</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">Kind</th>
+        <th class="text-center">Cove</th>
+        <th class="text-center">NumberOfBooks</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book let-index="rowIndex">
+      <tr>
+        <td class="text-center"> {{ book.author }}</td>
+        <td class="text-center"> {{ book.title }}</td>
+        <td class="text-center"> {{ book.price }}</td>
+        <td class="text-center"> {{ book.genre.name }}</td>
+        <td class="text-center"> {{ book.cover }}</td>
+        <td class="text-center"> {{ book.numberOfBooks }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+}

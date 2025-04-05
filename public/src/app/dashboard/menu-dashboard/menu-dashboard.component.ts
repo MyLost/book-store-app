@@ -52,9 +52,9 @@ export class MenuDashboardComponent implements OnInit {
           routerLink: ['manage/employees'],
         },
         {
-          label: 'Manage books',
+          label: 'Manage',
           icon: 'pi pi-list',
-          routerLink: ['manage/books']
+          routerLink: ['manage']
         },
       ];
     }

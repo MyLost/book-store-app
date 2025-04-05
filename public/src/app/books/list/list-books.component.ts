@@ -10,11 +10,12 @@ import { Tooltip } from "primeng/tooltip";
 import { DropdownModule } from "primeng/dropdown";
 import { PromotionsComponent } from "../../common/promotions/promotions.component";
 import { Panel } from "primeng/panel";
+import { NgOptimizedImage } from "@angular/common";
 
 
 @Component({
-    selector: 'app-allbooks',
-    templateUrl: './allbooks.component.html',
+    selector: 'app-list-books',
+    templateUrl: './list-books.component.html',
   imports: [
     TableModule,
     ButtonModule,
@@ -22,12 +23,13 @@ import { Panel } from "primeng/panel";
     Tooltip,
     DropdownModule,
     PromotionsComponent,
-    Panel
+    Panel,
+    NgOptimizedImage
   ],
-    styleUrls: ['./allbooks.component.css'],
+    styleUrls: ['./list-books.component.css'],
     providers: [BookService, ConfirmationService]
 })
-export class AllBooksComponent implements OnInit {
+export class ListBooksComponent implements OnInit {
 
   protected books: any;
   protected showPromotion = signal<boolean>(false);

@@ -12,6 +12,7 @@ import org.npd21tech.entities.BookGenreEntity;
 import org.npd21tech.enums.BookCover;
 import org.npd21tech.mappers.BookMapper;
 import org.npd21tech.params.BookSearchParams;
+import org.npd21tech.params.GenreParams;
 import org.npd21tech.params.PagedList;
 import org.npd21tech.params.PagedParams;
 import org.npd21tech.repositories.BookRepository;
@@ -26,7 +27,9 @@ import org.springframework.stereotype.Service;
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
+
     private final GenreRepository genreRepository;
+
     private final BookMapper bookMapper;
 
     public BookServiceImpl(BookRepository bookRepository, GenreRepository genreRepository, BookMapper bookMapper) {
@@ -59,6 +62,12 @@ public class BookServiceImpl implements BookService {
         return new PagedList<BookResponse>(content, pageable, pagedBooksEntity.getTotalElements());
     }
 
+    @Override
+    public BookResponse getByParams(BookSearchParams bookSearchParams) {
+        BookEntity book = bookRepository
+            .findByAuthorEqualsAndTitleEquals(bookSearchParams.getAuthor(), bookSearchParams.getTitle());
+        return bookMapper.toDto(book);
+    }
 
     @Override
     public List<BookResponse> getAll(BookSearchParams bookSearchParams) {
@@ -77,10 +86,7 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAllByPromotionEquals(true).stream().map(bookMapper::toDto).toList();
     }
 
-    @Override
-    public List<BookGenreResponse> getAllGenre() {
-        return genreRepository.findAll().stream().map(bookMapper::toGenreDto).toList();
-    }
+
 
     @Override
     public BookResponse save(BookRequest bookRequest) {
@@ -106,7 +112,7 @@ public class BookServiceImpl implements BookService {
             entity.setAuthor(bookRequest.getAuthor());
             entity.setTitle(bookRequest.getTitle());
             entity.setNumberOfBooks(bookRequest.getNumberOfBooks());
-            entity.setGenre(genreRepository.getReferenceById(bookRequest.getGenreId()));
+            entity.setGenre(genreRepository.getReferenceById(bookRequest.getGenreRequest().getId()));
             entity.setCover(BookCover.valueOf(bookRequest.getCover()));
             entity.setCoverImage(Base64.getDecoder().decode(bookRequest.getCoverImage().getImage()));
             entity.setPrice(bookRequest.getPrice());

@@ -76,11 +76,6 @@ public class BookResource {
         return ResponseEntity.ok().body(bookService.getAllPromotion());
     }
 
-    @GetMapping("/genres")
-    public ResponseEntity<List<BookGenreResponse>> fetchAllGenres() throws IOException {
-        return ResponseEntity.ok().body(bookService.getAllGenre());
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<DeleteResponse> delete(@PathVariable Long id) throws IOException {
         this.bookService.delete(id);

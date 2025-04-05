@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpParams
-} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { BookInterface } from './common/BookInterface';
 import { BaseService } from '../common/base.service';
-import { Genre } from './common/Genre';
-import { BookRequest } from './addbook/addbook.component';
-import {PaginatorState} from "primeng/paginator";
+import { BookRequest } from './add/add-book.component';
+import { PaginatorState } from "primeng/paginator";
 
 export interface BookEditData {
   book: BookInterface;
@@ -26,7 +22,6 @@ export class BookService extends BaseService<any> {
 
   constructor(private http: HttpClient) {
     super(http);
-
   }
 
   getPagedListByGenre(params: PaginatorState, genreId: number) {
@@ -63,9 +58,6 @@ export class BookService extends BaseService<any> {
       });
     }
 
-    getGenres() {
-      return this.http.get<Genre[]>(this.booksUrl + '/genres',  {});
-    }
 
   getCategories() {
     return this.http.get<any[]>(this.baseUrl + 'categories',  {});

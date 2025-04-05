@@ -37,7 +37,7 @@
             <label for="price">Price</label>
           </p-floatlabel>
 
-          <p-floatlabel variant="on" class="mt-4">
+          <p-floatlabel variant="on" class="mt-4" ngModelGroup="genreRequest">
               <p-select
                 class="w-full"
                 id="genre"
@@ -45,7 +45,7 @@
                 [options]="genres"
                 optionLabel="name"
                 optionValue="id"
-                name="genreId"
+                name="id"
                 [ngModel]="bookModel.genre.id"
               />
               <label for="genre">Genre</label>

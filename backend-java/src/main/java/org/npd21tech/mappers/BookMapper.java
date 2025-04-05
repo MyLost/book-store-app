@@ -31,10 +31,30 @@ public abstract class BookMapper {
     @Autowired
     private GenreRepository genreRepository;
 
-    @Mapping(source = "coverImage", target = "coverImage", qualifiedByName="CoverImageMapping")
-    public abstract BookResponse toDto(BookEntity bookEntity);
+    public BookResponse toDto(BookEntity bookEntity) {
 
-    @Mapping(target = "genre", source = "genreId", qualifiedByName = "GenreMapping")
+        final var genre = bookEntity.getGenre();
+
+        final var response = BookResponse.builder()
+            .author(bookEntity.getAuthor())
+            .cover(bookEntity.getCover().name())
+            .id(bookEntity.getId())
+            .genre(BookGenreResponse.builder()
+                .id(genre.getId())
+                .name(genre.getName())
+                .descriptions(genre.getDescriptions())
+                .build())
+            .price(bookEntity.getPrice())
+            .title(bookEntity.getTitle())
+            .numberOfBooks(bookEntity.getNumberOfBooks())
+            .coverImage(coverImageMapping(bookEntity.getCoverImage()))
+            .inventoryStatus(bookEntity.getInventoryStatus())
+            .priceStatus(bookEntity.getPriceStatus())
+            .build();
+        return response;
+    }
+
+    @Mapping(target = "genre", source = "genreRequest.id", qualifiedByName = "GenreMapping")
     @Mapping(target = "coverImage", ignore = true)
     @Mapping(target = "rating", ignore = true)
     @Mapping(target = "id", ignore = true)
@@ -55,7 +75,6 @@ public abstract class BookMapper {
         return this.genreRepository.getReferenceById(id);
     }
 
-    @Named("CoverImageMapping")
     public String coverImageMapping(byte[] image) {
         String encodedImage = null;
         if(image != null) {
@@ -64,7 +83,6 @@ public abstract class BookMapper {
         return encodedImage;
     }
 
-    @Named("CoverImageByteMapping")
     public byte[] coverImageMapping(String image) {
         return image.getBytes();
     }

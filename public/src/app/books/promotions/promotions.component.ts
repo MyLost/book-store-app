@@ -1,15 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, TemplateRef, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { ImageModule } from "primeng/image";
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "primeng/tabs";
 import { PromotionsService } from "../../common/promotions/promotions.service";
 import { environment } from "../../../environments/environment";
 import { TableModule } from "primeng/table";
 import { Observable } from "rxjs";
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, NgTemplateOutlet } from "@angular/common";
 import { Panel } from "primeng/panel";
-
+import { BookService } from "../book.service";
+import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from "primeng/accordion";
+import { Dialog } from "primeng/dialog";
 
 @Component({
     selector: 'app-list-store',
@@ -18,27 +19,36 @@ import { Panel } from "primeng/panel";
     ButtonModule,
     RippleModule,
     ImageModule,
-    Tabs,
-    TabList,
-    Tab,
-    TabPanels,
-    TabPanel,
     TableModule,
     AsyncPipe,
-    Panel
+    Panel,
+    Accordion,
+    AccordionPanel,
+    AccordionHeader,
+    AccordionContent,
+    NgTemplateOutlet,
+    Dialog
   ],
     styleUrls: ['./promotions.component.css'],
     providers: []
 })
 export class PromotionsComponent implements OnInit {
 
-  private svc = inject(PromotionsService);
   protected $promotions: Observable<any>;
+  protected categories = signal<any[]>(null);
 
+  protected add = signal<boolean>(false);
+  protected delete = signal<boolean>(false);
+  protected edit = signal<boolean>(false);
 
-  constructor() { }
+  private _bookSvc = inject(BookService);
+  private _svc = inject(PromotionsService);
+
+  constructor() {}
 
   ngOnInit() {
-    this.$promotions = this.svc.getList({url: environment.backendFullHost + "promotions"});
+    this.$promotions = this._svc.getList({url: environment.backendFullHost + "promotions"});
+    this._bookSvc.getCategories().subscribe(categories => this.categories.set(categories));
   }
+
 }

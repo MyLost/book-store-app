@@ -41,9 +41,10 @@ export class PromotionsComponent implements OnInit {
   protected promotionTypes = signal<SelectItem[]>([
     {label: 'BOOK', value: 'BOOK'}
   ]);
+  protected categories = signal<any[]>(null);
 
-  private svc = inject(PromotionsService);
-  private msgSvc = inject(MessageService);
+  private _svc = inject(PromotionsService);
+  private _msgSvc = inject(MessageService);
 
   @Input() itemId!: number;
 
@@ -60,10 +61,10 @@ export class PromotionsComponent implements OnInit {
     value['itemId'] = this.itemId;
     form.form.markAllAsTouched();
     if (form.valid) {
-      this.svc.save(value, {url: environment.backendFullHost + 'promotions'})
+      this._svc.save(value, {url: environment.backendFullHost + 'promotions'})
         .subscribe(data => {
           if (data.result) {
-            this.msgSvc.add({
+            this._msgSvc.add({
               detail: data.message,
               severity: "success",
               summary: "Promotion saved successfully!"

@@ -7,11 +7,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
-import org.npd21tech.enums.PromotionType;
+import org.npd21tech.enums.PromotionTypeId;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,10 +30,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PromotionsEntity extends BaseEntity {
 
-    @Column(name="promotion_type")
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private PromotionType promotionType;
+    @ManyToOne
+    @JoinColumn(name="promotion_type_id")
+    private PromotionTypes promotionType;
 
     @Column(name="promotion_item_id")
     private Long promotionItemId;

@@ -1,10 +1,7 @@
 <p-toast key="book"></p-toast>
 
-<p-panel header="You can menage books from here">
+<p-menubar [model]="items" styleClass="mb-4"></p-menubar>
 
-  <p-menubar [model]="items" styleClass="mb-4" ></p-menubar>
-
-  <router-outlet />
-</p-panel>
+<router-outlet/>
 
 

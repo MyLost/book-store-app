@@ -27,6 +27,7 @@ export class ManageComponent implements OnInit {
       { label: 'All' , routerLink: 'all' },
       { label: 'Add' , routerLink: 'add' },
       { label: 'Find', routerLink: 'find'},
+      { label: 'Delete', routerLink: 'delete'},
     ];
   }
 }

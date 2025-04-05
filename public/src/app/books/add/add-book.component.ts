@@ -12,6 +12,7 @@ import { BookInterface } from '../common/BookInterface';
 import { FloatLabel } from "primeng/floatlabel";
 import { Fluid } from "primeng/fluid";
 import { Select } from "primeng/select";
+import { GenreService } from "../genre.service";
 
 export interface BookRequest {
   author: string;
@@ -23,9 +24,9 @@ export interface BookRequest {
 }
 
 @Component({
-    selector: 'app-addbook',
-    templateUrl: './addbook.component.html',
-    styleUrls: ['./addbook.component.css'],
+    selector: 'app-add-book',
+    templateUrl: './add-book.component.html',
+    styleUrls: ['./add-book.component.css'],
   imports: [
     ToastModule,
     FormsModule,
@@ -64,10 +65,14 @@ export class AddBookComponent implements OnInit {
   protected keyMessage = '';
   protected flag: any;
 
-  constructor(private messageService: MessageService, private bookService: BookService) { }
+  constructor(
+    private messageService: MessageService,
+    private bookService: BookService,
+    private genreService: GenreService
+    ) { }
 
   ngOnInit() {
-    this.bookService.getGenres().subscribe(result => this.genres = result);
+    this.genreService.getGenres().subscribe(result => this.genres = result);
   }
 
   protected checkInput(event: any, type: any) {
@@ -226,11 +231,18 @@ export class AddBookComponent implements OnInit {
   }
 
   protected addBook() {
+    let value = this.ngForm.value;
     this.ngForm.form.markAllAsTouched();
     if(this.ngForm.valid) {
-      this.bookService.addBook(this.bookRequestModel).subscribe((result: BookInterface) => {
+      this.bookService.addBook(value).subscribe((result: BookInterface) => {
         if (result) {
-          this.bookRequestModel = {} as BookRequest;
+          this.bookRequestModel.price = result.price;
+          this.bookRequestModel.author = result.author;
+          this.bookRequestModel.title = result.title;
+          this.bookRequestModel.cover = result.cover;
+          this.bookRequestModel.genreId = result.genre.id
+          this.bookRequestModel.numberOfBooks = result.numberOfBooks
+
           this.messageService.add({
             key: 'book',
             severity: 'success',

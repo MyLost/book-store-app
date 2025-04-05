@@ -7,20 +7,22 @@ import { ButtonModule } from "primeng/button";
 import { BookInterface } from "../common/BookInterface";
 import { BookService } from "../book.service";
 import { TableModule } from "primeng/table";
+import { Panel } from "primeng/panel";
 
 
 @Component({
-    selector: 'app-findbook',
-    templateUrl: './findbook.component.html',
-    styleUrls: ['./findbook.component.css'],
-    imports: [
-        ToastModule,
-        ReactiveFormsModule,
-        MessageModule,
-        InputTextModule,
-        ButtonModule,
-        TableModule
-    ],
+    selector: 'app-find-book',
+    templateUrl: './find-book.component.html',
+    styleUrls: ['./find-book.component.css'],
+  imports: [
+    ToastModule,
+    ReactiveFormsModule,
+    MessageModule,
+    InputTextModule,
+    ButtonModule,
+    TableModule,
+    Panel
+  ],
     providers: []
 })
 export class FinBookComponent implements OnInit {

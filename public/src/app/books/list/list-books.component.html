@@ -1,9 +1,10 @@
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
-<p-panel header="BOOKS">
+<p-panel header="Book list">
   <p-table [value]="books" [rows]="20" [paginator]="true">
     <ng-template pTemplate="header">
       <tr>
+        <th class="text-center"><a (click)="sort('CoverImage')">Image</a></th>
         <th class="text-center"><a (click)="sort('Author')">Author</a></th>
         <th class="text-center"><a (click)="sort('Title')">Title</a></th>
         <th class="text-center"><a (click)="sort('Price')">Price</a></th>
@@ -15,6 +16,8 @@
     </ng-template>
     <ng-template pTemplate="body" let-book let-index="rowIndex">
       <tr>
+        <td class="text-center"> <img [src]="'data:image/png;base64,' + book.coverImage"
+                            width="100px" height="100px" alt="coverImage"></td>
         <td class="text-center">{{ book.author }}</td>
         <td class="text-center">{{ book.title }}</td>
         <td class="text-center">{{ book.price }}</td>

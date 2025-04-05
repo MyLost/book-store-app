@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../common/base.service';
-import { UserEditRequest, UserEditResponse } from './edit-user-component/edit-user-component.component';
+import { UserEditRequest, UserEditResponse } from './edit/edit-user-component.component';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
