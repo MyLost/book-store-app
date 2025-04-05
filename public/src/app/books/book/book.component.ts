@@ -39,9 +39,12 @@ export class BookComponent implements OnInit {
 
   protected first: number = 0;
 
-  protected rows: number = 0;
+  protected rows: number = 10;
 
   protected totalRecords: number = 0;
+
+  protected readonly environment = environment;
+
 
   constructor(private bookSvc: BookService, private route: ActivatedRoute ) {}
 
@@ -68,8 +71,6 @@ export class BookComponent implements OnInit {
         return 'danger';
     }
   }
-
-  protected readonly environment = environment;
 
   protected bookNavigate(book: BookInterface) {
     console.log(book);
